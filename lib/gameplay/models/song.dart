@@ -1,7 +1,7 @@
-import 'package:soundclash2/authentication/domain/models/users.dart';
+import 'package:soundclash2/gameplay/models/user.dart';
 
 class Song {
-  final User player;
+  final UserName player;
   final String song;
   Song({
     required this.player,

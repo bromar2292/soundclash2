@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
-  @override
   static const String id = 'Profile screen';
+
+  const ProfilePage({Key? key}) : super(key: key);
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -10,12 +12,12 @@ class ProfilePage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          children: [
-            const Text('user name'),
-            const Text('current level'),
-            const Text('favorite genres'),
-            const Text('favorite songs'),
-            const Text('friends list'),
+          children: const [
+            Text('user name'),
+            Text('current level'),
+            Text('favorite genres'),
+            Text('favorite songs'),
+            Text('friends list'),
           ],
         ),
       ),

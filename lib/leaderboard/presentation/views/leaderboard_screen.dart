@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class LeaderBoardScreen extends StatelessWidget {
-  @override
   static const String id = 'Leaderboard screen';
+
+  const LeaderBoardScreen({Key? key}) : super(key: key);
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -10,7 +12,7 @@ class LeaderBoardScreen extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          children: [
+          children: const [
             Text(
                 'this will have a list of the people that have won the most games  '),
             Text('or people that have shared the most music  '),

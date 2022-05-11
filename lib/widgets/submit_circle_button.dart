@@ -11,7 +11,7 @@ class SubmitButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: 170,
+      bottom: 100,
       left: MediaQuery.of(context).size.width / 2.5,
       child: Container(
         height: 90,

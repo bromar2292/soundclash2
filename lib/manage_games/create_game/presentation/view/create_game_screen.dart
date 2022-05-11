@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CreateGameScreen extends StatelessWidget {
-  @override
   static const String id = 'Create Game Screen';
+
+  const CreateGameScreen({Key? key}) : super(key: key);
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -10,7 +12,7 @@ class CreateGameScreen extends StatelessWidget {
       ),
       body: Center(
         child: ElevatedButton(
-          child: Text('create and name a game of 5 players'),
+          child: const Text('create and name a game of 5 players'),
           onPressed: () {
             Navigator.of(context).pop();
           },

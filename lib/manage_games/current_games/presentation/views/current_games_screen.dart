@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CurrentGamesScreen extends StatelessWidget {
-  @override
   static const String id = 'Current games screen';
+
+  const CurrentGamesScreen({Key? key}) : super(key: key);
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

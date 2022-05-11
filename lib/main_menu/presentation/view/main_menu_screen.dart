@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:soundclash2/authentication/presentation/view/login_screen.dart';
 import 'package:soundclash2/leaderboard/presentation/views/leaderboard_screen.dart';
 
@@ -9,6 +9,8 @@ import 'package:soundclash2/manage_games/join_game/presentation/views/join_game_
 import 'package:soundclash2/profile/presentation/view/profile_screen.dart';
 
 class MainMenu extends StatelessWidget {
+  const MainMenu({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

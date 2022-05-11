@@ -1,6 +1,6 @@
-class User {
+class UserName {
   final String username;
-  User({
+  UserName({
     required this.username,
   });
 }
