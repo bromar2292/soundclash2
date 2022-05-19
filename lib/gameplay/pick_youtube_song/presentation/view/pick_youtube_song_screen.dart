@@ -10,8 +10,6 @@ import 'package:soundclash2/widgets/submit_circle_button.dart';
 import '../../../../dummy_data/firebase_dummy/database.dart';
 import '../../../models/song.dart';
 import '../bloc/bloc/pick_youtube_song_bloc.dart';
-import '../bloc/bloc/pick_youtube_song_event.dart';
-import '../bloc/bloc/pick_youtube_song_state.dart';
 
 class PickYoutubeSong extends StatelessWidget {
   static const String id = 'pick_song_screen';
@@ -63,7 +61,7 @@ class PickYoutubeSong extends StatelessWidget {
                         function: (text) {
                           context.read<PickYoutubeSongBloc>().add(
                               PickYoutubeSongEvent.updateYoutubeURL(url: text));
-                          print(state);
+                          print(state.toString());
                         },
                         icon: const Icon(Icons.search),
                         controller: _controllerUrl,
