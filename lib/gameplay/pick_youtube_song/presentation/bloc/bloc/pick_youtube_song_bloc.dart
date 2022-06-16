@@ -1,7 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:json_annotation/json_annotation.dart';
 import 'package:soundclash2/gameplay/models/user.dart';
 
 import '../../../../models/song.dart';

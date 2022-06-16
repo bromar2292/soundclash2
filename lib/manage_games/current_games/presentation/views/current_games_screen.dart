@@ -12,7 +12,7 @@ class CurrentGamesScreen extends StatelessWidget {
       ),
       body: Center(
         child: ElevatedButton(
-          child: Text('List of current games'),
+          child: const Text('List of current games'),
           onPressed: () {
             Navigator.of(context).pop();
           },

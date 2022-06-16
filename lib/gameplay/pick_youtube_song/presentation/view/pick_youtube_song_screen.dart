@@ -7,7 +7,6 @@ import 'package:soundclash2/widgets/input_info.dart';
 import 'package:soundclash2/widgets/sound_button.dart';
 import 'package:soundclash2/widgets/submit_circle_button.dart';
 
-import '../../../../dummy_data/firebase_dummy/database.dart';
 import '../../../models/song.dart';
 import '../bloc/bloc/pick_youtube_song_bloc.dart';
 

@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:soundclash2/gameplay/models/user.dart';
 
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -85,13 +83,13 @@ class _RateSongScreenState extends State<RateSongScreen> {
                           onPressed: () {
                             changeScore(songInList, rating);
                           },
-                          child: Text('$rating'),
                           style: ElevatedButton.styleFrom(
-                            shape: const CircleBorder(),
+                            shape: CircleBorder(),
                             padding: const EdgeInsets.all(20),
                             primary: Colors.blue, // <-- Button color
                             onPrimary: Colors.white, // <-- Splash color
                           ),
+                          child: Text('$rating'),
                         ),
                       )
                       .toList(),
@@ -99,7 +97,7 @@ class _RateSongScreenState extends State<RateSongScreen> {
                 Padding(
                   padding: const EdgeInsets.all(30.0),
                   child: Text(
-                    'you have given the score ${score} ',
+                    'you have given the score $score ',
                   ),
                 ),
                 SoundButton(
