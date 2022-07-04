@@ -18,8 +18,12 @@ class JoinGameScreen extends StatefulWidget {
   State<JoinGameScreen> createState() => _JoinGameScreenState();
 }
 
+List<Game> gameList = [];
+void initState() async {
+  gameList = await getGameList();
+}
+
 class _JoinGameScreenState extends State<JoinGameScreen> {
-  List<Game> gameList = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,35 +47,11 @@ class _JoinGameScreenState extends State<JoinGameScreen> {
                   );
                 }),
           ),
-
-          // if (gameList != null)
-          //   gameList.forEach(((element) =>  Center(
-          //         child: ElevatedButton(
-          //           child: Text(element.gameName),
-          //           onPressed: () {},
-          //         ),
-          //       ))),
           Center(
             child: ElevatedButton(
-              child: const Text('game 1'),
+              child: const Text('print names'),
               onPressed: () {
-                Navigator.of(context).pushNamed(PickYoutubeSong.id);
-              },
-            ),
-          ),
-          Center(
-            child: ElevatedButton(
-              child: const Text('game 2'),
-              onPressed: () {
-                Navigator.of(context).pushNamed(PickYoutubeSong.id);
-              },
-            ),
-          ),
-          Center(
-            child: ElevatedButton(
-              child: const Text('game 3'),
-              onPressed: () {
-                Navigator.of(context).pushNamed(PickYoutubeSong.id);
+                print(gameList);
               },
             ),
           ),
@@ -80,6 +60,8 @@ class _JoinGameScreenState extends State<JoinGameScreen> {
               child: const Text('refresh list'),
               onPressed: () async {
                 gameList = await getGameList();
+                setState(() {});
+                print(gameList);
               },
             ),
           ),
@@ -96,29 +78,9 @@ Future<List<Game>> getGameList() async {
     final body = json.decode(response.body);
     Iterable results = body["results"];
     // print(results.first);
-
-    print(results.map((json) => Game.FromJSON(json)).toList());
-    // print(response.body);
-    return [];
+    print(response.body);
+    return results.map((json) => Game.FromJSON(json)).toList();
   } else {
     return [];
   }
 }
-
-// Future<List<ParseObject>> getGames() async {
-//   QueryBuilder<ParseObject> queryGames =
-//       QueryBuilder<ParseObject>(ParseObject('Game'));
-//   final ParseResponse apiResponse = await queryGames.query();
-
-//   if (apiResponse.success && apiResponse.result != null) {
-//     List<ParseObject> results = [];
-//     //print(apiResponse.results?.asMap());
-
-//     results = apiResponse.results as List<ParseObject>;
-
-//     // print(results);
-//     return results;
-//   } else {
-//     return [];
-//   }
-// }

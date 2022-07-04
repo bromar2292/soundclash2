@@ -10,7 +10,7 @@ String welcome9ToJson(List<Game> data) =>
 
 class Game {
   String objectId;
-  String messages;
+
   String gamename;
   String password;
   List<Player> players;
@@ -20,7 +20,6 @@ class Game {
 
   Game({
     required this.objectId,
-    required this.messages,
     required this.gamename,
     required this.password,
     required this.players,
@@ -31,7 +30,6 @@ class Game {
 
   factory Game.FromJSON(Map<String, dynamic> json) => Game(
         objectId: json["objectId"],
-        messages: json["messages"],
         gamename: json["gamename"],
         password: json["password"],
         players:
@@ -43,7 +41,6 @@ class Game {
 
   Map<String, dynamic> toJson() => {
         "objectId": objectId,
-        "messages": messages,
         "gamename": gamename,
         "password": password,
         "players": List<dynamic>.from(players.map((x) => x.toJson())),

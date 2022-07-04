@@ -4,6 +4,7 @@ Padding InputInfo({
   String? request,
   required TextEditingController controller,
   Function(String)? function,
+  Function()? clearFunction,
   Icon? icon,
 }) {
   return Padding(
@@ -23,6 +24,7 @@ Padding InputInfo({
         suffixIcon: IconButton(
           icon: const Icon(Icons.clear),
           onPressed: () {
+            clearFunction;
             controller.clear();
           },
         ),
