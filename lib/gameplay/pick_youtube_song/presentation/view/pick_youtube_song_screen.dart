@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soundclash2/gameplay/models/player.dart';
 import 'package:soundclash2/gameplay/models/user.dart';
 import 'package:soundclash2/gameplay/rate_song/presentation/view/rate_song_screen.dart';
 
@@ -7,24 +8,25 @@ import 'package:soundclash2/widgets/input_info.dart';
 import 'package:soundclash2/widgets/sound_button.dart';
 import 'package:soundclash2/widgets/submit_circle_button.dart';
 
-import '../../../models/song.dart';
+import '../../../../manage_games/join_game/domain/usecase.dart';
+import '../../../models/game.dart';
+
+import '../../domain/models/usecase.dart';
 import '../bloc/bloc/pick_youtube_song_bloc.dart';
 
 class PickYoutubeSong extends StatelessWidget {
   static const String id = 'pick_song_screen';
+  final String objectID;
 
   // final _controllerUser = TextEditingController();
   final _controllerUrl = TextEditingController();
 
-  PickYoutubeSong({Key? key}) : super(key: key);
+  PickYoutubeSong(this.objectID, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    List<Song> youtubeList = [
-      Song(player: UserName(username: 'omar'), song: 'nPt8bK2gbaU'),
-      Song(player: UserName(username: 'rachel'), song: 'nPt8bK2gbaU'),
-      Song(player: UserName(username: 'farah'), song: 'gQDByCdjUXw'),
-    ];
+    print(objectID);
+
     return Scaffold(
       backgroundColor: const Color(0xFFECF3F9),
       appBar: AppBar(
@@ -72,12 +74,9 @@ class PickYoutubeSong extends StatelessWidget {
                     builder: (context, state) {
                       return SoundButton(
                         context: context,
-                        function: () {
-                          //   if (state is SongSubmitted) {
-                          //     youtubeList.add(state.song);
-//
-                          //     return NothingSubmitted();
-                          //   }
+                        function: () async {
+                          Game game = await getGame(objectId: objectID);
+                          print(game.players.first.user);
                         },
                         text: 'Add song to list ',
                       );
@@ -97,9 +96,7 @@ class PickYoutubeSong extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => RateSongScreen(
-                  youtubeList,
-                ),
+                builder: (context) => RateSongScreen(''),
               ),
             );
           })

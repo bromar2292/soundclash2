@@ -1,15 +1,8 @@
-import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart';
+
 import 'package:flutter/material.dart';
-import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
-
 import 'package:soundclash2/gameplay/pick_youtube_song/presentation/view/pick_youtube_song_screen.dart';
-import 'package:soundclash2/manage_games/join_game/data/repository.dart';
 
-import '../../../../gameplay/models/game.dart';
-import '../../../../gameplay/models/player.dart';
-import '../../domain/usecase.dart';
 import 'bloc/join_game_bloc.dart';
 
 class JoinGameScreen extends StatefulWidget {
@@ -35,8 +28,7 @@ class _JoinGameScreenState extends State<JoinGameScreen> {
       ),
       body: Column(
         children: [
-          SizedBox(
-            height: 200,
+          Expanded(
             child: BlocBuilder<JoinGameBloc, JoinGameState>(
               builder: (context, state) {
                 return state.when(
@@ -54,8 +46,14 @@ class _JoinGameScreenState extends State<JoinGameScreen> {
                         final game = gameList[index];
                         return Center(
                           child: ElevatedButton(
-                            child: Text(game.gamename),
-                            onPressed: () {},
+                            child: Text(game.gameName),
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                context,
+                                PickYoutubeSong.id,
+                                arguments: game.objectId,
+                              );
+                            },
                           ),
                         );
                       },
@@ -73,15 +71,21 @@ class _JoinGameScreenState extends State<JoinGameScreen> {
               },
             ),
           ),
-          Center(
-            child: ElevatedButton(
-              child: const Text('refresh list'),
-              onPressed: () async {
-                // gameList = await getGameList();
-
-                // print(gameList);
-              },
-            ),
+          BlocBuilder<JoinGameBloc, JoinGameState>(
+            builder: (context, state) {
+              return Center(
+                child: ElevatedButton(
+                  child: const Text('refresh list'),
+                  onPressed: () async {
+                    context
+                        .read<JoinGameBloc>()
+                        .add(const JoinGameEvent.load());
+                    setState(() {});
+                    // print(gameList);
+                  },
+                ),
+              );
+            },
           ),
         ],
       ),

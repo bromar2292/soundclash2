@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:soundclash2/gameplay/models/player.dart';
 
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../../../dummy_data/firebase_dummy/database.dart';
 import '../../../../widgets/sound_button.dart';
-import '../../../models/song.dart';
 
 class RateSongScreen extends StatefulWidget {
   static const String id = 'rate_song_screen';
-  final List<Song> youtubelist = [];
-  RateSongScreen(youtubelist);
+  final List<Player> youtubelist = [];
+  RateSongScreen(String objectId, {Key? key}) : super(key: key);
   @override
   State<RateSongScreen> createState() => _RateSongScreenState();
 }
@@ -26,7 +26,7 @@ class _RateSongScreenState extends State<RateSongScreen> {
   int songInList = 0;
   int score = 1;
 
-  List<Song> youtubeList = DataBaseDummy().youtubeList;
+  List<Player> youtubeList = DataBaseDummy().youtubeList;
   late YoutubePlayerController youtubePlayerController;
   changeScore(int song, int value) {
     //youtubeList[song].score = value;
@@ -86,8 +86,8 @@ class _RateSongScreenState extends State<RateSongScreen> {
                           style: ElevatedButton.styleFrom(
                             shape: CircleBorder(),
                             padding: const EdgeInsets.all(20),
-                            primary: Colors.blue, // <-- Button color
-                            onPrimary: Colors.white, // <-- Splash color
+                            backgroundColor: Colors.blue, // <-- Button color
+                            foregroundColor: Colors.white, // <-- Splash color
                           ),
                           child: Text('$rating'),
                         ),

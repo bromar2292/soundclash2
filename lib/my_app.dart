@@ -24,15 +24,31 @@ class MyApp extends StatelessWidget {
         ProfilePage.id: (context) => const ProfilePage(),
         LoginScreen.id: (context) => const LoginScreen(),
         CreateGameScreen.id: (context) => BlocProvider.value(
-            value: CreateGameBloc(), child: CreateGameScreen()),
+            value: CreateGameBloc(), child: const CreateGameScreen()),
         CurrentGamesScreen.id: (context) => const CurrentGamesScreen(),
-
-        JoinGameScreen.id: (context) =>
-            BlocProvider.value(value: JoinGameBloc(), child: JoinGameScreen()),
+        JoinGameScreen.id: (context) => BlocProvider.value(
+            value: JoinGameBloc(), child: const JoinGameScreen()),
         LeaderBoardScreen.id: (context) => const LeaderBoardScreen(),
-        //RateSongScreen.id: (context) => RateSongScreen(youtubelist),
-        PickYoutubeSong.id: (context) => BlocProvider.value(
-            value: PickYoutubeSongBloc(), child: PickYoutubeSong())
+      },
+      onGenerateRoute: (setting) {
+        switch (setting.name) {
+          case PickYoutubeSong.id:
+            return MaterialPageRoute(
+              builder: (_) => BlocProvider.value(
+                value: PickYoutubeSongBloc(),
+                child: PickYoutubeSong(setting.arguments as String),
+              ),
+              fullscreenDialog: true,
+            );
+          default:
+            return MaterialPageRoute(
+              builder: (_) => const Material(
+                child: Center(
+                  child: Text('Sorry no route found'),
+                ),
+              ),
+            );
+        }
       },
       initialRoute: '/',
     );

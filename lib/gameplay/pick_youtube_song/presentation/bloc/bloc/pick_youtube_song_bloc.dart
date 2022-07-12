@@ -2,7 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:soundclash2/gameplay/models/user.dart';
 
-import '../../../../models/song.dart';
+import '../../../../models/player.dart';
+
 part 'pick_youtube_song_bloc.freezed.dart';
 part 'pick_youtube_song_state.dart';
 part 'pick_youtube_song_event.dart';
@@ -18,7 +19,7 @@ class PickYoutubeSongBloc
     Emitter<PickYoutubeSongState> emit,
   ) {
     emit(PickYoutubeSongState.songSubmitted(
-      song: Song(player: UserName(username: ''), song: event.url),
+      song: Player(user: '', song: event.url, score: []),
     ));
   }
 }

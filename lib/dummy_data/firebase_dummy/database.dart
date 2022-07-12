@@ -1,6 +1,5 @@
-import '../../gameplay/models/game.dart';
 import '../../gameplay/models/player.dart';
-import '../../gameplay/models/song.dart';
+
 import '../../gameplay/models/user.dart';
 
 class DataBaseDummy {
@@ -10,13 +9,13 @@ class DataBaseDummy {
   //   Game(players: game3)
   // ];
 
-  List<Song> youtubeList = [
-    Song(player: UserName(username: 'omar'), song: 'nPt8bK2gbaU'),
-    Song(player: UserName(username: 'rachel'), song: 'nPt8bK2gbaU'),
-    Song(player: UserName(username: 'farah'), song: 'gQDByCdjUXw'),
+  List<Player> youtubeList = [
+    Player(user: 'omar', song: 'nPt8bK2gbaU', score: []),
+    Player(user: 'rachel', song: 'nPt8bK2gbaU', score: []),
+    Player(user: 'farah', song: 'gQDByCdjUXw', score: []),
   ];
 
-  void addToYoutubeList(Song song) {
+  void addToYoutubeList(Player song) {
     return youtubeList.add(song);
   }
 }

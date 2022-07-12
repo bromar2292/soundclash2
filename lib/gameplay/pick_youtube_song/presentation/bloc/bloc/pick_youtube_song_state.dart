@@ -6,7 +6,7 @@ class PickYoutubeSongState with _$PickYoutubeSongState {
 
   const factory PickYoutubeSongState.nothingSubmitted() = _NothingSubmited;
 
-  const factory PickYoutubeSongState.songSubmitted({required Song song}) =
+  const factory PickYoutubeSongState.songSubmitted({required Player song}) =
       _SongSubmitted;
 
 //  SongSubmitted copyWith({String? url, required Song song}) {
