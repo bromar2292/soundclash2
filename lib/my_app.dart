@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soundclash2/authentication/presentation/view/login_screen.dart';
+import 'package:soundclash2/manage_games/join_game/presentation/views/bloc/join_game_bloc.dart';
 import 'package:soundclash2/profile/presentation/view/profile_screen.dart';
 
 import 'gameplay/pick_youtube_song/presentation/bloc/bloc/pick_youtube_song_bloc.dart';
@@ -25,7 +26,9 @@ class MyApp extends StatelessWidget {
         CreateGameScreen.id: (context) => BlocProvider.value(
             value: CreateGameBloc(), child: CreateGameScreen()),
         CurrentGamesScreen.id: (context) => const CurrentGamesScreen(),
-        JoinGameScreen.id: (context) => const JoinGameScreen(),
+
+        JoinGameScreen.id: (context) =>
+            BlocProvider.value(value: JoinGameBloc(), child: JoinGameScreen()),
         LeaderBoardScreen.id: (context) => const LeaderBoardScreen(),
         //RateSongScreen.id: (context) => RateSongScreen(youtubelist),
         PickYoutubeSong.id: (context) => BlocProvider.value(

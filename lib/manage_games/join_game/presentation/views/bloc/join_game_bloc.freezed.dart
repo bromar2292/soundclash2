@@ -19,19 +19,19 @@ mixin _$JoinGameState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loaded,
+    required TResult Function(List<Game> gameList) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loaded,
+    TResult Function(List<Game> gameList)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loaded,
+    TResult Function(List<Game> gameList)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +113,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loaded,
+    required TResult Function(List<Game> gameList) loaded,
   }) {
     return initial();
   }
@@ -122,7 +122,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loaded,
+    TResult Function(List<Game> gameList)? loaded,
   }) {
     return initial?.call();
   }
@@ -131,7 +131,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loaded,
+    TResult Function(List<Game> gameList)? loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -180,6 +180,7 @@ abstract class _Initial implements JoinGameState {
 abstract class _$$_loadedCopyWith<$Res> {
   factory _$$_loadedCopyWith(_$_loaded value, $Res Function(_$_loaded) then) =
       __$$_loadedCopyWithImpl<$Res>;
+  $Res call({List<Game> gameList});
 }
 
 /// @nodoc
@@ -190,54 +191,81 @@ class __$$_loadedCopyWithImpl<$Res> extends _$JoinGameStateCopyWithImpl<$Res>
 
   @override
   _$_loaded get _value => super._value as _$_loaded;
+
+  @override
+  $Res call({
+    Object? gameList = freezed,
+  }) {
+    return _then(_$_loaded(
+      gameList: gameList == freezed
+          ? _value._gameList
+          : gameList // ignore: cast_nullable_to_non_nullable
+              as List<Game>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_loaded implements _loaded {
-  const _$_loaded();
+  const _$_loaded({required final List<Game> gameList}) : _gameList = gameList;
+
+  final List<Game> _gameList;
+  @override
+  List<Game> get gameList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_gameList);
+  }
 
   @override
   String toString() {
-    return 'JoinGameState.loaded()';
+    return 'JoinGameState.loaded(gameList: $gameList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_loaded);
+        (other.runtimeType == runtimeType &&
+            other is _$_loaded &&
+            const DeepCollectionEquality().equals(other._gameList, _gameList));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_gameList));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_loadedCopyWith<_$_loaded> get copyWith =>
+      __$$_loadedCopyWithImpl<_$_loaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loaded,
+    required TResult Function(List<Game> gameList) loaded,
   }) {
-    return loaded();
+    return loaded(gameList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loaded,
+    TResult Function(List<Game> gameList)? loaded,
   }) {
-    return loaded?.call();
+    return loaded?.call(gameList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loaded,
+    TResult Function(List<Game> gameList)? loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded();
+      return loaded(gameList);
     }
     return orElse();
   }
@@ -275,7 +303,12 @@ class _$_loaded implements _loaded {
 }
 
 abstract class _loaded implements JoinGameState {
-  const factory _loaded() = _$_loaded;
+  const factory _loaded({required final List<Game> gameList}) = _$_loaded;
+
+  List<Game> get gameList => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$_loadedCopyWith<_$_loaded> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

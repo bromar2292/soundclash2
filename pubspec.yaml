@@ -35,7 +35,6 @@ dependencies:
   flutter_bloc: ^8.0.1
   youtube_player_flutter: ^8.0.0
   parse_server_sdk_flutter: ^3.1.2
-
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
