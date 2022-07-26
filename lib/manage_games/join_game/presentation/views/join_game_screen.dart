@@ -14,11 +14,6 @@ class JoinGameScreen extends StatefulWidget {
   State<JoinGameScreen> createState() => _JoinGameScreenState();
 }
 
-//List<Game> gameList = [];
-//void initState() async {
-//  gameList = await getGameList();
-//}
-
 class _JoinGameScreenState extends State<JoinGameScreen> {
   @override
   Widget build(BuildContext context) {

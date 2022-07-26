@@ -86,8 +86,7 @@ class _RateSongScreenState extends State<RateSongScreen> {
                           style: ElevatedButton.styleFrom(
                             shape: CircleBorder(),
                             padding: const EdgeInsets.all(20),
-                            backgroundColor: Colors.blue, // <-- Button color
-                            foregroundColor: Colors.white, // <-- Splash color
+                            // <-- Splash color
                           ),
                           child: Text('$rating'),
                         ),
