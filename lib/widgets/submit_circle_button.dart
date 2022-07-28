@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class SubmitButton extends StatelessWidget {
   const SubmitButton({
+    Key? key,
     required this.function,
-  });
+  }) : super(key: key);
 
   final void Function() function;
 

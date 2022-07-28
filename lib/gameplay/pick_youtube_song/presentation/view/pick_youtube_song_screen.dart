@@ -8,7 +8,6 @@ import 'package:soundclash2/widgets/input_info.dart';
 import 'package:soundclash2/widgets/sound_button.dart';
 import 'package:soundclash2/widgets/submit_circle_button.dart';
 
-import '../../../../manage_games/join_game/domain/usecase.dart';
 import '../../../models/game.dart';
 
 import '../../domain/models/usecase.dart';
@@ -57,8 +56,8 @@ class PickYoutubeSong extends StatelessWidget {
                 children: <Widget>[
                   BlocBuilder<PickYoutubeSongBloc, PickYoutubeSongState>(
                     builder: (context, state) {
-                      return InputInfo(
-                        request: 'enter your url',
+                      return InputWidget(
+                        text: 'enter your url',
                         function: (text) {
                           context.read<PickYoutubeSongBloc>().add(
                               PickYoutubeSongEvent.updateYoutubeURL(url: text));

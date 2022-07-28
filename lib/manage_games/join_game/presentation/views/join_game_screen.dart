@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter/material.dart';
+import 'package:soundclash2/authentication/domain/models/users.dart';
 import 'package:soundclash2/gameplay/pick_youtube_song/presentation/view/pick_youtube_song_screen.dart';
 
 import 'bloc/join_game_bloc.dart';
@@ -39,6 +40,7 @@ class _JoinGameScreenState extends State<JoinGameScreen> {
                       itemCount: gameList.length,
                       itemBuilder: (BuildContext context, int index) {
                         final game = gameList[index];
+
                         return Center(
                           child: ElevatedButton(
                             child: Text(game.gameName),
@@ -61,9 +63,7 @@ class _JoinGameScreenState extends State<JoinGameScreen> {
           Center(
             child: ElevatedButton(
               child: const Text('print names'),
-              onPressed: () {
-                // print(gameList);
-              },
+              onPressed: () {},
             ),
           ),
           BlocBuilder<JoinGameBloc, JoinGameState>(
@@ -76,7 +76,6 @@ class _JoinGameScreenState extends State<JoinGameScreen> {
                         .read<JoinGameBloc>()
                         .add(const JoinGameEvent.load());
                     setState(() {});
-                    // print(gameList);
                   },
                 ),
               );

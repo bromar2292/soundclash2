@@ -1,8 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
-import 'package:soundclash2/authentication/presentation/widgets/credentials_widget.dart';
+import 'package:soundclash2/authentication/presentation/view/register_screen.dart';
 import 'package:soundclash2/main_menu/presentation/view/main_menu_screen.dart';
+import 'package:soundclash2/widgets/input_info.dart';
+
+import '../../../widgets/message.dart';
+import '../../domain/usecases/authentication/show_error.dart';
+import '../../domain/usecases/authentication/show_success.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String id = 'Login Screen';
@@ -22,15 +27,17 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Flutter Login/Logout'),
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, MainMenu.id);
-            },
-            icon: const Icon(
-              Icons.home,
-              color: Colors.white,
-            ),
-          ),
+          leading: isLoggedIn
+              ? IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, MainMenu.id);
+                  },
+                  icon: const Icon(
+                    Icons.home,
+                    color: Colors.white,
+                  ),
+                )
+              : null,
         ),
         body: Center(
           child: SingleChildScrollView(
@@ -53,24 +60,24 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 16,
                 ),
-                CredentialsWidget(
-                    enabled: !isLoggedIn,
-                    obscureText: false,
-                    controller: controllerUsername,
-                    text: 'Username',
-                    textInputType: TextInputType.text),
-                CredentialsWidget(
-                    enabled: !isLoggedIn,
-                    obscureText: true,
-                    controller: controllerPassword,
-                    text: 'Password',
-                    textInputType: TextInputType.text),
+                InputWidget(
+                  enabled: !isLoggedIn,
+                  controller: controllerUsername,
+                  text: 'Username',
+                  textInputType: TextInputType.text,
+                ),
+                InputWidget(
+                  enabled: !isLoggedIn,
+                  obscureText: true,
+                  controller: controllerPassword,
+                  text: 'Password',
+                ),
                 const SizedBox(
                   height: 8,
                 ),
                 SizedBox(
                   height: 50,
-                  child: TextButton(
+                  child: ElevatedButton(
                     child: const Text('Login'),
                     onPressed: isLoggedIn ? null : () => doUserLogin(),
                   ),
@@ -80,55 +87,26 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 SizedBox(
                   height: 50,
-                  child: TextButton(
-                    child: const Text('Logout'),
-                    onPressed: !isLoggedIn ? null : () => doUserLogout(),
+                  child: ElevatedButton(
+                    child: const Text('Sign Up'),
+                    onPressed: () =>
+                        Navigator.pushNamed(context, RegisterScreen.id),
                   ),
-                )
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                SizedBox(
+                  height: 50,
+                  child: ElevatedButton(
+                    child: const Text('Logout'),
+                    onPressed: isLoggedIn ? null : () => doUserLogout(),
+                  ),
+                ),
               ],
             ),
           ),
         ));
-  }
-
-  void showSuccess(String message) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text("Success!"),
-          content: Text(message),
-          actions: <Widget>[
-            TextButton(
-              child: const Text("OK"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  void showError(String errorMessage) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text("Error!"),
-          content: Text(errorMessage),
-          actions: <Widget>[
-            TextButton(
-              child: const Text("OK"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
   }
 
   void doUserLogin() async {
@@ -141,12 +119,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if (response.success) {
       navigateToMainMenu(context);
-      showSuccess("User was successfully login!");
+      Message.showSuccess(
+          context: context, message: "User was successfully login!");
+
       setState(() {
         isLoggedIn = true;
       });
     } else {
-      showError(response.error!.message);
+      Message.showError(message: response.error!.message, context: context);
     }
   }
 
@@ -155,12 +135,13 @@ class _LoginScreenState extends State<LoginScreen> {
     var response = await user.logout();
 
     if (response.success) {
-      showSuccess("User was successfully logout!");
+      Message.showSuccess(
+          context: context, message: "User was successfully logout!");
       setState(() {
         isLoggedIn = false;
       });
     } else {
-      showError(response.error!.message);
+      Message.showError(message: response.error!.message, context: context);
     }
   }
 }

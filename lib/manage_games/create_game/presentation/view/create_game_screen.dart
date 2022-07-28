@@ -8,8 +8,9 @@ import '../bloc/create_game_bloc.dart';
 
 class CreateGameScreen extends StatelessWidget {
   static const String id = 'Create Game Screen';
+  final String userName;
 
-  const CreateGameScreen({Key? key}) : super(key: key);
+  const CreateGameScreen({Key? key, required this.userName}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final _controllerText = TextEditingController();
@@ -21,9 +22,9 @@ class CreateGameScreen extends StatelessWidget {
         children: <Widget>[
           BlocBuilder<CreateGameBloc, CreateGameState>(
             builder: (context, state) {
-              return InputInfo(
+              return InputWidget(
                 controller: _controllerText,
-                request: 'name of game',
+                text: 'name of game',
                 clearFunction: () {
                   context
                       .read<CreateGameBloc>()
@@ -47,7 +48,7 @@ class CreateGameScreen extends StatelessWidget {
                           onPressed: () async {
                             //  Navigator.of(context).pop();
                             print(name);
-                            await createGameUsecase(name);
+                            await createGameUsecase(name, userName);
                           },
                         ),
                     initial: () {

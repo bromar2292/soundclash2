@@ -67,8 +67,7 @@ class MyApp extends StatelessWidget {
         ProfilePage.id: (context) => const ProfilePage(),
         RegisterScreen.id: (context) => const RegisterScreen(),
         LoginScreen.id: (context) => const LoginScreen(),
-        CreateGameScreen.id: (context) => BlocProvider.value(
-            value: CreateGameBloc(), child: const CreateGameScreen()),
+
         CurrentGamesScreen.id: (context) => const CurrentGamesScreen(),
         JoinGameScreen.id: (context) => BlocProvider.value(
             value: JoinGameBloc(), child: const JoinGameScreen()),
@@ -81,6 +80,14 @@ class MyApp extends StatelessWidget {
               builder: (_) => BlocProvider.value(
                 value: PickYoutubeSongBloc(),
                 child: PickYoutubeSong(setting.arguments as String),
+              ),
+              fullscreenDialog: true,
+            );
+          case CreateGameScreen.id:
+            return MaterialPageRoute(
+              builder: (_) => BlocProvider.value(
+                value: CreateGameBloc(),
+                child: CreateGameScreen(userName: setting.arguments as String),
               ),
               fullscreenDialog: true,
             );

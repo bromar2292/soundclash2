@@ -1,13 +1,13 @@
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 
-Future createGameUsecase(String gameName) async {
+Future createGameUsecase(String gameName, String username) async {
   var firstObject = ParseObject('Game')
     ..set('gamename', gameName.isNotEmpty ? gameName : 'nameless')
     ..set('password', 'peace')
     ..setAddAll('players', [
       {
-        'name': 'omar',
-        'song': 'nPt8bK2gbaU',
+        'name': username,
+        'song': '',
         'score': [0]
       },
       {
