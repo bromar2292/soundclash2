@@ -4,8 +4,6 @@ import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import '../../../main_menu/presentation/view/main_menu_screen.dart';
 import '../../../widgets/input_info.dart';
 import '../../domain/usecases/authentication/registration.dart';
-import '../../domain/usecases/authentication/show_error.dart';
-import '../../domain/usecases/authentication/show_success.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const String id = 'Register Screen';

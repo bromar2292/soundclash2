@@ -1,6 +1,4 @@
-import '../../gameplay/models/player.dart';
-
-import '../../gameplay/models/user.dart';
+import '../../features/gameplay/models/player.dart';
 
 class DataBaseDummy {
   // List<Game> games = [

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soundclash2/features/gameplay/rate_song/presentation/view/rate_song_screen.dart';
 
 import 'package:soundclash2/widgets/input_info.dart';
 import 'package:soundclash2/widgets/sound_button.dart';
 import 'package:soundclash2/widgets/submit_circle_button.dart';
 
-import '../../../../features/gameplay/models/game.dart';
-import '../../../../features/gameplay/pick_youtube_song/domain/models/usecase.dart';
-import '../../../../features/gameplay/pick_youtube_song/presentation/bloc/bloc/pick_youtube_song_bloc.dart';
+import '../../../models/game.dart';
+
+import '../../../rate_song/presentation/view/rate_song_screen.dart';
+import '../../domain/models/usecase.dart';
+import '../bloc/bloc/pick_youtube_song_bloc.dart';
 
 class PickYoutubeSong extends StatelessWidget {
   static const String id = 'pick_song_screen';

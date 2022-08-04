@@ -1,8 +1,8 @@
-import 'package:soundclash2/manage_games/join_game/data/repository.dart';
 import 'package:http/http.dart';
 
 import 'dart:convert';
 
+import '../../../../manage_games/join_game/data/repository.dart';
 import '../../../models/game.dart';
 import '../../../models/player.dart';
 

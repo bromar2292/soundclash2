@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:soundclash2/gameplay/models/player.dart';
 
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-import '../../../../dummy_data/firebase_dummy/database.dart';
-import '../../../../widgets/sound_button.dart';
+import '../../../../../dummy_data/firebase_dummy/database.dart';
+
+import '../../../../../widgets/sound_button.dart';
+import '../../../models/player.dart';
 
 class RateSongScreen extends StatefulWidget {
   static const String id = 'rate_song_screen';

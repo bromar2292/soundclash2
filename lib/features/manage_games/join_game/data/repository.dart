@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart';
 
-import '../../../constants.dart';
+import '../../../../constants.dart';
 
 class JoinGameRepository {
   static final String _baseUrl = "https://parseapi.back4app.com/classes/Game";

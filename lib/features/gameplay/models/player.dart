@@ -1,5 +1,3 @@
-import 'package:soundclash2/gameplay/models/user.dart';
-
 class Player {
   final String user;
   final String song;

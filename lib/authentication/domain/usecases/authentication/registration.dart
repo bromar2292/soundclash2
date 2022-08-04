@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
-import 'package:soundclash2/authentication/domain/usecases/authentication/show_error.dart';
-import 'package:soundclash2/authentication/domain/usecases/authentication/show_success.dart';
+
 import 'package:soundclash2/authentication/presentation/view/register_screen.dart';
+
+import '../../../../widgets/message.dart';
 
 void doUserRegistration({
   required BuildContext context,
@@ -19,8 +20,9 @@ void doUserRegistration({
   var response = await user.signUp();
 
   if (response.success) {
-    showSuccess(context, "User was successfully created!");
+    Message.showSuccess(
+        context: context, message: "User was successfully created!");
   } else {
-    showError(response.error!.message, context);
+    Message.showError(message: response.error!.message, context: context);
   }
 }

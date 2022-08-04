@@ -1,7 +1,9 @@
-import 'package:soundclash2/manage_games/join_game/data/repository.dart';
 import 'package:http/http.dart';
-import '../../gameplay/models/game.dart';
+
 import 'dart:convert';
+
+import '../../gameplay/models/game.dart';
+import '../join_game/data/repository.dart';
 
 Future<List<Game>> getGameList() async {
   Response response = await JoinGameRepository.getGamesList();

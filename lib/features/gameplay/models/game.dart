@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:soundclash2/gameplay/models/player.dart';
+import 'player.dart';
 
 //List<Game> welcome9FromJson(String str) =>
 //   List<Game>.from(json.decode(str).map((x) => Game.FromJSON(x)));
