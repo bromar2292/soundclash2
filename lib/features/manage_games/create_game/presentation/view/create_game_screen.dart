@@ -14,6 +14,7 @@ class CreateGameScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _controllerText = TextEditingController();
+    final _controllerSongText = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: const Text(CreateGameScreen.id),
@@ -22,20 +23,37 @@ class CreateGameScreen extends StatelessWidget {
         children: <Widget>[
           BlocBuilder<CreateGameBloc, CreateGameState>(
             builder: (context, state) {
-              return InputWidget(
-                controller: _controllerText,
-                text: 'name of game',
-                clearFunction: () {
-                  context
-                      .read<CreateGameBloc>()
-                      .add(const CreateGameEvent.createGameName(name: ''));
-                },
-                function: (text) {
-                  context
-                      .read<CreateGameBloc>()
-                      .add(CreateGameEvent.createGameName(name: text));
-                  print(state.toString());
-                },
+              return Column(
+                children: [
+                  InputWidget(
+                    controller: _controllerText,
+                    text: 'name of game',
+                    clearFunction: () {
+                      context
+                          .read<CreateGameBloc>()
+                          .add(CreateGameEvent.createGameName(name: ''));
+                    },
+                    function: (text) {
+                      context.read<CreateGameBloc>().add(
+                          CreateGameEvent.createGameName(
+                              name: text, song: _controllerSongText.text));
+                    },
+                  ),
+                  InputWidget(
+                    controller: _controllerSongText,
+                    text: 'link to youtube song',
+                    clearFunction: () {
+                      context
+                          .read<CreateGameBloc>()
+                          .add(CreateGameEvent.chooseSong(song: ''));
+                    },
+                    function: (text) {
+                      context.read<CreateGameBloc>().add(
+                          CreateGameEvent.createGameName(
+                              name: _controllerText.text, song: text));
+                    },
+                  ),
+                ],
               );
             },
           ),
@@ -43,27 +61,50 @@ class CreateGameScreen extends StatelessWidget {
             child: BlocBuilder<CreateGameBloc, CreateGameState>(
               builder: (context, state) {
                 return state.when(
-                    nameSubmitted: (name) => ElevatedButton(
-                          child: const Text('create a game of 5 players'),
-                          onPressed: () async {
-                            //  Navigator.of(context).pop();
-                            print(name);
-                            await createGameUsecase(name, userName);
-                          },
-                        ),
-                    initial: () {
-                      return ElevatedButton(
+                    nameSubmitted: (name, song) => ElevatedButton(
                         child: const Text('create a game of 5 players'),
                         onPressed: () async {
+                          if (song == 'error') {
+                            return showDialog(
+                              context: context,
+                              builder: (ctx) => AlertDialog(
+                                title: const Text("Error"),
+                                content: const Text(
+                                    "You have not used the correct youtube link"),
+                                actions: <Widget>[
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(ctx).pop();
+                                    },
+                                    child: Container(
+                                      color: Colors.green,
+                                      padding: const EdgeInsets.all(14),
+                                      child: const Text("okay"),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          } else {
+                            await createGameUsecase(
+                                gameName: name as String,
+                                userName: userName,
+                                song: song as String);
+                          }
+                          print(name);
+                          print(song);
+                        }),
+                    initial: () {
+                      return ElevatedButton(
+                        child: const Text('use valid youtube link'),
+                        onPressed: () async {
                           //  Navigator.of(context).pop();
-
-                          print('inital state');
                         },
                       );
                     },
                     nothingSubmitted: () {
                       return ElevatedButton(
-                        child: const Text('create a game of 5 players'),
+                        child: const Text('please enter both details'),
                         onPressed: () async {
                           //  Navigator.of(context).pop();
 

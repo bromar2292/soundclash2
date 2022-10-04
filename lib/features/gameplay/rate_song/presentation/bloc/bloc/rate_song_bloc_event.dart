@@ -1,8 +1,9 @@
-part of 'rate_song_bloc_bloc.dart';
+part of 'rate_song_bloc.dart';
 
-abstract class RateSongBlocEvent extends Equatable {
-  const RateSongBlocEvent();
-
-  @override
-  List<Object> get props => [];
+@freezed
+class RateSongBlocEvent with _$RateSongBlocEvent {
+  const factory RateSongBlocEvent.getPlayers({required String objectId}) =
+      _getPlayersEvent;
+  const factory RateSongBlocEvent.rateSong(
+      {required String objectId, required int rating}) = _getRateSongEvent;
 }

@@ -23,7 +23,7 @@ class JoinGameBloc extends Bloc<JoinGameEvent, JoinGameState> {
     gameList.forEach((game) {
       bool found = false;
       for (final p in game.players) {
-        if (p.user == 'bromar2292') {
+        if (p.user == event.userName) {
           found = true;
           break;
         }

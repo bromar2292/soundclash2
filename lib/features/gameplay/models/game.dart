@@ -30,7 +30,7 @@ class Game {
 
   factory Game.FromJSON(Map<String, dynamic> json) => Game(
         objectId: json["objectId"],
-        gameName: json["gamename"],
+        gameName: json["gameName"],
         password: json["password"],
         players:
             List<Player>.from(json["players"].map((x) => Player.fromJson(x))),
@@ -41,7 +41,7 @@ class Game {
 
   Map<String, dynamic> toJson() => {
         "objectId": objectId,
-        "gamename": gameName,
+        "gameName": gameName,
         "password": password,
         "players": List<dynamic>.from(players.map((x) => x.toJson())),
         "count": count,

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 
-import 'package:soundclash2/authentication/presentation/view/register_screen.dart';
-
 import '../../../../widgets/message.dart';
 
 void doUserRegistration({

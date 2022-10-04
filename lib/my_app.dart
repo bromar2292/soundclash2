@@ -2,11 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:soundclash2/authentication/presentation/view/register_screen.dart';
+import 'package:soundclash2/features/gameplay/models/game.dart';
+import 'package:soundclash2/features/gameplay/pick_youtube_song/domain/models/pick_youtube_arguments.dart';
+import 'package:soundclash2/features/gameplay/rate_song/presentation/bloc/bloc/rate_song_bloc.dart';
+import 'package:soundclash2/features/gameplay/rate_song/presentation/view/rate_song_screen.dart';
+import 'package:soundclash2/features/manage_games/current_games/bloc/current_games_bloc.dart';
 
 import 'package:soundclash2/profile/presentation/view/profile_screen.dart';
 
 import 'authentication/presentation/view/login_screen.dart';
 import 'features/gameplay/pick_youtube_song/presentation/bloc/bloc/pick_youtube_song_bloc.dart';
+import 'features/gameplay/pick_youtube_song/presentation/view/pick_youtube_song_screen.dart';
 import 'features/leaderboard/presentation/views/leaderboard_screen.dart';
 
 import 'features/manage_games/create_game/presentation/bloc/create_game_bloc.dart';
@@ -14,7 +20,6 @@ import 'features/manage_games/create_game/presentation/view/create_game_screen.d
 import 'features/manage_games/current_games/presentation/views/current_games_screen.dart';
 import 'features/manage_games/join_game/presentation/views/bloc/join_game_bloc.dart';
 import 'features/manage_games/join_game/presentation/views/join_game_screen.dart';
-import 'gameplay/pick_youtube_song/presentation/view/pick_youtube_song_screen.dart';
 
 import 'main_menu/presentation/view/main_menu_screen.dart';
 
@@ -29,7 +34,6 @@ class MyApp extends StatelessWidget {
         await ParseUser.getCurrentUserFromServer(currentUser.sessionToken!);
 
     if (parseResponse?.success == null || !parseResponse!.success) {
-      //Invalid session. Logout
       await currentUser.logout();
       return false;
     } else {
@@ -65,15 +69,10 @@ class MyApp extends StatelessWidget {
             }
           }),
       routes: {
-        //'/': (context) => const MainMenu(),
         MainMenu.id: (context) => MainMenu(),
         ProfilePage.id: (context) => const ProfilePage(),
         RegisterScreen.id: (context) => const RegisterScreen(),
         LoginScreen.id: (context) => const LoginScreen(),
-
-        CurrentGamesScreen.id: (context) => const CurrentGamesScreen(),
-        JoinGameScreen.id: (context) => BlocProvider.value(
-            value: JoinGameBloc(), child: const JoinGameScreen()),
         LeaderBoardScreen.id: (context) => const LeaderBoardScreen(),
       },
       onGenerateRoute: (setting) {
@@ -82,7 +81,9 @@ class MyApp extends StatelessWidget {
             return MaterialPageRoute(
               builder: (_) => BlocProvider.value(
                 value: PickYoutubeSongBloc(),
-                child: PickYoutubeSong(setting.arguments as String),
+                child: PickYoutubeSong(
+                  arguments: setting.arguments as PickYoutubeArguments,
+                ),
               ),
               fullscreenDialog: true,
             );
@@ -94,6 +95,33 @@ class MyApp extends StatelessWidget {
               ),
               fullscreenDialog: true,
             );
+          case CurrentGamesScreen.id:
+            return MaterialPageRoute(
+              builder: (_) => BlocProvider.value(
+                value: CurrentGamesBloc(),
+                child:
+                    CurrentGamesScreen(userName: setting.arguments as String),
+              ),
+              fullscreenDialog: true,
+            );
+          case JoinGameScreen.id:
+            return MaterialPageRoute(
+              builder: (_) => BlocProvider.value(
+                value: JoinGameBloc(),
+                child: JoinGameScreen(userName: setting.arguments as String),
+              ),
+              fullscreenDialog: true,
+            );
+          case RateSongScreen.id:
+            return MaterialPageRoute(
+              builder: (_) => BlocProvider.value(
+                value: RateSongBloc(),
+                child: RateSongScreen(
+                    arguments: setting.arguments as PickYoutubeArguments),
+              ),
+              fullscreenDialog: true,
+            );
+
           default:
             return MaterialPageRoute(
               builder: (_) => const Material(

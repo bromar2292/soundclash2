@@ -20,21 +20,21 @@ mixin _$CreateGameState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() nothingSubmitted,
-    required TResult Function(String name) nameSubmitted,
+    required TResult Function(String? name, String? song) nameSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? nothingSubmitted,
-    TResult Function(String name)? nameSubmitted,
+    TResult Function(String? name, String? song)? nameSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? nothingSubmitted,
-    TResult Function(String name)? nameSubmitted,
+    TResult Function(String? name, String? song)? nameSubmitted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,7 +120,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() nothingSubmitted,
-    required TResult Function(String name) nameSubmitted,
+    required TResult Function(String? name, String? song) nameSubmitted,
   }) {
     return initial();
   }
@@ -130,7 +130,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? nothingSubmitted,
-    TResult Function(String name)? nameSubmitted,
+    TResult Function(String? name, String? song)? nameSubmitted,
   }) {
     return initial?.call();
   }
@@ -140,7 +140,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? nothingSubmitted,
-    TResult Function(String name)? nameSubmitted,
+    TResult Function(String? name, String? song)? nameSubmitted,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -231,7 +231,7 @@ class _$_NothingSubmited implements _NothingSubmited {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() nothingSubmitted,
-    required TResult Function(String name) nameSubmitted,
+    required TResult Function(String? name, String? song) nameSubmitted,
   }) {
     return nothingSubmitted();
   }
@@ -241,7 +241,7 @@ class _$_NothingSubmited implements _NothingSubmited {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? nothingSubmitted,
-    TResult Function(String name)? nameSubmitted,
+    TResult Function(String? name, String? song)? nameSubmitted,
   }) {
     return nothingSubmitted?.call();
   }
@@ -251,7 +251,7 @@ class _$_NothingSubmited implements _NothingSubmited {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? nothingSubmitted,
-    TResult Function(String name)? nameSubmitted,
+    TResult Function(String? name, String? song)? nameSubmitted,
     required TResult orElse(),
   }) {
     if (nothingSubmitted != null) {
@@ -304,7 +304,7 @@ abstract class _$$_NameSubmittedCopyWith<$Res> {
   factory _$$_NameSubmittedCopyWith(
           _$_NameSubmitted value, $Res Function(_$_NameSubmitted) then) =
       __$$_NameSubmittedCopyWithImpl<$Res>;
-  $Res call({String name});
+  $Res call({String? name, String? song});
 }
 
 /// @nodoc
@@ -321,12 +321,17 @@ class __$$_NameSubmittedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = freezed,
+    Object? song = freezed,
   }) {
     return _then(_$_NameSubmitted(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      song: song == freezed
+          ? _value.song
+          : song // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -334,14 +339,16 @@ class __$$_NameSubmittedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_NameSubmitted implements _NameSubmitted {
-  const _$_NameSubmitted({required this.name});
+  const _$_NameSubmitted({this.name, this.song});
 
   @override
-  final String name;
+  final String? name;
+  @override
+  final String? song;
 
   @override
   String toString() {
-    return 'CreateGameState.nameSubmitted(name: $name)';
+    return 'CreateGameState.nameSubmitted(name: $name, song: $song)';
   }
 
   @override
@@ -349,12 +356,15 @@ class _$_NameSubmitted implements _NameSubmitted {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_NameSubmitted &&
-            const DeepCollectionEquality().equals(other.name, name));
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.song, song));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(song));
 
   @JsonKey(ignore: true)
   @override
@@ -366,9 +376,9 @@ class _$_NameSubmitted implements _NameSubmitted {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() nothingSubmitted,
-    required TResult Function(String name) nameSubmitted,
+    required TResult Function(String? name, String? song) nameSubmitted,
   }) {
-    return nameSubmitted(name);
+    return nameSubmitted(name, song);
   }
 
   @override
@@ -376,9 +386,9 @@ class _$_NameSubmitted implements _NameSubmitted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? nothingSubmitted,
-    TResult Function(String name)? nameSubmitted,
+    TResult Function(String? name, String? song)? nameSubmitted,
   }) {
-    return nameSubmitted?.call(name);
+    return nameSubmitted?.call(name, song);
   }
 
   @override
@@ -386,11 +396,11 @@ class _$_NameSubmitted implements _NameSubmitted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? nothingSubmitted,
-    TResult Function(String name)? nameSubmitted,
+    TResult Function(String? name, String? song)? nameSubmitted,
     required TResult orElse(),
   }) {
     if (nameSubmitted != null) {
-      return nameSubmitted(name);
+      return nameSubmitted(name, song);
     }
     return orElse();
   }
@@ -431,9 +441,11 @@ class _$_NameSubmitted implements _NameSubmitted {
 }
 
 abstract class _NameSubmitted implements CreateGameState {
-  const factory _NameSubmitted({required final String name}) = _$_NameSubmitted;
+  const factory _NameSubmitted({final String? name, final String? song}) =
+      _$_NameSubmitted;
 
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get song => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_NameSubmittedCopyWith<_$_NameSubmitted> get copyWith =>
       throw _privateConstructorUsedError;
@@ -441,42 +453,43 @@ abstract class _NameSubmitted implements CreateGameState {
 
 /// @nodoc
 mixin _$CreateGameEvent {
-  String get name => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name) createGameName,
+    required TResult Function(String? name, String? song) createGameName,
+    required TResult Function(String song) chooseSong,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String name)? createGameName,
+    TResult Function(String? name, String? song)? createGameName,
+    TResult Function(String song)? chooseSong,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name)? createGameName,
+    TResult Function(String? name, String? song)? createGameName,
+    TResult Function(String song)? chooseSong,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_createGameEvent value) createGameName,
+    required TResult Function(_chooseSongEvent value) chooseSong,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_createGameEvent value)? createGameName,
+    TResult Function(_chooseSongEvent value)? chooseSong,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_createGameEvent value)? createGameName,
+    TResult Function(_chooseSongEvent value)? chooseSong,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $CreateGameEventCopyWith<CreateGameEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -485,7 +498,6 @@ abstract class $CreateGameEventCopyWith<$Res> {
   factory $CreateGameEventCopyWith(
           CreateGameEvent value, $Res Function(CreateGameEvent) then) =
       _$CreateGameEventCopyWithImpl<$Res>;
-  $Res call({String name});
 }
 
 /// @nodoc
@@ -496,28 +508,14 @@ class _$CreateGameEventCopyWithImpl<$Res>
   final CreateGameEvent _value;
   // ignore: unused_field
   final $Res Function(CreateGameEvent) _then;
-
-  @override
-  $Res call({
-    Object? name = freezed,
-  }) {
-    return _then(_value.copyWith(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$$_createGameEventCopyWith<$Res>
-    implements $CreateGameEventCopyWith<$Res> {
+abstract class _$$_createGameEventCopyWith<$Res> {
   factory _$$_createGameEventCopyWith(
           _$_createGameEvent value, $Res Function(_$_createGameEvent) then) =
       __$$_createGameEventCopyWithImpl<$Res>;
-  @override
-  $Res call({String name});
+  $Res call({String? name, String? song});
 }
 
 /// @nodoc
@@ -534,12 +532,17 @@ class __$$_createGameEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = freezed,
+    Object? song = freezed,
   }) {
     return _then(_$_createGameEvent(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      song: song == freezed
+          ? _value.song
+          : song // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -547,14 +550,16 @@ class __$$_createGameEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_createGameEvent implements _createGameEvent {
-  const _$_createGameEvent({required this.name});
+  const _$_createGameEvent({this.name, this.song});
 
   @override
-  final String name;
+  final String? name;
+  @override
+  final String? song;
 
   @override
   String toString() {
-    return 'CreateGameEvent.createGameName(name: $name)';
+    return 'CreateGameEvent.createGameName(name: $name, song: $song)';
   }
 
   @override
@@ -562,12 +567,15 @@ class _$_createGameEvent implements _createGameEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_createGameEvent &&
-            const DeepCollectionEquality().equals(other.name, name));
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.song, song));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(song));
 
   @JsonKey(ignore: true)
   @override
@@ -577,27 +585,30 @@ class _$_createGameEvent implements _createGameEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name) createGameName,
+    required TResult Function(String? name, String? song) createGameName,
+    required TResult Function(String song) chooseSong,
   }) {
-    return createGameName(name);
+    return createGameName(name, song);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String name)? createGameName,
+    TResult Function(String? name, String? song)? createGameName,
+    TResult Function(String song)? chooseSong,
   }) {
-    return createGameName?.call(name);
+    return createGameName?.call(name, song);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name)? createGameName,
+    TResult Function(String? name, String? song)? createGameName,
+    TResult Function(String song)? chooseSong,
     required TResult orElse(),
   }) {
     if (createGameName != null) {
-      return createGameName(name);
+      return createGameName(name, song);
     }
     return orElse();
   }
@@ -606,6 +617,7 @@ class _$_createGameEvent implements _createGameEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_createGameEvent value) createGameName,
+    required TResult Function(_chooseSongEvent value) chooseSong,
   }) {
     return createGameName(this);
   }
@@ -614,6 +626,7 @@ class _$_createGameEvent implements _createGameEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_createGameEvent value)? createGameName,
+    TResult Function(_chooseSongEvent value)? chooseSong,
   }) {
     return createGameName?.call(this);
   }
@@ -622,6 +635,7 @@ class _$_createGameEvent implements _createGameEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_createGameEvent value)? createGameName,
+    TResult Function(_chooseSongEvent value)? chooseSong,
     required TResult orElse(),
   }) {
     if (createGameName != null) {
@@ -632,13 +646,147 @@ class _$_createGameEvent implements _createGameEvent {
 }
 
 abstract class _createGameEvent implements CreateGameEvent {
-  const factory _createGameEvent({required final String name}) =
+  const factory _createGameEvent({final String? name, final String? song}) =
       _$_createGameEvent;
 
-  @override
-  String get name => throw _privateConstructorUsedError;
-  @override
+  String? get name => throw _privateConstructorUsedError;
+  String? get song => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_createGameEventCopyWith<_$_createGameEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_chooseSongEventCopyWith<$Res> {
+  factory _$$_chooseSongEventCopyWith(
+          _$_chooseSongEvent value, $Res Function(_$_chooseSongEvent) then) =
+      __$$_chooseSongEventCopyWithImpl<$Res>;
+  $Res call({String song});
+}
+
+/// @nodoc
+class __$$_chooseSongEventCopyWithImpl<$Res>
+    extends _$CreateGameEventCopyWithImpl<$Res>
+    implements _$$_chooseSongEventCopyWith<$Res> {
+  __$$_chooseSongEventCopyWithImpl(
+      _$_chooseSongEvent _value, $Res Function(_$_chooseSongEvent) _then)
+      : super(_value, (v) => _then(v as _$_chooseSongEvent));
+
+  @override
+  _$_chooseSongEvent get _value => super._value as _$_chooseSongEvent;
+
+  @override
+  $Res call({
+    Object? song = freezed,
+  }) {
+    return _then(_$_chooseSongEvent(
+      song: song == freezed
+          ? _value.song
+          : song // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_chooseSongEvent implements _chooseSongEvent {
+  const _$_chooseSongEvent({required this.song});
+
+  @override
+  final String song;
+
+  @override
+  String toString() {
+    return 'CreateGameEvent.chooseSong(song: $song)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_chooseSongEvent &&
+            const DeepCollectionEquality().equals(other.song, song));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(song));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_chooseSongEventCopyWith<_$_chooseSongEvent> get copyWith =>
+      __$$_chooseSongEventCopyWithImpl<_$_chooseSongEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? name, String? song) createGameName,
+    required TResult Function(String song) chooseSong,
+  }) {
+    return chooseSong(song);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? name, String? song)? createGameName,
+    TResult Function(String song)? chooseSong,
+  }) {
+    return chooseSong?.call(song);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? name, String? song)? createGameName,
+    TResult Function(String song)? chooseSong,
+    required TResult orElse(),
+  }) {
+    if (chooseSong != null) {
+      return chooseSong(song);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_createGameEvent value) createGameName,
+    required TResult Function(_chooseSongEvent value) chooseSong,
+  }) {
+    return chooseSong(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_createGameEvent value)? createGameName,
+    TResult Function(_chooseSongEvent value)? chooseSong,
+  }) {
+    return chooseSong?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_createGameEvent value)? createGameName,
+    TResult Function(_chooseSongEvent value)? chooseSong,
+    required TResult orElse(),
+  }) {
+    if (chooseSong != null) {
+      return chooseSong(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _chooseSongEvent implements CreateGameEvent {
+  const factory _chooseSongEvent({required final String song}) =
+      _$_chooseSongEvent;
+
+  String get song => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$_chooseSongEventCopyWith<_$_chooseSongEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }

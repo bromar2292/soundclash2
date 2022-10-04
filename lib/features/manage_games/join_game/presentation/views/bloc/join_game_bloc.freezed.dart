@@ -313,19 +313,20 @@ abstract class _loaded implements JoinGameState {
 
 /// @nodoc
 mixin _$JoinGameEvent {
+  String get userName => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() load,
+    required TResult Function(String userName) load,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? load,
+    TResult Function(String userName)? load,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? load,
+    TResult Function(String userName)? load,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -345,6 +346,10 @@ mixin _$JoinGameEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $JoinGameEventCopyWith<JoinGameEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -352,6 +357,7 @@ abstract class $JoinGameEventCopyWith<$Res> {
   factory $JoinGameEventCopyWith(
           JoinGameEvent value, $Res Function(JoinGameEvent) then) =
       _$JoinGameEventCopyWithImpl<$Res>;
+  $Res call({String userName});
 }
 
 /// @nodoc
@@ -362,13 +368,28 @@ class _$JoinGameEventCopyWithImpl<$Res>
   final JoinGameEvent _value;
   // ignore: unused_field
   final $Res Function(JoinGameEvent) _then;
+
+  @override
+  $Res call({
+    Object? userName = freezed,
+  }) {
+    return _then(_value.copyWith(
+      userName: userName == freezed
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$$_joinGameEventCopyWith<$Res> {
+abstract class _$$_joinGameEventCopyWith<$Res>
+    implements $JoinGameEventCopyWith<$Res> {
   factory _$$_joinGameEventCopyWith(
           _$_joinGameEvent value, $Res Function(_$_joinGameEvent) then) =
       __$$_joinGameEventCopyWithImpl<$Res>;
+  @override
+  $Res call({String userName});
 }
 
 /// @nodoc
@@ -381,51 +402,74 @@ class __$$_joinGameEventCopyWithImpl<$Res>
 
   @override
   _$_joinGameEvent get _value => super._value as _$_joinGameEvent;
+
+  @override
+  $Res call({
+    Object? userName = freezed,
+  }) {
+    return _then(_$_joinGameEvent(
+      userName: userName == freezed
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_joinGameEvent implements _joinGameEvent {
-  const _$_joinGameEvent();
+  const _$_joinGameEvent({required this.userName});
+
+  @override
+  final String userName;
 
   @override
   String toString() {
-    return 'JoinGameEvent.load()';
+    return 'JoinGameEvent.load(userName: $userName)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_joinGameEvent);
+        (other.runtimeType == runtimeType &&
+            other is _$_joinGameEvent &&
+            const DeepCollectionEquality().equals(other.userName, userName));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(userName));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_joinGameEventCopyWith<_$_joinGameEvent> get copyWith =>
+      __$$_joinGameEventCopyWithImpl<_$_joinGameEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() load,
+    required TResult Function(String userName) load,
   }) {
-    return load();
+    return load(userName);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? load,
+    TResult Function(String userName)? load,
   }) {
-    return load?.call();
+    return load?.call(userName);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? load,
+    TResult Function(String userName)? load,
     required TResult orElse(),
   }) {
     if (load != null) {
-      return load();
+      return load(userName);
     }
     return orElse();
   }
@@ -460,5 +504,13 @@ class _$_joinGameEvent implements _joinGameEvent {
 }
 
 abstract class _joinGameEvent implements JoinGameEvent {
-  const factory _joinGameEvent() = _$_joinGameEvent;
+  const factory _joinGameEvent({required final String userName}) =
+      _$_joinGameEvent;
+
+  @override
+  String get userName => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_joinGameEventCopyWith<_$_joinGameEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }

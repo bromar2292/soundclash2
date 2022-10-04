@@ -1,7 +1,9 @@
+import 'package:soundclash2/features/gameplay/models/rate_song.dart';
+
 class Player {
   final String user;
   final String song;
-  final List<int> score;
+  final List<RateSong> score;
   Player({
     required this.user,
     required this.song,
@@ -9,9 +11,10 @@ class Player {
   });
 
   factory Player.fromJson(Map<String, dynamic> json) => Player(
-        user: json["name"],
+        user: json["userName"],
         song: json["song"],
-        score: List<int>.from(json["score"].map((x) => x)),
+        score:
+            List<RateSong>.from(json["score"].map((x) => RateSong.FromJSON(x))),
       );
 
   Map<String, dynamic> toJson() => {

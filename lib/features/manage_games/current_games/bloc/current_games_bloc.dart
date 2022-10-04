@@ -18,10 +18,23 @@ class CurrentGamesBloc extends Bloc<CurrentGamesEvent, CurrentGamesState> {
     _currentGamesEvent event,
     Emitter<CurrentGamesState> emit,
   ) async {
+    List<Game> filteredGameList = [];
     List<Game> gameList = await getGameList();
 
+    gameList.forEach((game) {
+      bool found = false;
+      for (final p in game.players) {
+        if (p.user == event.userName) {
+          found = true;
+          filteredGameList.add(game);
+        }
+      }
+      if (!found) {
+        return;
+      }
+    });
     emit(
-      CurrentGamesState.loaded(gameList: gameList),
+      CurrentGamesState.loaded(gameList: filteredGameList),
     );
   }
 }

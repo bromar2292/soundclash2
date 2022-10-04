@@ -81,11 +81,13 @@ class MainMenu extends StatelessWidget {
                       menuText: CreateGameScreen.id,
                       username: snapshot.data!.username,
                     ),
-                    const MenuButton(
+                    MenuButton(
                       menuText: JoinGameScreen.id,
+                      username: snapshot.data!.username,
                     ),
-                    const MenuButton(
+                    MenuButton(
                       menuText: CurrentGamesScreen.id,
+                      username: snapshot.data!.username,
                     ),
                     const MenuButton(
                       menuText: LeaderBoardScreen.id,

@@ -17,9 +17,18 @@ class PickYoutubeSongBloc
     _UpdateYoutubeEvent event,
     Emitter<PickYoutubeSongState> emit,
   ) {
-    emit(PickYoutubeSongState.songSubmitted(
-      song: Player(user: '', song: event.url, score: []),
-    ));
+    emit(
+      PickYoutubeSongState.songSubmitted(song: event.url),
+    );
+  }
+
+  void _onUrlSubmit(
+    _UpdateYoutubeEvent event,
+    Emitter<PickYoutubeSongState> emit,
+  ) {
+    emit(
+      PickYoutubeSongState.songSubmitted(song: event.url),
+    );
   }
 }
 // needs to be a function which adds to the list

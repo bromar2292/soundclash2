@@ -315,19 +315,20 @@ abstract class _loaded implements CurrentGamesState {
 
 /// @nodoc
 mixin _$CurrentGamesEvent {
+  String get userName => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() load,
+    required TResult Function(String userName) load,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? load,
+    TResult Function(String userName)? load,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? load,
+    TResult Function(String userName)? load,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -347,6 +348,10 @@ mixin _$CurrentGamesEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $CurrentGamesEventCopyWith<CurrentGamesEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -354,6 +359,7 @@ abstract class $CurrentGamesEventCopyWith<$Res> {
   factory $CurrentGamesEventCopyWith(
           CurrentGamesEvent value, $Res Function(CurrentGamesEvent) then) =
       _$CurrentGamesEventCopyWithImpl<$Res>;
+  $Res call({String userName});
 }
 
 /// @nodoc
@@ -364,13 +370,28 @@ class _$CurrentGamesEventCopyWithImpl<$Res>
   final CurrentGamesEvent _value;
   // ignore: unused_field
   final $Res Function(CurrentGamesEvent) _then;
+
+  @override
+  $Res call({
+    Object? userName = freezed,
+  }) {
+    return _then(_value.copyWith(
+      userName: userName == freezed
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$$_currentGamesEventCopyWith<$Res> {
+abstract class _$$_currentGamesEventCopyWith<$Res>
+    implements $CurrentGamesEventCopyWith<$Res> {
   factory _$$_currentGamesEventCopyWith(_$_currentGamesEvent value,
           $Res Function(_$_currentGamesEvent) then) =
       __$$_currentGamesEventCopyWithImpl<$Res>;
+  @override
+  $Res call({String userName});
 }
 
 /// @nodoc
@@ -383,51 +404,75 @@ class __$$_currentGamesEventCopyWithImpl<$Res>
 
   @override
   _$_currentGamesEvent get _value => super._value as _$_currentGamesEvent;
+
+  @override
+  $Res call({
+    Object? userName = freezed,
+  }) {
+    return _then(_$_currentGamesEvent(
+      userName: userName == freezed
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_currentGamesEvent implements _currentGamesEvent {
-  const _$_currentGamesEvent();
+  const _$_currentGamesEvent({required this.userName});
+
+  @override
+  final String userName;
 
   @override
   String toString() {
-    return 'CurrentGamesEvent.load()';
+    return 'CurrentGamesEvent.load(userName: $userName)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_currentGamesEvent);
+        (other.runtimeType == runtimeType &&
+            other is _$_currentGamesEvent &&
+            const DeepCollectionEquality().equals(other.userName, userName));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(userName));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_currentGamesEventCopyWith<_$_currentGamesEvent> get copyWith =>
+      __$$_currentGamesEventCopyWithImpl<_$_currentGamesEvent>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() load,
+    required TResult Function(String userName) load,
   }) {
-    return load();
+    return load(userName);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? load,
+    TResult Function(String userName)? load,
   }) {
-    return load?.call();
+    return load?.call(userName);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? load,
+    TResult Function(String userName)? load,
     required TResult orElse(),
   }) {
     if (load != null) {
-      return load();
+      return load(userName);
     }
     return orElse();
   }
@@ -462,5 +507,13 @@ class _$_currentGamesEvent implements _currentGamesEvent {
 }
 
 abstract class _currentGamesEvent implements CurrentGamesEvent {
-  const factory _currentGamesEvent() = _$_currentGamesEvent;
+  const factory _currentGamesEvent({required final String userName}) =
+      _$_currentGamesEvent;
+
+  @override
+  String get userName => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_currentGamesEventCopyWith<_$_currentGamesEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }

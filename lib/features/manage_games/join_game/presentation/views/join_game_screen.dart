@@ -1,13 +1,17 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter/material.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
+import 'package:soundclash2/features/gameplay/models/rate_song.dart';
+import 'package:soundclash2/features/gameplay/pick_youtube_song/domain/models/pick_youtube_arguments.dart';
 
-import 'package:soundclash2/gameplay/pick_youtube_song/presentation/view/pick_youtube_song_screen.dart';
-
+import '../../../../gameplay/pick_youtube_song/presentation/view/pick_youtube_song_screen.dart';
+import '../../domain/join_game_usecase.dart';
 import 'bloc/join_game_bloc.dart';
 
 class JoinGameScreen extends StatefulWidget {
-  const JoinGameScreen({Key? key}) : super(key: key);
+  final String userName;
+  const JoinGameScreen({Key? key, required this.userName}) : super(key: key);
 
   static const String id = 'Join game screen';
 
@@ -31,7 +35,7 @@ class _JoinGameScreenState extends State<JoinGameScreen> {
                   initial: () {
                     context
                         .read<JoinGameBloc>()
-                        .add(const JoinGameEvent.load());
+                        .add(JoinGameEvent.load(userName: widget.userName));
                     return const SizedBox(child: Text('hello'));
                   },
                   loaded: (gameList) {
@@ -48,7 +52,8 @@ class _JoinGameScreenState extends State<JoinGameScreen> {
                               Navigator.pushNamed(
                                 context,
                                 PickYoutubeSong.id,
-                                arguments: game.objectId,
+                                arguments:
+                                    PickYoutubeArguments(widget.userName, game),
                               );
                             },
                           ),
@@ -74,7 +79,7 @@ class _JoinGameScreenState extends State<JoinGameScreen> {
                   onPressed: () async {
                     context
                         .read<JoinGameBloc>()
-                        .add(const JoinGameEvent.load());
+                        .add(JoinGameEvent.load(userName: widget.userName));
                     setState(() {});
                   },
                 ),

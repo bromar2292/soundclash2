@@ -9,8 +9,6 @@ part 'authentication_state.dart';
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
   AuthenticationBloc() : super(const AuthenticationState.initial()) {
-    on<AuthenticationEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<AuthenticationEvent>((event, emit) {});
   }
 }

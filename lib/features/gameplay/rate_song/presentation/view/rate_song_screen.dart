@@ -1,16 +1,25 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
+import 'package:soundclash2/features/gameplay/rate_song/presentation/bloc/bloc/rate_song_bloc.dart';
 
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../../../../dummy_data/firebase_dummy/database.dart';
 
 import '../../../../../widgets/sound_button.dart';
+import '../../../../manage_games/uscases/get_game_list_usecase.dart';
+import '../../../models/game.dart';
 import '../../../models/player.dart';
+import '../../../pick_youtube_song/domain/models/pick_youtube_arguments.dart';
 
 class RateSongScreen extends StatefulWidget {
   static const String id = 'rate_song_screen';
-  final List<Player> youtubelist = [];
-  RateSongScreen(String objectId, {Key? key}) : super(key: key);
+  final PickYoutubeArguments arguments;
+
+  RateSongScreen({Key? key, required this.arguments}) : super(key: key);
   @override
   State<RateSongScreen> createState() => _RateSongScreenState();
 }
@@ -28,20 +37,10 @@ class _RateSongScreenState extends State<RateSongScreen> {
   int score = 1;
 
   List<Player> youtubeList = DataBaseDummy().youtubeList;
-  late YoutubePlayerController youtubePlayerController;
-  changeScore(int song, int value) {
-    //youtubeList[song].score = value;
-    score = value;
-    setState(() {});
-  }
 
   @override
   void initState() {
     super.initState();
-    youtubePlayerController = YoutubePlayerController(
-      initialVideoId: youtubeList[0].song,
-      flags: const YoutubePlayerFlags(autoPlay: true),
-    );
   }
 
   @override
@@ -55,7 +54,6 @@ class _RateSongScreenState extends State<RateSongScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             // int songInList = controller.songInList;
-
             Column(
               children: [
                 const Padding(
@@ -64,35 +62,56 @@ class _RateSongScreenState extends State<RateSongScreen> {
                     ' Please rate song ',
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width - 40,
-                    child: YoutubePlayer(
-                      controller: youtubePlayerController,
-                      showVideoProgressIndicator: true,
-                      progressIndicatorColor: Colors.blue,
-                      // onReady: _youtubePlayerController.reload(),
-                    ),
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: rateButton
-                      .map(
-                        (rating) => ElevatedButton(
-                          onPressed: () {
-                            changeScore(songInList, rating);
-                          },
-                          style: ElevatedButton.styleFrom(
-                            shape: CircleBorder(),
-                            padding: const EdgeInsets.all(20),
-                            // <-- Splash color
+                BlocBuilder<RateSongBloc, RateSongBlocState>(
+                  builder: (context, state) {
+                    return state.when(initial: () {
+                      context.read<RateSongBloc>().add(
+                          RateSongBlocEvent.getPlayers(
+                              objectId: widget.arguments.game.objectId));
+                      return const CircularProgressIndicator();
+                    }, playersLoaded: (game) {
+                      late YoutubePlayerController _youtubePlayerController;
+                      print(songInList);
+                      print(game!.players[songInList].song);
+                      _youtubePlayerController = YoutubePlayerController(
+                        initialVideoId: game.players[songInList].song,
+                        flags: const YoutubePlayerFlags(autoPlay: true),
+                      );
+
+                      return Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: SizedBox(
+                              height: 200,
+                              width: 200,
+                              child: YoutubePlayer(
+                                controller: _youtubePlayerController,
+                                showVideoProgressIndicator: true,
+                                progressIndicatorColor: Colors.blue,
+                                // onReady: youtubePlayerController.load( game.players[songInList].song,endAt:1,startAt: 1),
+                              ),
+                            ),
                           ),
-                          child: Text('$rating'),
-                        ),
-                      )
-                      .toList(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: rateButton
+                                .map(
+                                  (rating) => ElevatedButton(
+                                    onPressed: () {},
+                                    style: ElevatedButton.styleFrom(
+                                      shape: CircleBorder(),
+                                      padding: const EdgeInsets.all(20),
+                                    ),
+                                    child: Text('$rating'),
+                                  ),
+                                )
+                                .toList(),
+                          ),
+                        ],
+                      );
+                    });
+                  },
                 ),
                 Padding(
                   padding: const EdgeInsets.all(30.0),
@@ -103,7 +122,16 @@ class _RateSongScreenState extends State<RateSongScreen> {
                 SoundButton(
                   context: context,
                   text: 'submit rating',
-                  function: () {
+                  function: () async {
+                    Game? game;
+                    List<Game> gameList = await getGameList();
+                    gameList.forEach((element) {
+                      if (element.objectId == widget.arguments.game.objectId) {
+                        game = element;
+                      }
+                    });
+                    print(game!.players.first.song);
+                    print(game!.players[1].song);
                     //controller.updateSongInList(context);
 
                     //  controller.update();

@@ -19,43 +19,37 @@ mixin _$PickYoutubeSongState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() nothingSubmitted,
-    required TResult Function(Player song) songSubmitted,
+    required TResult Function(String song) songSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? nothingSubmitted,
-    TResult Function(Player song)? songSubmitted,
+    TResult Function(String song)? songSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? nothingSubmitted,
-    TResult Function(Player song)? songSubmitted,
+    TResult Function(String song)? songSubmitted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_NothingSubmited value) nothingSubmitted,
     required TResult Function(_SongSubmitted value) songSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_NothingSubmited value)? nothingSubmitted,
     TResult Function(_SongSubmitted value)? songSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_NothingSubmited value)? nothingSubmitted,
     TResult Function(_SongSubmitted value)? songSubmitted,
     required TResult orElse(),
   }) =>
@@ -120,8 +114,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() nothingSubmitted,
-    required TResult Function(Player song) songSubmitted,
+    required TResult Function(String song) songSubmitted,
   }) {
     return initial();
   }
@@ -130,8 +123,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? nothingSubmitted,
-    TResult Function(Player song)? songSubmitted,
+    TResult Function(String song)? songSubmitted,
   }) {
     return initial?.call();
   }
@@ -140,8 +132,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? nothingSubmitted,
-    TResult Function(Player song)? songSubmitted,
+    TResult Function(String song)? songSubmitted,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -154,7 +145,6 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_NothingSubmited value) nothingSubmitted,
     required TResult Function(_SongSubmitted value) songSubmitted,
   }) {
     return initial(this);
@@ -164,7 +154,6 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_NothingSubmited value)? nothingSubmitted,
     TResult Function(_SongSubmitted value)? songSubmitted,
   }) {
     return initial?.call(this);
@@ -174,7 +163,6 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_NothingSubmited value)? nothingSubmitted,
     TResult Function(_SongSubmitted value)? songSubmitted,
     required TResult orElse(),
   }) {
@@ -190,122 +178,11 @@ abstract class _Initial implements PickYoutubeSongState {
 }
 
 /// @nodoc
-abstract class _$$_NothingSubmitedCopyWith<$Res> {
-  factory _$$_NothingSubmitedCopyWith(
-          _$_NothingSubmited value, $Res Function(_$_NothingSubmited) then) =
-      __$$_NothingSubmitedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_NothingSubmitedCopyWithImpl<$Res>
-    extends _$PickYoutubeSongStateCopyWithImpl<$Res>
-    implements _$$_NothingSubmitedCopyWith<$Res> {
-  __$$_NothingSubmitedCopyWithImpl(
-      _$_NothingSubmited _value, $Res Function(_$_NothingSubmited) _then)
-      : super(_value, (v) => _then(v as _$_NothingSubmited));
-
-  @override
-  _$_NothingSubmited get _value => super._value as _$_NothingSubmited;
-}
-
-/// @nodoc
-
-class _$_NothingSubmited implements _NothingSubmited {
-  const _$_NothingSubmited();
-
-  @override
-  String toString() {
-    return 'PickYoutubeSongState.nothingSubmitted()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NothingSubmited);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() nothingSubmitted,
-    required TResult Function(Player song) songSubmitted,
-  }) {
-    return nothingSubmitted();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? nothingSubmitted,
-    TResult Function(Player song)? songSubmitted,
-  }) {
-    return nothingSubmitted?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? nothingSubmitted,
-    TResult Function(Player song)? songSubmitted,
-    required TResult orElse(),
-  }) {
-    if (nothingSubmitted != null) {
-      return nothingSubmitted();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_NothingSubmited value) nothingSubmitted,
-    required TResult Function(_SongSubmitted value) songSubmitted,
-  }) {
-    return nothingSubmitted(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_NothingSubmited value)? nothingSubmitted,
-    TResult Function(_SongSubmitted value)? songSubmitted,
-  }) {
-    return nothingSubmitted?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_NothingSubmited value)? nothingSubmitted,
-    TResult Function(_SongSubmitted value)? songSubmitted,
-    required TResult orElse(),
-  }) {
-    if (nothingSubmitted != null) {
-      return nothingSubmitted(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _NothingSubmited implements PickYoutubeSongState {
-  const factory _NothingSubmited() = _$_NothingSubmited;
-}
-
-/// @nodoc
 abstract class _$$_SongSubmittedCopyWith<$Res> {
   factory _$$_SongSubmittedCopyWith(
           _$_SongSubmitted value, $Res Function(_$_SongSubmitted) then) =
       __$$_SongSubmittedCopyWithImpl<$Res>;
-  $Res call({Player song});
+  $Res call({String song});
 }
 
 /// @nodoc
@@ -327,7 +204,7 @@ class __$$_SongSubmittedCopyWithImpl<$Res>
       song: song == freezed
           ? _value.song
           : song // ignore: cast_nullable_to_non_nullable
-              as Player,
+              as String,
     ));
   }
 }
@@ -338,7 +215,7 @@ class _$_SongSubmitted implements _SongSubmitted {
   const _$_SongSubmitted({required this.song});
 
   @override
-  final Player song;
+  final String song;
 
   @override
   String toString() {
@@ -366,8 +243,7 @@ class _$_SongSubmitted implements _SongSubmitted {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() nothingSubmitted,
-    required TResult Function(Player song) songSubmitted,
+    required TResult Function(String song) songSubmitted,
   }) {
     return songSubmitted(song);
   }
@@ -376,8 +252,7 @@ class _$_SongSubmitted implements _SongSubmitted {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? nothingSubmitted,
-    TResult Function(Player song)? songSubmitted,
+    TResult Function(String song)? songSubmitted,
   }) {
     return songSubmitted?.call(song);
   }
@@ -386,8 +261,7 @@ class _$_SongSubmitted implements _SongSubmitted {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? nothingSubmitted,
-    TResult Function(Player song)? songSubmitted,
+    TResult Function(String song)? songSubmitted,
     required TResult orElse(),
   }) {
     if (songSubmitted != null) {
@@ -400,7 +274,6 @@ class _$_SongSubmitted implements _SongSubmitted {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_NothingSubmited value) nothingSubmitted,
     required TResult Function(_SongSubmitted value) songSubmitted,
   }) {
     return songSubmitted(this);
@@ -410,7 +283,6 @@ class _$_SongSubmitted implements _SongSubmitted {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_NothingSubmited value)? nothingSubmitted,
     TResult Function(_SongSubmitted value)? songSubmitted,
   }) {
     return songSubmitted?.call(this);
@@ -420,7 +292,6 @@ class _$_SongSubmitted implements _SongSubmitted {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_NothingSubmited value)? nothingSubmitted,
     TResult Function(_SongSubmitted value)? songSubmitted,
     required TResult orElse(),
   }) {
@@ -432,9 +303,9 @@ class _$_SongSubmitted implements _SongSubmitted {
 }
 
 abstract class _SongSubmitted implements PickYoutubeSongState {
-  const factory _SongSubmitted({required final Player song}) = _$_SongSubmitted;
+  const factory _SongSubmitted({required final String song}) = _$_SongSubmitted;
 
-  Player get song => throw _privateConstructorUsedError;
+  String get song => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_SongSubmittedCopyWith<_$_SongSubmitted> get copyWith =>
       throw _privateConstructorUsedError;

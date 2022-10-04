@@ -1,10 +1,8 @@
-part of 'rate_song_bloc_bloc.dart';
+part of 'rate_song_bloc.dart';
 
-abstract class RateSongBlocState extends Equatable {
-  const RateSongBlocState();
+@freezed
+class RateSongBlocState with _$RateSongBlocState {
+  const factory RateSongBlocState.initial() = _Initial;
 
-  @override
-  List<Object> get props => [];
+  const factory RateSongBlocState.playersLoaded({Game? game}) = _playersLoaded;
 }
-
-class RateSongBlocInitial extends RateSongBlocState {}
