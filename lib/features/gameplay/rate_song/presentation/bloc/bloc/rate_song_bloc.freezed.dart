@@ -20,19 +20,25 @@ mixin _$RateSongBlocEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String objectId) getPlayers,
-    required TResult Function(String objectId, int rating) rateSong,
+    required TResult Function(
+            String objectId, String songId, int rating, String userName)
+        rateSong,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String objectId)? getPlayers,
-    TResult Function(String objectId, int rating)? rateSong,
+    TResult Function(
+            String objectId, String songId, int rating, String userName)?
+        rateSong,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String objectId)? getPlayers,
-    TResult Function(String objectId, int rating)? rateSong,
+    TResult Function(
+            String objectId, String songId, int rating, String userName)?
+        rateSong,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -159,7 +165,9 @@ class _$_getPlayersEvent implements _getPlayersEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String objectId) getPlayers,
-    required TResult Function(String objectId, int rating) rateSong,
+    required TResult Function(
+            String objectId, String songId, int rating, String userName)
+        rateSong,
   }) {
     return getPlayers(objectId);
   }
@@ -168,7 +176,9 @@ class _$_getPlayersEvent implements _getPlayersEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String objectId)? getPlayers,
-    TResult Function(String objectId, int rating)? rateSong,
+    TResult Function(
+            String objectId, String songId, int rating, String userName)?
+        rateSong,
   }) {
     return getPlayers?.call(objectId);
   }
@@ -177,7 +187,9 @@ class _$_getPlayersEvent implements _getPlayersEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String objectId)? getPlayers,
-    TResult Function(String objectId, int rating)? rateSong,
+    TResult Function(
+            String objectId, String songId, int rating, String userName)?
+        rateSong,
     required TResult orElse(),
   }) {
     if (getPlayers != null) {
@@ -237,7 +249,7 @@ abstract class _$$_getRateSongEventCopyWith<$Res>
           _$_getRateSongEvent value, $Res Function(_$_getRateSongEvent) then) =
       __$$_getRateSongEventCopyWithImpl<$Res>;
   @override
-  $Res call({String objectId, int rating});
+  $Res call({String objectId, String songId, int rating, String userName});
 }
 
 /// @nodoc
@@ -254,17 +266,27 @@ class __$$_getRateSongEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object? objectId = freezed,
+    Object? songId = freezed,
     Object? rating = freezed,
+    Object? userName = freezed,
   }) {
     return _then(_$_getRateSongEvent(
       objectId: objectId == freezed
           ? _value.objectId
           : objectId // ignore: cast_nullable_to_non_nullable
               as String,
+      songId: songId == freezed
+          ? _value.songId
+          : songId // ignore: cast_nullable_to_non_nullable
+              as String,
       rating: rating == freezed
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as int,
+      userName: userName == freezed
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -272,16 +294,24 @@ class __$$_getRateSongEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_getRateSongEvent implements _getRateSongEvent {
-  const _$_getRateSongEvent({required this.objectId, required this.rating});
+  const _$_getRateSongEvent(
+      {required this.objectId,
+      required this.songId,
+      required this.rating,
+      required this.userName});
 
   @override
   final String objectId;
   @override
+  final String songId;
+  @override
   final int rating;
+  @override
+  final String userName;
 
   @override
   String toString() {
-    return 'RateSongBlocEvent.rateSong(objectId: $objectId, rating: $rating)';
+    return 'RateSongBlocEvent.rateSong(objectId: $objectId, songId: $songId, rating: $rating, userName: $userName)';
   }
 
   @override
@@ -290,14 +320,18 @@ class _$_getRateSongEvent implements _getRateSongEvent {
         (other.runtimeType == runtimeType &&
             other is _$_getRateSongEvent &&
             const DeepCollectionEquality().equals(other.objectId, objectId) &&
-            const DeepCollectionEquality().equals(other.rating, rating));
+            const DeepCollectionEquality().equals(other.songId, songId) &&
+            const DeepCollectionEquality().equals(other.rating, rating) &&
+            const DeepCollectionEquality().equals(other.userName, userName));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(objectId),
-      const DeepCollectionEquality().hash(rating));
+      const DeepCollectionEquality().hash(songId),
+      const DeepCollectionEquality().hash(rating),
+      const DeepCollectionEquality().hash(userName));
 
   @JsonKey(ignore: true)
   @override
@@ -308,29 +342,35 @@ class _$_getRateSongEvent implements _getRateSongEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String objectId) getPlayers,
-    required TResult Function(String objectId, int rating) rateSong,
+    required TResult Function(
+            String objectId, String songId, int rating, String userName)
+        rateSong,
   }) {
-    return rateSong(objectId, rating);
+    return rateSong(objectId, songId, rating, userName);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String objectId)? getPlayers,
-    TResult Function(String objectId, int rating)? rateSong,
+    TResult Function(
+            String objectId, String songId, int rating, String userName)?
+        rateSong,
   }) {
-    return rateSong?.call(objectId, rating);
+    return rateSong?.call(objectId, songId, rating, userName);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String objectId)? getPlayers,
-    TResult Function(String objectId, int rating)? rateSong,
+    TResult Function(
+            String objectId, String songId, int rating, String userName)?
+        rateSong,
     required TResult orElse(),
   }) {
     if (rateSong != null) {
-      return rateSong(objectId, rating);
+      return rateSong(objectId, songId, rating, userName);
     }
     return orElse();
   }
@@ -370,11 +410,15 @@ class _$_getRateSongEvent implements _getRateSongEvent {
 abstract class _getRateSongEvent implements RateSongBlocEvent {
   const factory _getRateSongEvent(
       {required final String objectId,
-      required final int rating}) = _$_getRateSongEvent;
+      required final String songId,
+      required final int rating,
+      required final String userName}) = _$_getRateSongEvent;
 
   @override
   String get objectId => throw _privateConstructorUsedError;
+  String get songId => throw _privateConstructorUsedError;
   int get rating => throw _privateConstructorUsedError;
+  String get userName => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_getRateSongEventCopyWith<_$_getRateSongEvent> get copyWith =>

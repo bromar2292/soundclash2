@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:soundclash2/features/gameplay/rate_song/presentation/bloc/bloc/rate_song_bloc.dart';
+import 'package:soundclash2/features/leaderboard/presentation/views/leaderboard_screen.dart';
 
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -35,8 +36,7 @@ class _RateSongScreenState extends State<RateSongScreen> {
 
   int songInList = 0;
   int score = 1;
-
-  List<Player> youtubeList = DataBaseDummy().youtubeList;
+  List<String> songIdList = [];
 
   @override
   void initState() {
@@ -53,7 +53,6 @@ class _RateSongScreenState extends State<RateSongScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            // int songInList = controller.songInList;
             Column(
               children: [
                 const Padding(
@@ -71,45 +70,53 @@ class _RateSongScreenState extends State<RateSongScreen> {
                       return const CircularProgressIndicator();
                     }, playersLoaded: (game) {
                       late YoutubePlayerController _youtubePlayerController;
-                      print(songInList);
-                      print(game!.players[songInList].song);
+                      if (songIdList.isEmpty) {
+                        game!.players.forEach((element) {
+                          songIdList.add(element.song);
+                        });
+                      }
                       _youtubePlayerController = YoutubePlayerController(
-                        initialVideoId: game.players[songInList].song,
+                        initialVideoId: songIdList[songInList],
                         flags: const YoutubePlayerFlags(autoPlay: true),
                       );
 
-                      return Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: SizedBox(
-                              height: 200,
-                              width: 200,
-                              child: YoutubePlayer(
-                                controller: _youtubePlayerController,
-                                showVideoProgressIndicator: true,
-                                progressIndicatorColor: Colors.blue,
-                                // onReady: youtubePlayerController.load( game.players[songInList].song,endAt:1,startAt: 1),
-                              ),
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: rateButton
-                                .map(
-                                  (rating) => ElevatedButton(
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      shape: CircleBorder(),
-                                      padding: const EdgeInsets.all(20),
+                      return songInList > songIdList.length
+                          ? Text('Game Over')
+                          : Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: SizedBox(
+                                    height: 200,
+                                    width: 200,
+                                    child: YoutubePlayer(
+                                      controller: _youtubePlayerController,
+                                      showVideoProgressIndicator: true,
+                                      progressIndicatorColor: Colors.blue,
+                                      // onReady: youtubePlayerController.load( game.players[songInList].song,endAt:1,startAt: 1),
                                     ),
-                                    child: Text('$rating'),
                                   ),
-                                )
-                                .toList(),
-                          ),
-                        ],
-                      );
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: rateButton
+                                      .map(
+                                        (rating) => ElevatedButton(
+                                          onPressed: () {
+                                            score = rating;
+                                            setState(() {});
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                            shape: CircleBorder(),
+                                            padding: const EdgeInsets.all(20),
+                                          ),
+                                          child: Text('$rating'),
+                                        ),
+                                      )
+                                      .toList(),
+                                ),
+                              ],
+                            );
                     });
                   },
                 ),
@@ -123,15 +130,24 @@ class _RateSongScreenState extends State<RateSongScreen> {
                   context: context,
                   text: 'submit rating',
                   function: () async {
-                    Game? game;
-                    List<Game> gameList = await getGameList();
-                    gameList.forEach((element) {
-                      if (element.objectId == widget.arguments.game.objectId) {
-                        game = element;
-                      }
-                    });
-                    print(game!.players.first.song);
-                    print(game!.players[1].song);
+                    // print(score);
+                    context.read<RateSongBloc>().add(
+                          RateSongBlocEvent.rateSong(
+                            objectId: widget.arguments.game.objectId,
+                            userName: widget.arguments.userName,
+                            rating: score,
+                            songId: songIdList[songInList],
+                          ),
+                        );
+                    print('${songIdList.length} length of song id');
+                    print(songIdList);
+                    if (songInList != songIdList.length) {
+                      songInList = songInList + 1;
+                    }
+                    if (songInList == songIdList.length) {
+                      Navigator.pushNamed(context, LeaderBoardScreen.id);
+                    }
+                    print(songInList);
                     //controller.updateSongInList(context);
 
                     //  controller.update();
