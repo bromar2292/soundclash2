@@ -149,7 +149,7 @@ class _RateSongScreenState extends State<RateSongScreen> {
                     }
                     print(songInList);
                     //controller.updateSongInList(context);
-
+// check to see if there has been a vote
                     //  controller.update();
                   },
                 ),

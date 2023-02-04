@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 
-import '../../../../widgets/message.dart';
+import 'package:soundclash2/widgets/message.dart';
 
-void doUserRegistration({
+Future<void> doUserRegistration({
   required BuildContext context,
   required TextEditingController controllerUsername,
   required TextEditingController controllerEmail,
@@ -15,11 +15,11 @@ void doUserRegistration({
 
   final user = ParseUser.createUser(username, password, email)..set('wins', 0);
 
-  var response = await user.signUp();
+  final response = await user.signUp();
 
   if (response.success) {
     Message.showSuccess(
-        context: context, message: "User was successfully created!");
+        context: context, message: "User was successfully created!",);
   } else {
     Message.showError(message: response.error!.message, context: context);
   }

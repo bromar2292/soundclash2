@@ -14,7 +14,7 @@ class LeaderBoardScreen extends StatelessWidget {
         child: Column(
           children: const [
             Text(
-                'this will have a list of the people that have won the most games  '),
+                'this will have a list of the people that have won the most games  ',),
             Text('or people that have shared the most music  '),
           ],
         ),

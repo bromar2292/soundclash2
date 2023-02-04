@@ -1,5 +1,5 @@
-import '../../features/gameplay/pick_youtube_song/domain/models/youtube_song.dart';
-import '../../features/gameplay/results/domain/models/games.dart';
+import 'package:soundclash2/features/gameplay/pick_youtube_song/domain/models/youtube_song.dart';
+import 'package:soundclash2/features/gameplay/results/domain/models/games.dart';
 
 class Profile {
   late String profilePic;

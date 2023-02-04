@@ -1,13 +1,8 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:flutter/material.dart';
-import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
-import 'package:soundclash2/features/gameplay/models/rate_song.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soundclash2/features/gameplay/pick_youtube_song/domain/models/pick_youtube_arguments.dart';
-
-import '../../../../gameplay/pick_youtube_song/presentation/view/pick_youtube_song_screen.dart';
-import '../../domain/join_game_usecase.dart';
-import 'bloc/join_game_bloc.dart';
+import 'package:soundclash2/features/gameplay/pick_youtube_song/presentation/view/pick_youtube_song_screen.dart';
+import 'package:soundclash2/features/manage_games/join_game/presentation/views/bloc/join_game_bloc.dart';
 
 class JoinGameScreen extends StatefulWidget {
   final String userName;

@@ -5,7 +5,7 @@ Future<void> joinGame({
   required String userName,
   required String song,
 }) async {
-  var todo = ParseObject('Game')
+  final todo = ParseObject('Game')
     ..objectId = id
     ..setAdd('players', {
       'userName': userName,

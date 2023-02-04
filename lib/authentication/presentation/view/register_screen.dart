@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
-
-import '../../../main_menu/presentation/view/main_menu_screen.dart';
-import '../../../widgets/input_info.dart';
-import '../../domain/usecases/authentication/registration.dart';
+import 'package:soundclash2/authentication/domain/usecases/authentication/registration.dart';
+import 'package:soundclash2/widgets/input_info.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const String id = 'Register Screen';
@@ -34,7 +31,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               const Center(
                 child: Text('Register to soundclash',
                     style:
-                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
               ),
               const SizedBox(
                 height: 16,
@@ -49,7 +46,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
               InputWidget(
                 controller: controllerUsername,
                 text: 'Username',
-                textInputType: TextInputType.text,
               ),
               InputWidget(
                 controller: controllerEmail,
@@ -59,7 +55,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
               InputWidget(
                 controller: controllerPassword,
                 text: 'Password',
-                textInputType: TextInputType.text,
                 obscureText: true,
               ),
               SizedBox(
@@ -70,7 +65,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       context: context,
                       controllerUsername: controllerUsername,
                       controllerEmail: controllerEmail,
-                      controllerPassword: controllerPassword),
+                      controllerPassword: controllerPassword,),
                 ),
               )
             ],

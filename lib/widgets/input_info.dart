@@ -19,7 +19,7 @@ class InputWidget extends StatelessWidget {
       this.text,
       this.obscureText,
       this.enabled,
-      this.textInputType = TextInputType.text})
+      this.textInputType = TextInputType.text,})
       : super(key: key);
 
   @override

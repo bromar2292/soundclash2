@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
-
-import '../../../main_menu/presentation/view/main_menu_screen.dart';
-import '../../../widgets/input_info.dart';
-import '../../../widgets/message.dart';
-import '../view/register_screen.dart';
+import 'package:soundclash2/authentication/presentation/view/register_screen.dart';
+import 'package:soundclash2/main_menu/presentation/view/main_menu_screen.dart';
+import 'package:soundclash2/widgets/input_info.dart';
+import 'package:soundclash2/widgets/message.dart';
 
 Center LoginContent(
     BuildContext context,
     bool isLoggedIn,
     TextEditingController controllerUsername,
-    TextEditingController controllerPassword) {
-  void doUserLogout() async {
+    TextEditingController controllerPassword,) {
+  Future<void> doUserLogout() async {
     final user = await ParseUser.currentUser() as ParseUser;
-    var response = await user.logout();
+    final response = await user.logout();
 
     if (response.success) {
       Message.showSuccess(
-          context: context, message: "User was successfully logout!");
+          context: context, message: "User was successfully logout!",);
       // setState(() {
       //   isLoggedIn = false;
       // });
@@ -26,18 +25,18 @@ Center LoginContent(
     }
   }
 
-  void doUserLogin() async {
+  Future<void> doUserLogin() async {
     final username = controllerUsername.text.trim();
     final password = controllerPassword.text.trim();
 
     final user = ParseUser(username, password, null);
 
-    var response = await user.login();
+    final response = await user.login();
 
     if (response.success) {
       navigateToMainMenu(context);
       Message.showSuccess(
-          context: context, message: "User was successfully login!");
+          context: context, message: "User was successfully login!",);
 
       // setState(() {
       //   isLoggedIn = true;
@@ -55,7 +54,7 @@ Center LoginContent(
         children: [
           const Center(
             child: Text('Login to Soundclash',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
           ),
           const SizedBox(
             height: 16,
@@ -70,7 +69,6 @@ Center LoginContent(
             enabled: !isLoggedIn,
             controller: controllerUsername,
             text: 'Username',
-            textInputType: TextInputType.text,
           ),
           InputWidget(
             enabled: !isLoggedIn,
@@ -84,8 +82,8 @@ Center LoginContent(
           SizedBox(
             height: 50,
             child: ElevatedButton(
-              child: const Text('Login'),
               onPressed: isLoggedIn ? null : () => doUserLogin(),
+              child: const Text('Login'),
             ),
           ),
           const SizedBox(
@@ -104,8 +102,8 @@ Center LoginContent(
           SizedBox(
             height: 50,
             child: ElevatedButton(
-              child: const Text('Logout'),
               onPressed: isLoggedIn ? null : () => doUserLogout(),
+              child: const Text('Logout'),
             ),
           ),
         ],

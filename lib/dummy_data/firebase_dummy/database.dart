@@ -1,4 +1,4 @@
-import '../../features/gameplay/models/player.dart';
+import 'package:soundclash2/features/gameplay/models/player.dart';
 
 class DataBaseDummy {
   // List<Game> games = [

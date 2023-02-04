@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
+import 'package:soundclash2/features/manage_games/create_game/domain/usecases/create_game_usecase.dart';
+import 'package:soundclash2/features/manage_games/create_game/presentation/bloc/create_game_bloc.dart';
 import 'package:soundclash2/widgets/input_info.dart';
-
-import '../../domain/usecases/create_game_usecase.dart';
-import '../bloc/create_game_bloc.dart';
 
 class CreateGameScreen extends StatelessWidget {
   static const String id = 'Create Game Screen';
@@ -13,8 +11,8 @@ class CreateGameScreen extends StatelessWidget {
   const CreateGameScreen({Key? key, required this.userName}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final _controllerText = TextEditingController();
-    final _controllerSongText = TextEditingController();
+    final controllerText = TextEditingController();
+    final controllerSongText = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: const Text(CreateGameScreen.id),
@@ -26,31 +24,31 @@ class CreateGameScreen extends StatelessWidget {
               return Column(
                 children: [
                   InputWidget(
-                    controller: _controllerText,
+                    controller: controllerText,
                     text: 'name of game',
                     clearFunction: () {
                       context
                           .read<CreateGameBloc>()
-                          .add(CreateGameEvent.createGameName(name: ''));
+                          .add(const CreateGameEvent.createGameName(name: ''));
                     },
                     function: (text) {
                       context.read<CreateGameBloc>().add(
                           CreateGameEvent.createGameName(
-                              name: text, song: _controllerSongText.text));
+                              name: text, song: controllerSongText.text,),);
                     },
                   ),
                   InputWidget(
-                    controller: _controllerSongText,
+                    controller: controllerSongText,
                     text: 'link to youtube song',
                     clearFunction: () {
                       context
                           .read<CreateGameBloc>()
-                          .add(CreateGameEvent.chooseSong(song: ''));
+                          .add(const CreateGameEvent.chooseSong(song: ''));
                     },
                     function: (text) {
                       context.read<CreateGameBloc>().add(
                           CreateGameEvent.createGameName(
-                              name: _controllerText.text, song: text));
+                              name: controllerText.text, song: text,),);
                     },
                   ),
                 ],
@@ -70,7 +68,7 @@ class CreateGameScreen extends StatelessWidget {
                               builder: (ctx) => AlertDialog(
                                 title: const Text("Error"),
                                 content: const Text(
-                                    "You have not used the correct youtube link"),
+                                    "You have not used the correct youtube link",),
                                 actions: <Widget>[
                                   TextButton(
                                     onPressed: () {
@@ -89,11 +87,11 @@ class CreateGameScreen extends StatelessWidget {
                             await createGameUsecase(
                                 gameName: name as String,
                                 userName: userName,
-                                song: song as String);
+                                song: song as String,);
                           }
                           print(name);
                           print(song);
-                        }),
+                        },),
                     initial: () {
                       return ElevatedButton(
                         child: const Text('use valid youtube link'),
@@ -111,7 +109,7 @@ class CreateGameScreen extends StatelessWidget {
                           print('nothing submitted');
                         },
                       );
-                    });
+                    },);
               },
             ),
           ),

@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../gameplay/models/game.dart';
-import '../../uscases/get_game_list_usecase.dart';
+import 'package:soundclash2/features/gameplay/models/game.dart';
+import 'package:soundclash2/features/manage_games/uscases/get_game_list_usecase.dart';
 
 part 'current_games_bloc.freezed.dart';
 
@@ -21,7 +21,7 @@ class CurrentGamesBloc extends Bloc<CurrentGamesEvent, CurrentGamesState> {
     List<Game> filteredGameList = [];
     List<Game> gameList = await getGameList();
 
-    gameList.forEach((game) {
+    for (final game in gameList) {
       bool found = false;
       for (final p in game.players) {
         if (p.user == event.userName) {
@@ -30,9 +30,9 @@ class CurrentGamesBloc extends Bloc<CurrentGamesEvent, CurrentGamesState> {
         }
       }
       if (!found) {
-        return;
+        continue;
       }
-    });
+    }
     emit(
       CurrentGamesState.loaded(gameList: filteredGameList),
     );

@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
-
+import 'package:soundclash2/authentication/presentation/view/login_screen.dart';
 import 'package:soundclash2/authentication/presentation/view/register_screen.dart';
-
+import 'package:soundclash2/features/leaderboard/presentation/views/leaderboard_screen.dart';
+import 'package:soundclash2/features/manage_games/create_game/presentation/view/create_game_screen.dart';
+import 'package:soundclash2/features/manage_games/current_games/presentation/views/current_games_screen.dart';
+import 'package:soundclash2/features/manage_games/join_game/presentation/views/join_game_screen.dart';
+import 'package:soundclash2/main_menu/presentation/widgets/menu_button.dart';
 import 'package:soundclash2/profile/presentation/view/profile_screen.dart';
-
-import '../../../authentication/presentation/view/login_screen.dart';
-import '../../../features/leaderboard/presentation/views/leaderboard_screen.dart';
-import '../../../features/manage_games/create_game/presentation/view/create_game_screen.dart';
-import '../../../features/manage_games/current_games/presentation/views/current_games_screen.dart';
-import '../../../features/manage_games/join_game/presentation/views/join_game_screen.dart';
-import '../widgets/menu_button.dart';
-import '../../../widgets/message.dart';
+import 'package:soundclash2/widgets/message.dart';
 
 class MainMenu extends StatelessWidget {
   ParseUser? currentUser;
@@ -27,8 +24,8 @@ class MainMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void doUserLogout() async {
-      var response = await currentUser!.logout();
+    Future<void> doUserLogout() async {
+      final response = await currentUser!.logout();
       if (response.success) {
         Message.showSuccess(
           context: context,

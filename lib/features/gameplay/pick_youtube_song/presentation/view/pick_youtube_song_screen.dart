@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soundclash2/features/gameplay/pick_youtube_song/domain/models/pick_youtube_arguments.dart';
+import 'package:soundclash2/features/gameplay/pick_youtube_song/presentation/bloc/bloc/pick_youtube_song_bloc.dart';
+import 'package:soundclash2/features/gameplay/rate_song/presentation/view/rate_song_screen.dart';
 import 'package:soundclash2/features/manage_games/join_game/domain/join_game_usecase.dart';
-
 import 'package:soundclash2/widgets/input_info.dart';
 import 'package:soundclash2/widgets/sound_button.dart';
 import 'package:soundclash2/widgets/submit_circle_button.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-
-import '../../../rate_song/presentation/view/rate_song_screen.dart';
-
-import '../bloc/bloc/pick_youtube_song_bloc.dart';
 
 class PickYoutubeSong extends StatelessWidget {
   static const String id = 'pick_song_screen';
@@ -45,7 +42,7 @@ class PickYoutubeSong extends StatelessWidget {
                   BoxShadow(
                       color: Colors.black.withOpacity(0.3),
                       blurRadius: 15,
-                      spreadRadius: 5)
+                      spreadRadius: 5,)
                 ],
               ),
               child: Column(
@@ -57,7 +54,7 @@ class PickYoutubeSong extends StatelessWidget {
                         text: 'enter your url',
                         function: (text) {
                           context.read<PickYoutubeSongBloc>().add(
-                              PickYoutubeSongEvent.updateYoutubeURL(url: text));
+                              PickYoutubeSongEvent.updateYoutubeURL(url: text),);
                         },
                         icon: const Icon(Icons.search),
                         controller: _controllerUrl,
@@ -82,7 +79,7 @@ class PickYoutubeSong extends StatelessWidget {
                                   joinGame(
                                       id: arguments.game.objectId,
                                       userName: arguments.userName,
-                                      song: newUrl.toString());
+                                      song: newUrl.toString(),);
 
                                   print('step 3');
                                 },
@@ -97,7 +94,7 @@ class PickYoutubeSong extends StatelessWidget {
                                   joinGame(
                                       id: arguments.game.objectId,
                                       userName: arguments.userName,
-                                      song: newUrl as String);
+                                      song: newUrl as String,);
 
                                   print('step 4');
                                 },
@@ -119,7 +116,7 @@ class PickYoutubeSong extends StatelessWidget {
                 ),
               ),
             );
-          })
+          },)
         ],
       ),
     );

@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../../gameplay/models/game.dart';
-import '../../../../uscases/get_game_list_usecase.dart';
+import 'package:soundclash2/features/gameplay/models/game.dart';
+import 'package:soundclash2/features/manage_games/uscases/get_game_list_usecase.dart';
 part 'join_game_bloc.freezed.dart';
 
 part 'join_game_state.dart';
@@ -20,7 +20,7 @@ class JoinGameBloc extends Bloc<JoinGameEvent, JoinGameState> {
     List<Game> gameList = await getGameList();
     List<Game> modifiedGame = [];
 
-    gameList.forEach((game) {
+    for (final game in gameList) {
       bool found = false;
       for (final p in game.players) {
         if (p.user == event.userName) {
@@ -31,7 +31,7 @@ class JoinGameBloc extends Bloc<JoinGameEvent, JoinGameState> {
       if (!found) {
         modifiedGame.add(game);
       }
-    });
+    }
 
     emit(
       JoinGameState.loaded(gameList: modifiedGame),

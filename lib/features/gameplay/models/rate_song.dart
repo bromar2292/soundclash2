@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 class RateSong {
   final String userName;
   final int score;
@@ -10,8 +8,8 @@ class RateSong {
   });
 
   factory RateSong.FromJSON(Map<String, dynamic> json) => RateSong(
-        userName: json["userName"],
-        score: json["score"],
+        userName: json["userName"] as String,
+        score: json["score"] as int,
       );
 
   Map<String, dynamic> toJson() => {

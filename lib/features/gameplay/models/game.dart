@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'player.dart';
+import 'package:soundclash2/features/gameplay/models/player.dart';
 
 //List<Game> welcome9FromJson(String str) =>
 //   List<Game>.from(json.decode(str).map((x) => Game.FromJSON(x)));
@@ -29,14 +29,16 @@ class Game {
   });
 
   factory Game.FromJSON(Map<String, dynamic> json) => Game(
-        objectId: json["objectId"],
-        gameName: json["gameName"],
-        password: json["password"],
-        players:
-            List<Player>.from(json["players"].map((x) => Player.fromJson(x))),
-        count: json["count"],
-        createdAt: DateTime.parse(json["createdAt"]),
-        updatedAt: DateTime.parse(json["updatedAt"]),
+        objectId: json["objectId"] as String,
+        gameName: json["gameName"] as String,
+        password: json["password"] as String,
+        players: List<Player>.from(
+          json["players"].map((x) => Player.fromJson(x as Map<String, dynamic>))
+              as Iterable<dynamic>,
+        ),
+        count: json["count"] as int,
+        createdAt: DateTime.parse(json["createdAt"] as String),
+        updatedAt: DateTime.parse(json["updatedAt"] as String),
       );
 
   Map<String, dynamic> toJson() => {

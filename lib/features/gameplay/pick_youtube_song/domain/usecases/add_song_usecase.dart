@@ -3,8 +3,8 @@ import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 Future<void> addSong(
     {required String id,
     required String userName,
-    required String song}) async {
-  var todo = ParseObject('Game')
+    required String song,}) async {
+  final todo = ParseObject('Game')
     ..objectId = id
     ..get('players')
     ..update()

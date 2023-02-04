@@ -8,5 +8,5 @@ class RateSongBlocEvent with _$RateSongBlocEvent {
       {required String objectId,
       required String songId,
       required int rating,
-      required String userName}) = _getRateSongEvent;
+      required String userName,}) = _getRateSongEvent;
 }

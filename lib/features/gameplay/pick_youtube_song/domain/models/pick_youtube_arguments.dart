@@ -1,4 +1,4 @@
-import '../../../models/game.dart';
+import 'package:soundclash2/features/gameplay/models/game.dart';
 
 class PickYoutubeArguments {
   final String userName;
