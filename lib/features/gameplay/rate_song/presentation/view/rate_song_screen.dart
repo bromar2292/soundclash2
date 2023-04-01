@@ -1,26 +1,19 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
+import 'package:soundclash2/features/gameplay/pick_youtube_song/domain/models/pick_youtube_arguments.dart';
 import 'package:soundclash2/features/gameplay/rate_song/presentation/bloc/bloc/rate_song_bloc.dart';
 import 'package:soundclash2/features/leaderboard/presentation/views/leaderboard_screen.dart';
-
+import 'package:soundclash2/widgets/sound_button.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-
-import '../../../../../dummy_data/firebase_dummy/database.dart';
-
-import '../../../../../widgets/sound_button.dart';
-import '../../../../manage_games/uscases/get_game_list_usecase.dart';
-import '../../../models/game.dart';
-import '../../../models/player.dart';
-import '../../../pick_youtube_song/domain/models/pick_youtube_arguments.dart';
 
 class RateSongScreen extends StatefulWidget {
   static const String id = 'rate_song_screen';
   final PickYoutubeArguments arguments;
 
-  RateSongScreen({Key? key, required this.arguments}) : super(key: key);
+  /// to do:
+  ///
+
+  const RateSongScreen({Key? key, required this.arguments}) : super(key: key);
   @override
   State<RateSongScreen> createState() => _RateSongScreenState();
 }
@@ -37,10 +30,27 @@ class _RateSongScreenState extends State<RateSongScreen> {
   int songInList = 0;
   int score = 1;
   List<String> songIdList = [];
+  late YoutubePlayerController _youtubePlayerController;
 
   @override
   void initState() {
     super.initState();
+    _youtubePlayerController = YoutubePlayerController(
+      initialVideoId: '',
+    );
+  }
+
+  @override
+  void dispose() {
+    _youtubePlayerController.dispose();
+    super.dispose();
+  }
+
+  void playNextVideo() {
+    if (songInList != songIdList.length - 1) {
+      songInList = songInList + 1;
+      _youtubePlayerController.load(songIdList[songInList]);
+    }
   }
 
   @override
@@ -63,61 +73,68 @@ class _RateSongScreenState extends State<RateSongScreen> {
                 ),
                 BlocBuilder<RateSongBloc, RateSongBlocState>(
                   builder: (context, state) {
-                    return state.when(initial: () {
-                      context.read<RateSongBloc>().add(
-                          RateSongBlocEvent.getPlayers(
-                              objectId: widget.arguments.game.objectId));
-                      return const CircularProgressIndicator();
-                    }, playersLoaded: (game) {
-                      late YoutubePlayerController _youtubePlayerController;
-                      if (songIdList.isEmpty) {
-                        game!.players.forEach((element) {
-                          songIdList.add(element.song);
-                        });
-                      }
-                      _youtubePlayerController = YoutubePlayerController(
-                        initialVideoId: songIdList[songInList],
-                        flags: const YoutubePlayerFlags(autoPlay: true),
-                      );
-
-                      return songInList > songIdList.length
-                          ? Text('Game Over')
-                          : Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(20.0),
-                                  child: SizedBox(
-                                    height: 200,
-                                    width: 200,
-                                    child: YoutubePlayer(
-                                      controller: _youtubePlayerController,
-                                      showVideoProgressIndicator: true,
-                                      progressIndicatorColor: Colors.blue,
-                                      // onReady: youtubePlayerController.load( game.players[songInList].song,endAt:1,startAt: 1),
-                                    ),
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: rateButton
-                                      .map(
-                                        (rating) => ElevatedButton(
-                                          onPressed: () {
-                                            score = rating;
-                                            setState(() {});
-                                          },
-                                          style: ElevatedButton.styleFrom(
-                                            shape: CircleBorder(),
-                                            padding: const EdgeInsets.all(20),
-                                          ),
-                                          child: Text('$rating'),
-                                        ),
-                                      )
-                                      .toList(),
-                                ),
-                              ],
+                    String song = '';
+                    return state.when(
+                      initial: () {
+                        context.read<RateSongBloc>().add(
+                              RateSongBlocEvent.getPlayers(
+                                objectId: widget.arguments.game.objectId,
+                              ),
                             );
-                    });
+                        return const CircularProgressIndicator();
+                      },
+                      playersLoaded: (game, song) {
+                        if (songIdList.isEmpty) {
+                          for (final element in game!.players) {
+                            songIdList.add(element.song);
+                          }
+                        }
+                        song = songIdList[songInList];
+
+                        _youtubePlayerController = YoutubePlayerController(
+                          initialVideoId: song,
+                        );
+                        _youtubePlayerController.load(song);
+                        print('omar' + song);
+                        return Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: SizedBox(
+                                height: 200,
+                                width: 200,
+                                child: YoutubePlayer(
+                                  controller: _youtubePlayerController,
+                                  showVideoProgressIndicator: true,
+                                  progressIndicatorColor: Colors.blue,
+                                  // onReady: youtubePlayerController.load( game.players[songInList].song,endAt:1,startAt: 1),
+                                ),
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: rateButton
+                                  .map(
+                                    (rating) => ElevatedButton(
+                                      onPressed: () {
+                                        score = rating;
+
+                                        print(song);
+                                        print(songIdList[songInList]);
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        shape: const CircleBorder(),
+                                        padding: const EdgeInsets.all(20),
+                                      ),
+                                      child: Text('$rating'),
+                                    ),
+                                  )
+                                  .toList(),
+                            ),
+                          ],
+                        );
+                      },
+                    );
                   },
                 ),
                 Padding(
@@ -131,6 +148,14 @@ class _RateSongScreenState extends State<RateSongScreen> {
                   text: 'submit rating',
                   function: () async {
                     // print(score);
+
+                    print('${songIdList.length} length of song id list');
+                    print(songIdList);
+                    playNextVideo();
+                    String song = songIdList[songInList];
+                    print(song);
+                    print(songInList);
+
                     context.read<RateSongBloc>().add(
                           RateSongBlocEvent.rateSong(
                             objectId: widget.arguments.game.objectId,
@@ -139,15 +164,21 @@ class _RateSongScreenState extends State<RateSongScreen> {
                             songId: songIdList[songInList],
                           ),
                         );
-                    print('${songIdList.length} length of song id');
-                    print(songIdList);
-                    if (songInList != songIdList.length) {
-                      songInList = songInList + 1;
+                    context
+                        .read<RateSongBloc>()
+                        .add(RateSongBlocEvent.updateSong(song: song!));
+
+                    if (songInList == songIdList.length - 1) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Leaderboard(
+                            arguments: widget.arguments,
+                          ),
+                        ),
+                      );
                     }
-                    if (songInList == songIdList.length) {
-                      Navigator.pushNamed(context, LeaderBoardScreen.id);
-                    }
-                    print(songInList);
+
                     //controller.updateSongInList(context);
 // check to see if there has been a vote
                     //  controller.update();

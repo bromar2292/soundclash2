@@ -13,6 +13,7 @@ class RateSongBloc extends Bloc<RateSongBlocEvent, RateSongBlocState> {
   RateSongBloc() : super(const RateSongBlocState.initial()) {
     on<_getPlayersEvent>(_onUrlChanged);
     on<_getRateSongEvent>(_onRateSong);
+    on<_getUpdateSongEvent>(_onUpdateSong);
   }
 
   Future<void> _onUrlChanged(
@@ -27,6 +28,13 @@ class RateSongBloc extends Bloc<RateSongBlocEvent, RateSongBlocState> {
       }
     }
     emit(RateSongBlocState.playersLoaded(game: game));
+  }
+
+  Future<void> _onUpdateSong(
+    _getUpdateSongEvent event,
+    Emitter<RateSongBlocState> emit,
+  ) async {
+    emit(RateSongBlocState.playersLoaded(song: event.song));
   }
 
   Future<void> _onRateSong(
@@ -63,6 +71,7 @@ class RateSongBloc extends Bloc<RateSongBlocEvent, RateSongBlocState> {
 
     // update players
     //  push players back up
+
     emit(RateSongBlocState.playersLoaded(game: game));
   }
 }

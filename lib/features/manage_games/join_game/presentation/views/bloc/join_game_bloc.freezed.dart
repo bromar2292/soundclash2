@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'join_game_bloc.dart';
 
@@ -24,8 +24,8 @@ mixin _$JoinGameState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(List<Game> gameList)? loaded,
+    TResult? Function()? initial,
+    TResult? Function(List<Game> gameList)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,8 +43,8 @@ mixin _$JoinGameState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_loaded value)? loaded,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_loaded value)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,17 +60,18 @@ mixin _$JoinGameState {
 abstract class $JoinGameStateCopyWith<$Res> {
   factory $JoinGameStateCopyWith(
           JoinGameState value, $Res Function(JoinGameState) then) =
-      _$JoinGameStateCopyWithImpl<$Res>;
+      _$JoinGameStateCopyWithImpl<$Res, JoinGameState>;
 }
 
 /// @nodoc
-class _$JoinGameStateCopyWithImpl<$Res>
+class _$JoinGameStateCopyWithImpl<$Res, $Val extends JoinGameState>
     implements $JoinGameStateCopyWith<$Res> {
   _$JoinGameStateCopyWithImpl(this._value, this._then);
 
-  final JoinGameState _value;
   // ignore: unused_field
-  final $Res Function(JoinGameState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -81,13 +82,11 @@ abstract class _$$_InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$JoinGameStateCopyWithImpl<$Res>
+class __$$_InitialCopyWithImpl<$Res>
+    extends _$JoinGameStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -121,8 +120,8 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(List<Game> gameList)? loaded,
+    TResult? Function()? initial,
+    TResult? Function(List<Game> gameList)? loaded,
   }) {
     return initial?.call();
   }
@@ -152,8 +151,8 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_loaded value)? loaded,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_loaded value)? loaded,
   }) {
     return initial?.call(this);
   }
@@ -180,24 +179,24 @@ abstract class _Initial implements JoinGameState {
 abstract class _$$_loadedCopyWith<$Res> {
   factory _$$_loadedCopyWith(_$_loaded value, $Res Function(_$_loaded) then) =
       __$$_loadedCopyWithImpl<$Res>;
+  @useResult
   $Res call({List<Game> gameList});
 }
 
 /// @nodoc
-class __$$_loadedCopyWithImpl<$Res> extends _$JoinGameStateCopyWithImpl<$Res>
+class __$$_loadedCopyWithImpl<$Res>
+    extends _$JoinGameStateCopyWithImpl<$Res, _$_loaded>
     implements _$$_loadedCopyWith<$Res> {
   __$$_loadedCopyWithImpl(_$_loaded _value, $Res Function(_$_loaded) _then)
-      : super(_value, (v) => _then(v as _$_loaded));
+      : super(_value, _then);
 
-  @override
-  _$_loaded get _value => super._value as _$_loaded;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? gameList = freezed,
+    Object? gameList = null,
   }) {
     return _then(_$_loaded(
-      gameList: gameList == freezed
+      gameList: null == gameList
           ? _value._gameList
           : gameList // ignore: cast_nullable_to_non_nullable
               as List<Game>,
@@ -213,6 +212,7 @@ class _$_loaded implements _loaded {
   final List<Game> _gameList;
   @override
   List<Game> get gameList {
+    if (_gameList is EqualUnmodifiableListView) return _gameList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_gameList);
   }
@@ -236,6 +236,7 @@ class _$_loaded implements _loaded {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_loadedCopyWith<_$_loaded> get copyWith =>
       __$$_loadedCopyWithImpl<_$_loaded>(this, _$identity);
 
@@ -251,8 +252,8 @@ class _$_loaded implements _loaded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(List<Game> gameList)? loaded,
+    TResult? Function()? initial,
+    TResult? Function(List<Game> gameList)? loaded,
   }) {
     return loaded?.call(gameList);
   }
@@ -282,8 +283,8 @@ class _$_loaded implements _loaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_loaded value)? loaded,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_loaded value)? loaded,
   }) {
     return loaded?.call(this);
   }
@@ -305,7 +306,7 @@ class _$_loaded implements _loaded {
 abstract class _loaded implements JoinGameState {
   const factory _loaded({required final List<Game> gameList}) = _$_loaded;
 
-  List<Game> get gameList => throw _privateConstructorUsedError;
+  List<Game> get gameList;
   @JsonKey(ignore: true)
   _$$_loadedCopyWith<_$_loaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -321,7 +322,7 @@ mixin _$JoinGameEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String userName)? load,
+    TResult? Function(String userName)? load,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -337,7 +338,7 @@ mixin _$JoinGameEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_joinGameEvent value)? load,
+    TResult? Function(_joinGameEvent value)? load,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -356,29 +357,32 @@ mixin _$JoinGameEvent {
 abstract class $JoinGameEventCopyWith<$Res> {
   factory $JoinGameEventCopyWith(
           JoinGameEvent value, $Res Function(JoinGameEvent) then) =
-      _$JoinGameEventCopyWithImpl<$Res>;
+      _$JoinGameEventCopyWithImpl<$Res, JoinGameEvent>;
+  @useResult
   $Res call({String userName});
 }
 
 /// @nodoc
-class _$JoinGameEventCopyWithImpl<$Res>
+class _$JoinGameEventCopyWithImpl<$Res, $Val extends JoinGameEvent>
     implements $JoinGameEventCopyWith<$Res> {
   _$JoinGameEventCopyWithImpl(this._value, this._then);
 
-  final JoinGameEvent _value;
   // ignore: unused_field
-  final $Res Function(JoinGameEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userName = freezed,
+    Object? userName = null,
   }) {
     return _then(_value.copyWith(
-      userName: userName == freezed
+      userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -389,26 +393,25 @@ abstract class _$$_joinGameEventCopyWith<$Res>
           _$_joinGameEvent value, $Res Function(_$_joinGameEvent) then) =
       __$$_joinGameEventCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String userName});
 }
 
 /// @nodoc
 class __$$_joinGameEventCopyWithImpl<$Res>
-    extends _$JoinGameEventCopyWithImpl<$Res>
+    extends _$JoinGameEventCopyWithImpl<$Res, _$_joinGameEvent>
     implements _$$_joinGameEventCopyWith<$Res> {
   __$$_joinGameEventCopyWithImpl(
       _$_joinGameEvent _value, $Res Function(_$_joinGameEvent) _then)
-      : super(_value, (v) => _then(v as _$_joinGameEvent));
+      : super(_value, _then);
 
-  @override
-  _$_joinGameEvent get _value => super._value as _$_joinGameEvent;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userName = freezed,
+    Object? userName = null,
   }) {
     return _then(_$_joinGameEvent(
-      userName: userName == freezed
+      userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
               as String,
@@ -434,15 +437,16 @@ class _$_joinGameEvent implements _joinGameEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_joinGameEvent &&
-            const DeepCollectionEquality().equals(other.userName, userName));
+            (identical(other.userName, userName) ||
+                other.userName == userName));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(userName));
+  int get hashCode => Object.hash(runtimeType, userName);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_joinGameEventCopyWith<_$_joinGameEvent> get copyWith =>
       __$$_joinGameEventCopyWithImpl<_$_joinGameEvent>(this, _$identity);
 
@@ -457,7 +461,7 @@ class _$_joinGameEvent implements _joinGameEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String userName)? load,
+    TResult? Function(String userName)? load,
   }) {
     return load?.call(userName);
   }
@@ -485,7 +489,7 @@ class _$_joinGameEvent implements _joinGameEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_joinGameEvent value)? load,
+    TResult? Function(_joinGameEvent value)? load,
   }) {
     return load?.call(this);
   }
@@ -508,7 +512,7 @@ abstract class _joinGameEvent implements JoinGameEvent {
       _$_joinGameEvent;
 
   @override
-  String get userName => throw _privateConstructorUsedError;
+  String get userName;
   @override
   @JsonKey(ignore: true)
   _$$_joinGameEventCopyWith<_$_joinGameEvent> get copyWith =>

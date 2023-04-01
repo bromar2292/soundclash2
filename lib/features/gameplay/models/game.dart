@@ -14,7 +14,7 @@ class Game {
   String gameName;
   String password;
   List<Player> players;
-  int count;
+  int? count;
   DateTime createdAt;
   DateTime updatedAt;
 

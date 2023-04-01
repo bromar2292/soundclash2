@@ -22,21 +22,22 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter Login/Logout'),
-          leading: isLoggedIn
-              ? IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, MainMenu.id);
-                  },
-                  icon: const Icon(
-                    Icons.home,
-                    color: Colors.white,
-                  ),
-                )
-              : null,
-        ),
-        body: LoginContent(context),);
+      appBar: AppBar(
+        title: const Text('Flutter Login/Logout'),
+        leading: isLoggedIn
+            ? IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, MainMenu.id);
+                },
+                icon: const Icon(
+                  Icons.home,
+                  color: Colors.white,
+                ),
+              )
+            : null,
+      ),
+      body: LoginContent(context),
+    );
   }
 
   Center LoginContent(BuildContext context) {
@@ -47,8 +48,10 @@ class _LoginScreenState extends State<LoginScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const Center(
-              child: Text('Login to Soundclash',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+              child: Text(
+                'Login to Soundclash',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
             ),
             const SizedBox(
               height: 16,
@@ -114,11 +117,13 @@ class _LoginScreenState extends State<LoginScreen> {
     final user = ParseUser(username, password, null);
 
     final response = await user.login();
-
+    print(response);
     if (response.success) {
       navigateToMainMenu(context);
       Message.showSuccess(
-          context: context, message: "User was successfully login!",);
+        context: context,
+        message: "User was successfully login!",
+      );
 
       setState(() {
         isLoggedIn = true;
@@ -134,7 +139,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if (response.success) {
       Message.showSuccess(
-          context: context, message: "User was successfully logout!",);
+        context: context,
+        message: "User was successfully logout!",
+      );
       setState(() {
         isLoggedIn = false;
       });

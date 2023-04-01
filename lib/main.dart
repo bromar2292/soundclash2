@@ -1,8 +1,8 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:soundclash2/constants.dart';
 import 'package:soundclash2/my_app.dart';
-import 'package:device_preview/device_preview.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,5 +34,3 @@ void main() async {
     ),
   );
 }
-
-// how do i save data in the app

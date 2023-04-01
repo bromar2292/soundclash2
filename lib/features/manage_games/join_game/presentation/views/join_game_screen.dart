@@ -72,10 +72,14 @@ class _JoinGameScreenState extends State<JoinGameScreen> {
                 child: ElevatedButton(
                   child: const Text('refresh list'),
                   onPressed: () async {
-                    context
-                        .read<JoinGameBloc>()
-                        .add(JoinGameEvent.load(userName: widget.userName));
-                    setState(() {});
+                    try {
+                      context
+                          .read<JoinGameBloc>()
+                          .add(JoinGameEvent.load(userName: widget.userName));
+                      setState(() {});
+                    } catch (error) {
+                      print(error);
+                    }
                   },
                 ),
               );

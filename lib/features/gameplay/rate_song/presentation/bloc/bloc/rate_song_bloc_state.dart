@@ -4,5 +4,6 @@ part of 'rate_song_bloc.dart';
 class RateSongBlocState with _$RateSongBlocState {
   const factory RateSongBlocState.initial() = _Initial;
 
-  const factory RateSongBlocState.playersLoaded({Game? game}) = _playersLoaded;
+  const factory RateSongBlocState.playersLoaded({Game? game, String? song}) =
+      _playersLoaded;
 }

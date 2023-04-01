@@ -15,7 +15,7 @@ class Player {
   factory Player.fromJson(Map<String, dynamic> json) => Player(
         user: json["userName"] as String,
         song: json["song"] as String,
-        position: json["position"] as int,
+        position: json["position"] != null ? json["position"] as int : 0,
         score: List<RateSong>.from(
           json["score"].map((x) => RateSong.FromJSON(x as Map<String, dynamic>))
               as Iterable<dynamic>,

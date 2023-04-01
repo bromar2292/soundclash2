@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'pick_youtube_song_bloc.dart';
 
@@ -24,8 +24,8 @@ mixin _$PickYoutubeSongState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String song)? songSubmitted,
+    TResult? Function()? initial,
+    TResult? Function(String song)? songSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,8 +43,8 @@ mixin _$PickYoutubeSongState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_SongSubmitted value)? songSubmitted,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_SongSubmitted value)? songSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,17 +60,19 @@ mixin _$PickYoutubeSongState {
 abstract class $PickYoutubeSongStateCopyWith<$Res> {
   factory $PickYoutubeSongStateCopyWith(PickYoutubeSongState value,
           $Res Function(PickYoutubeSongState) then) =
-      _$PickYoutubeSongStateCopyWithImpl<$Res>;
+      _$PickYoutubeSongStateCopyWithImpl<$Res, PickYoutubeSongState>;
 }
 
 /// @nodoc
-class _$PickYoutubeSongStateCopyWithImpl<$Res>
+class _$PickYoutubeSongStateCopyWithImpl<$Res,
+        $Val extends PickYoutubeSongState>
     implements $PickYoutubeSongStateCopyWith<$Res> {
   _$PickYoutubeSongStateCopyWithImpl(this._value, this._then);
 
-  final PickYoutubeSongState _value;
   // ignore: unused_field
-  final $Res Function(PickYoutubeSongState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -82,13 +84,10 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$PickYoutubeSongStateCopyWithImpl<$Res>
+    extends _$PickYoutubeSongStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -122,8 +121,8 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String song)? songSubmitted,
+    TResult? Function()? initial,
+    TResult? Function(String song)? songSubmitted,
   }) {
     return initial?.call();
   }
@@ -153,8 +152,8 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_SongSubmitted value)? songSubmitted,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_SongSubmitted value)? songSubmitted,
   }) {
     return initial?.call(this);
   }
@@ -182,26 +181,25 @@ abstract class _$$_SongSubmittedCopyWith<$Res> {
   factory _$$_SongSubmittedCopyWith(
           _$_SongSubmitted value, $Res Function(_$_SongSubmitted) then) =
       __$$_SongSubmittedCopyWithImpl<$Res>;
+  @useResult
   $Res call({String song});
 }
 
 /// @nodoc
 class __$$_SongSubmittedCopyWithImpl<$Res>
-    extends _$PickYoutubeSongStateCopyWithImpl<$Res>
+    extends _$PickYoutubeSongStateCopyWithImpl<$Res, _$_SongSubmitted>
     implements _$$_SongSubmittedCopyWith<$Res> {
   __$$_SongSubmittedCopyWithImpl(
       _$_SongSubmitted _value, $Res Function(_$_SongSubmitted) _then)
-      : super(_value, (v) => _then(v as _$_SongSubmitted));
+      : super(_value, _then);
 
-  @override
-  _$_SongSubmitted get _value => super._value as _$_SongSubmitted;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? song = freezed,
+    Object? song = null,
   }) {
     return _then(_$_SongSubmitted(
-      song: song == freezed
+      song: null == song
           ? _value.song
           : song // ignore: cast_nullable_to_non_nullable
               as String,
@@ -227,15 +225,15 @@ class _$_SongSubmitted implements _SongSubmitted {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SongSubmitted &&
-            const DeepCollectionEquality().equals(other.song, song));
+            (identical(other.song, song) || other.song == song));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(song));
+  int get hashCode => Object.hash(runtimeType, song);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SongSubmittedCopyWith<_$_SongSubmitted> get copyWith =>
       __$$_SongSubmittedCopyWithImpl<_$_SongSubmitted>(this, _$identity);
 
@@ -251,8 +249,8 @@ class _$_SongSubmitted implements _SongSubmitted {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String song)? songSubmitted,
+    TResult? Function()? initial,
+    TResult? Function(String song)? songSubmitted,
   }) {
     return songSubmitted?.call(song);
   }
@@ -282,8 +280,8 @@ class _$_SongSubmitted implements _SongSubmitted {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_SongSubmitted value)? songSubmitted,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_SongSubmitted value)? songSubmitted,
   }) {
     return songSubmitted?.call(this);
   }
@@ -305,7 +303,7 @@ class _$_SongSubmitted implements _SongSubmitted {
 abstract class _SongSubmitted implements PickYoutubeSongState {
   const factory _SongSubmitted({required final String song}) = _$_SongSubmitted;
 
-  String get song => throw _privateConstructorUsedError;
+  String get song;
   @JsonKey(ignore: true)
   _$$_SongSubmittedCopyWith<_$_SongSubmitted> get copyWith =>
       throw _privateConstructorUsedError;
@@ -321,7 +319,7 @@ mixin _$PickYoutubeSongEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String url)? updateYoutubeURL,
+    TResult? Function(String url)? updateYoutubeURL,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -337,7 +335,7 @@ mixin _$PickYoutubeSongEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UpdateYoutubeEvent value)? updateYoutubeURL,
+    TResult? Function(_UpdateYoutubeEvent value)? updateYoutubeURL,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -356,29 +354,33 @@ mixin _$PickYoutubeSongEvent {
 abstract class $PickYoutubeSongEventCopyWith<$Res> {
   factory $PickYoutubeSongEventCopyWith(PickYoutubeSongEvent value,
           $Res Function(PickYoutubeSongEvent) then) =
-      _$PickYoutubeSongEventCopyWithImpl<$Res>;
+      _$PickYoutubeSongEventCopyWithImpl<$Res, PickYoutubeSongEvent>;
+  @useResult
   $Res call({String url});
 }
 
 /// @nodoc
-class _$PickYoutubeSongEventCopyWithImpl<$Res>
+class _$PickYoutubeSongEventCopyWithImpl<$Res,
+        $Val extends PickYoutubeSongEvent>
     implements $PickYoutubeSongEventCopyWith<$Res> {
   _$PickYoutubeSongEventCopyWithImpl(this._value, this._then);
 
-  final PickYoutubeSongEvent _value;
   // ignore: unused_field
-  final $Res Function(PickYoutubeSongEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? url = freezed,
+    Object? url = null,
   }) {
     return _then(_value.copyWith(
-      url: url == freezed
+      url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -389,26 +391,25 @@ abstract class _$$_UpdateYoutubeEventCopyWith<$Res>
           $Res Function(_$_UpdateYoutubeEvent) then) =
       __$$_UpdateYoutubeEventCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String url});
 }
 
 /// @nodoc
 class __$$_UpdateYoutubeEventCopyWithImpl<$Res>
-    extends _$PickYoutubeSongEventCopyWithImpl<$Res>
+    extends _$PickYoutubeSongEventCopyWithImpl<$Res, _$_UpdateYoutubeEvent>
     implements _$$_UpdateYoutubeEventCopyWith<$Res> {
   __$$_UpdateYoutubeEventCopyWithImpl(
       _$_UpdateYoutubeEvent _value, $Res Function(_$_UpdateYoutubeEvent) _then)
-      : super(_value, (v) => _then(v as _$_UpdateYoutubeEvent));
+      : super(_value, _then);
 
-  @override
-  _$_UpdateYoutubeEvent get _value => super._value as _$_UpdateYoutubeEvent;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? url = freezed,
+    Object? url = null,
   }) {
     return _then(_$_UpdateYoutubeEvent(
-      url: url == freezed
+      url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
@@ -434,15 +435,15 @@ class _$_UpdateYoutubeEvent implements _UpdateYoutubeEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UpdateYoutubeEvent &&
-            const DeepCollectionEquality().equals(other.url, url));
+            (identical(other.url, url) || other.url == url));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(url));
+  int get hashCode => Object.hash(runtimeType, url);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UpdateYoutubeEventCopyWith<_$_UpdateYoutubeEvent> get copyWith =>
       __$$_UpdateYoutubeEventCopyWithImpl<_$_UpdateYoutubeEvent>(
           this, _$identity);
@@ -458,7 +459,7 @@ class _$_UpdateYoutubeEvent implements _UpdateYoutubeEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String url)? updateYoutubeURL,
+    TResult? Function(String url)? updateYoutubeURL,
   }) {
     return updateYoutubeURL?.call(url);
   }
@@ -486,7 +487,7 @@ class _$_UpdateYoutubeEvent implements _UpdateYoutubeEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UpdateYoutubeEvent value)? updateYoutubeURL,
+    TResult? Function(_UpdateYoutubeEvent value)? updateYoutubeURL,
   }) {
     return updateYoutubeURL?.call(this);
   }
@@ -509,7 +510,7 @@ abstract class _UpdateYoutubeEvent implements PickYoutubeSongEvent {
       _$_UpdateYoutubeEvent;
 
   @override
-  String get url => throw _privateConstructorUsedError;
+  String get url;
   @override
   @JsonKey(ignore: true)
   _$$_UpdateYoutubeEventCopyWith<_$_UpdateYoutubeEvent> get copyWith =>

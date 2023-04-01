@@ -1,6 +1,6 @@
 class RateSong {
   final String userName;
-  final int score;
+  final int? score;
 
   RateSong({
     required this.score,
@@ -9,7 +9,7 @@ class RateSong {
 
   factory RateSong.FromJSON(Map<String, dynamic> json) => RateSong(
         userName: json["userName"] as String,
-        score: json["score"] as int,
+        score: json["score"] as int?,
       );
 
   Map<String, dynamic> toJson() => {

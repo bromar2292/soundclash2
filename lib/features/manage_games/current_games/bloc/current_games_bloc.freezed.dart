@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'current_games_bloc.dart';
 
@@ -24,8 +24,8 @@ mixin _$CurrentGamesState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(List<Game> gameList)? loaded,
+    TResult? Function()? initial,
+    TResult? Function(List<Game> gameList)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,8 +43,8 @@ mixin _$CurrentGamesState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_loaded value)? loaded,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_loaded value)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,17 +60,18 @@ mixin _$CurrentGamesState {
 abstract class $CurrentGamesStateCopyWith<$Res> {
   factory $CurrentGamesStateCopyWith(
           CurrentGamesState value, $Res Function(CurrentGamesState) then) =
-      _$CurrentGamesStateCopyWithImpl<$Res>;
+      _$CurrentGamesStateCopyWithImpl<$Res, CurrentGamesState>;
 }
 
 /// @nodoc
-class _$CurrentGamesStateCopyWithImpl<$Res>
+class _$CurrentGamesStateCopyWithImpl<$Res, $Val extends CurrentGamesState>
     implements $CurrentGamesStateCopyWith<$Res> {
   _$CurrentGamesStateCopyWithImpl(this._value, this._then);
 
-  final CurrentGamesState _value;
   // ignore: unused_field
-  final $Res Function(CurrentGamesState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -82,13 +83,10 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$CurrentGamesStateCopyWithImpl<$Res>
+    extends _$CurrentGamesStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -122,8 +120,8 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(List<Game> gameList)? loaded,
+    TResult? Function()? initial,
+    TResult? Function(List<Game> gameList)? loaded,
   }) {
     return initial?.call();
   }
@@ -153,8 +151,8 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_loaded value)? loaded,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_loaded value)? loaded,
   }) {
     return initial?.call(this);
   }
@@ -181,25 +179,24 @@ abstract class _Initial implements CurrentGamesState {
 abstract class _$$_loadedCopyWith<$Res> {
   factory _$$_loadedCopyWith(_$_loaded value, $Res Function(_$_loaded) then) =
       __$$_loadedCopyWithImpl<$Res>;
+  @useResult
   $Res call({List<Game> gameList});
 }
 
 /// @nodoc
 class __$$_loadedCopyWithImpl<$Res>
-    extends _$CurrentGamesStateCopyWithImpl<$Res>
+    extends _$CurrentGamesStateCopyWithImpl<$Res, _$_loaded>
     implements _$$_loadedCopyWith<$Res> {
   __$$_loadedCopyWithImpl(_$_loaded _value, $Res Function(_$_loaded) _then)
-      : super(_value, (v) => _then(v as _$_loaded));
+      : super(_value, _then);
 
-  @override
-  _$_loaded get _value => super._value as _$_loaded;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? gameList = freezed,
+    Object? gameList = null,
   }) {
     return _then(_$_loaded(
-      gameList: gameList == freezed
+      gameList: null == gameList
           ? _value._gameList
           : gameList // ignore: cast_nullable_to_non_nullable
               as List<Game>,
@@ -215,6 +212,7 @@ class _$_loaded implements _loaded {
   final List<Game> _gameList;
   @override
   List<Game> get gameList {
+    if (_gameList is EqualUnmodifiableListView) return _gameList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_gameList);
   }
@@ -238,6 +236,7 @@ class _$_loaded implements _loaded {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_loadedCopyWith<_$_loaded> get copyWith =>
       __$$_loadedCopyWithImpl<_$_loaded>(this, _$identity);
 
@@ -253,8 +252,8 @@ class _$_loaded implements _loaded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(List<Game> gameList)? loaded,
+    TResult? Function()? initial,
+    TResult? Function(List<Game> gameList)? loaded,
   }) {
     return loaded?.call(gameList);
   }
@@ -284,8 +283,8 @@ class _$_loaded implements _loaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_loaded value)? loaded,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_loaded value)? loaded,
   }) {
     return loaded?.call(this);
   }
@@ -307,7 +306,7 @@ class _$_loaded implements _loaded {
 abstract class _loaded implements CurrentGamesState {
   const factory _loaded({required final List<Game> gameList}) = _$_loaded;
 
-  List<Game> get gameList => throw _privateConstructorUsedError;
+  List<Game> get gameList;
   @JsonKey(ignore: true)
   _$$_loadedCopyWith<_$_loaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -323,7 +322,7 @@ mixin _$CurrentGamesEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String userName)? load,
+    TResult? Function(String userName)? load,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -339,7 +338,7 @@ mixin _$CurrentGamesEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_currentGamesEvent value)? load,
+    TResult? Function(_currentGamesEvent value)? load,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -358,29 +357,32 @@ mixin _$CurrentGamesEvent {
 abstract class $CurrentGamesEventCopyWith<$Res> {
   factory $CurrentGamesEventCopyWith(
           CurrentGamesEvent value, $Res Function(CurrentGamesEvent) then) =
-      _$CurrentGamesEventCopyWithImpl<$Res>;
+      _$CurrentGamesEventCopyWithImpl<$Res, CurrentGamesEvent>;
+  @useResult
   $Res call({String userName});
 }
 
 /// @nodoc
-class _$CurrentGamesEventCopyWithImpl<$Res>
+class _$CurrentGamesEventCopyWithImpl<$Res, $Val extends CurrentGamesEvent>
     implements $CurrentGamesEventCopyWith<$Res> {
   _$CurrentGamesEventCopyWithImpl(this._value, this._then);
 
-  final CurrentGamesEvent _value;
   // ignore: unused_field
-  final $Res Function(CurrentGamesEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userName = freezed,
+    Object? userName = null,
   }) {
     return _then(_value.copyWith(
-      userName: userName == freezed
+      userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -391,26 +393,25 @@ abstract class _$$_currentGamesEventCopyWith<$Res>
           $Res Function(_$_currentGamesEvent) then) =
       __$$_currentGamesEventCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String userName});
 }
 
 /// @nodoc
 class __$$_currentGamesEventCopyWithImpl<$Res>
-    extends _$CurrentGamesEventCopyWithImpl<$Res>
+    extends _$CurrentGamesEventCopyWithImpl<$Res, _$_currentGamesEvent>
     implements _$$_currentGamesEventCopyWith<$Res> {
   __$$_currentGamesEventCopyWithImpl(
       _$_currentGamesEvent _value, $Res Function(_$_currentGamesEvent) _then)
-      : super(_value, (v) => _then(v as _$_currentGamesEvent));
+      : super(_value, _then);
 
-  @override
-  _$_currentGamesEvent get _value => super._value as _$_currentGamesEvent;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userName = freezed,
+    Object? userName = null,
   }) {
     return _then(_$_currentGamesEvent(
-      userName: userName == freezed
+      userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
               as String,
@@ -436,15 +437,16 @@ class _$_currentGamesEvent implements _currentGamesEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_currentGamesEvent &&
-            const DeepCollectionEquality().equals(other.userName, userName));
+            (identical(other.userName, userName) ||
+                other.userName == userName));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(userName));
+  int get hashCode => Object.hash(runtimeType, userName);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_currentGamesEventCopyWith<_$_currentGamesEvent> get copyWith =>
       __$$_currentGamesEventCopyWithImpl<_$_currentGamesEvent>(
           this, _$identity);
@@ -460,7 +462,7 @@ class _$_currentGamesEvent implements _currentGamesEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String userName)? load,
+    TResult? Function(String userName)? load,
   }) {
     return load?.call(userName);
   }
@@ -488,7 +490,7 @@ class _$_currentGamesEvent implements _currentGamesEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_currentGamesEvent value)? load,
+    TResult? Function(_currentGamesEvent value)? load,
   }) {
     return load?.call(this);
   }
@@ -511,7 +513,7 @@ abstract class _currentGamesEvent implements CurrentGamesEvent {
       _$_currentGamesEvent;
 
   @override
-  String get userName => throw _privateConstructorUsedError;
+  String get userName;
   @override
   @JsonKey(ignore: true)
   _$$_currentGamesEventCopyWith<_$_currentGamesEvent> get copyWith =>

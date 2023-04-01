@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'create_game_bloc.dart';
 
@@ -25,9 +25,9 @@ mixin _$CreateGameState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? nothingSubmitted,
-    TResult Function(String? name, String? song)? nameSubmitted,
+    TResult? Function()? initial,
+    TResult? Function()? nothingSubmitted,
+    TResult? Function(String? name, String? song)? nameSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,9 +47,9 @@ mixin _$CreateGameState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_NothingSubmited value)? nothingSubmitted,
-    TResult Function(_NameSubmitted value)? nameSubmitted,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_NothingSubmited value)? nothingSubmitted,
+    TResult? Function(_NameSubmitted value)? nameSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,17 +66,18 @@ mixin _$CreateGameState {
 abstract class $CreateGameStateCopyWith<$Res> {
   factory $CreateGameStateCopyWith(
           CreateGameState value, $Res Function(CreateGameState) then) =
-      _$CreateGameStateCopyWithImpl<$Res>;
+      _$CreateGameStateCopyWithImpl<$Res, CreateGameState>;
 }
 
 /// @nodoc
-class _$CreateGameStateCopyWithImpl<$Res>
+class _$CreateGameStateCopyWithImpl<$Res, $Val extends CreateGameState>
     implements $CreateGameStateCopyWith<$Res> {
   _$CreateGameStateCopyWithImpl(this._value, this._then);
 
-  final CreateGameState _value;
   // ignore: unused_field
-  final $Res Function(CreateGameState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -87,13 +88,11 @@ abstract class _$$_InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$CreateGameStateCopyWithImpl<$Res>
+class __$$_InitialCopyWithImpl<$Res>
+    extends _$CreateGameStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -128,9 +127,9 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? nothingSubmitted,
-    TResult Function(String? name, String? song)? nameSubmitted,
+    TResult? Function()? initial,
+    TResult? Function()? nothingSubmitted,
+    TResult? Function(String? name, String? song)? nameSubmitted,
   }) {
     return initial?.call();
   }
@@ -162,9 +161,9 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_NothingSubmited value)? nothingSubmitted,
-    TResult Function(_NameSubmitted value)? nameSubmitted,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_NothingSubmited value)? nothingSubmitted,
+    TResult? Function(_NameSubmitted value)? nameSubmitted,
   }) {
     return initial?.call(this);
   }
@@ -197,14 +196,11 @@ abstract class _$$_NothingSubmitedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_NothingSubmitedCopyWithImpl<$Res>
-    extends _$CreateGameStateCopyWithImpl<$Res>
+    extends _$CreateGameStateCopyWithImpl<$Res, _$_NothingSubmited>
     implements _$$_NothingSubmitedCopyWith<$Res> {
   __$$_NothingSubmitedCopyWithImpl(
       _$_NothingSubmited _value, $Res Function(_$_NothingSubmited) _then)
-      : super(_value, (v) => _then(v as _$_NothingSubmited));
-
-  @override
-  _$_NothingSubmited get _value => super._value as _$_NothingSubmited;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -239,9 +235,9 @@ class _$_NothingSubmited implements _NothingSubmited {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? nothingSubmitted,
-    TResult Function(String? name, String? song)? nameSubmitted,
+    TResult? Function()? initial,
+    TResult? Function()? nothingSubmitted,
+    TResult? Function(String? name, String? song)? nameSubmitted,
   }) {
     return nothingSubmitted?.call();
   }
@@ -273,9 +269,9 @@ class _$_NothingSubmited implements _NothingSubmited {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_NothingSubmited value)? nothingSubmitted,
-    TResult Function(_NameSubmitted value)? nameSubmitted,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_NothingSubmited value)? nothingSubmitted,
+    TResult? Function(_NameSubmitted value)? nameSubmitted,
   }) {
     return nothingSubmitted?.call(this);
   }
@@ -304,31 +300,30 @@ abstract class _$$_NameSubmittedCopyWith<$Res> {
   factory _$$_NameSubmittedCopyWith(
           _$_NameSubmitted value, $Res Function(_$_NameSubmitted) then) =
       __$$_NameSubmittedCopyWithImpl<$Res>;
+  @useResult
   $Res call({String? name, String? song});
 }
 
 /// @nodoc
 class __$$_NameSubmittedCopyWithImpl<$Res>
-    extends _$CreateGameStateCopyWithImpl<$Res>
+    extends _$CreateGameStateCopyWithImpl<$Res, _$_NameSubmitted>
     implements _$$_NameSubmittedCopyWith<$Res> {
   __$$_NameSubmittedCopyWithImpl(
       _$_NameSubmitted _value, $Res Function(_$_NameSubmitted) _then)
-      : super(_value, (v) => _then(v as _$_NameSubmitted));
+      : super(_value, _then);
 
-  @override
-  _$_NameSubmitted get _value => super._value as _$_NameSubmitted;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? name = freezed,
     Object? song = freezed,
   }) {
     return _then(_$_NameSubmitted(
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      song: song == freezed
+      song: freezed == song
           ? _value.song
           : song // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -356,18 +351,16 @@ class _$_NameSubmitted implements _NameSubmitted {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_NameSubmitted &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.song, song));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.song, song) || other.song == song));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(song));
+  int get hashCode => Object.hash(runtimeType, name, song);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_NameSubmittedCopyWith<_$_NameSubmitted> get copyWith =>
       __$$_NameSubmittedCopyWithImpl<_$_NameSubmitted>(this, _$identity);
 
@@ -384,9 +377,9 @@ class _$_NameSubmitted implements _NameSubmitted {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? nothingSubmitted,
-    TResult Function(String? name, String? song)? nameSubmitted,
+    TResult? Function()? initial,
+    TResult? Function()? nothingSubmitted,
+    TResult? Function(String? name, String? song)? nameSubmitted,
   }) {
     return nameSubmitted?.call(name, song);
   }
@@ -418,9 +411,9 @@ class _$_NameSubmitted implements _NameSubmitted {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_NothingSubmited value)? nothingSubmitted,
-    TResult Function(_NameSubmitted value)? nameSubmitted,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_NothingSubmited value)? nothingSubmitted,
+    TResult? Function(_NameSubmitted value)? nameSubmitted,
   }) {
     return nameSubmitted?.call(this);
   }
@@ -444,8 +437,8 @@ abstract class _NameSubmitted implements CreateGameState {
   const factory _NameSubmitted({final String? name, final String? song}) =
       _$_NameSubmitted;
 
-  String? get name => throw _privateConstructorUsedError;
-  String? get song => throw _privateConstructorUsedError;
+  String? get name;
+  String? get song;
   @JsonKey(ignore: true)
   _$$_NameSubmittedCopyWith<_$_NameSubmitted> get copyWith =>
       throw _privateConstructorUsedError;
@@ -453,6 +446,7 @@ abstract class _NameSubmitted implements CreateGameState {
 
 /// @nodoc
 mixin _$CreateGameEvent {
+  String? get song => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? name, String? song) createGameName,
@@ -461,8 +455,8 @@ mixin _$CreateGameEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? name, String? song)? createGameName,
-    TResult Function(String song)? chooseSong,
+    TResult? Function(String? name, String? song)? createGameName,
+    TResult? Function(String song)? chooseSong,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -480,8 +474,8 @@ mixin _$CreateGameEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_createGameEvent value)? createGameName,
-    TResult Function(_chooseSongEvent value)? chooseSong,
+    TResult? Function(_createGameEvent value)? createGameName,
+    TResult? Function(_chooseSongEvent value)? chooseSong,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -491,55 +485,76 @@ mixin _$CreateGameEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $CreateGameEventCopyWith<CreateGameEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CreateGameEventCopyWith<$Res> {
   factory $CreateGameEventCopyWith(
           CreateGameEvent value, $Res Function(CreateGameEvent) then) =
-      _$CreateGameEventCopyWithImpl<$Res>;
+      _$CreateGameEventCopyWithImpl<$Res, CreateGameEvent>;
+  @useResult
+  $Res call({String song});
 }
 
 /// @nodoc
-class _$CreateGameEventCopyWithImpl<$Res>
+class _$CreateGameEventCopyWithImpl<$Res, $Val extends CreateGameEvent>
     implements $CreateGameEventCopyWith<$Res> {
   _$CreateGameEventCopyWithImpl(this._value, this._then);
 
-  final CreateGameEvent _value;
   // ignore: unused_field
-  final $Res Function(CreateGameEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? song = null,
+  }) {
+    return _then(_value.copyWith(
+      song: null == song
+          ? _value.song!
+          : song // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_createGameEventCopyWith<$Res> {
+abstract class _$$_createGameEventCopyWith<$Res>
+    implements $CreateGameEventCopyWith<$Res> {
   factory _$$_createGameEventCopyWith(
           _$_createGameEvent value, $Res Function(_$_createGameEvent) then) =
       __$$_createGameEventCopyWithImpl<$Res>;
+  @override
+  @useResult
   $Res call({String? name, String? song});
 }
 
 /// @nodoc
 class __$$_createGameEventCopyWithImpl<$Res>
-    extends _$CreateGameEventCopyWithImpl<$Res>
+    extends _$CreateGameEventCopyWithImpl<$Res, _$_createGameEvent>
     implements _$$_createGameEventCopyWith<$Res> {
   __$$_createGameEventCopyWithImpl(
       _$_createGameEvent _value, $Res Function(_$_createGameEvent) _then)
-      : super(_value, (v) => _then(v as _$_createGameEvent));
+      : super(_value, _then);
 
-  @override
-  _$_createGameEvent get _value => super._value as _$_createGameEvent;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? name = freezed,
     Object? song = freezed,
   }) {
     return _then(_$_createGameEvent(
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      song: song == freezed
+      song: freezed == song
           ? _value.song
           : song // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -567,18 +582,16 @@ class _$_createGameEvent implements _createGameEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_createGameEvent &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.song, song));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.song, song) || other.song == song));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(song));
+  int get hashCode => Object.hash(runtimeType, name, song);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_createGameEventCopyWith<_$_createGameEvent> get copyWith =>
       __$$_createGameEventCopyWithImpl<_$_createGameEvent>(this, _$identity);
 
@@ -594,8 +607,8 @@ class _$_createGameEvent implements _createGameEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? name, String? song)? createGameName,
-    TResult Function(String song)? chooseSong,
+    TResult? Function(String? name, String? song)? createGameName,
+    TResult? Function(String song)? chooseSong,
   }) {
     return createGameName?.call(name, song);
   }
@@ -625,8 +638,8 @@ class _$_createGameEvent implements _createGameEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_createGameEvent value)? createGameName,
-    TResult Function(_chooseSongEvent value)? chooseSong,
+    TResult? Function(_createGameEvent value)? createGameName,
+    TResult? Function(_chooseSongEvent value)? chooseSong,
   }) {
     return createGameName?.call(this);
   }
@@ -649,38 +662,41 @@ abstract class _createGameEvent implements CreateGameEvent {
   const factory _createGameEvent({final String? name, final String? song}) =
       _$_createGameEvent;
 
-  String? get name => throw _privateConstructorUsedError;
-  String? get song => throw _privateConstructorUsedError;
+  String? get name;
+  @override
+  String? get song;
+  @override
   @JsonKey(ignore: true)
   _$$_createGameEventCopyWith<_$_createGameEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_chooseSongEventCopyWith<$Res> {
+abstract class _$$_chooseSongEventCopyWith<$Res>
+    implements $CreateGameEventCopyWith<$Res> {
   factory _$$_chooseSongEventCopyWith(
           _$_chooseSongEvent value, $Res Function(_$_chooseSongEvent) then) =
       __$$_chooseSongEventCopyWithImpl<$Res>;
+  @override
+  @useResult
   $Res call({String song});
 }
 
 /// @nodoc
 class __$$_chooseSongEventCopyWithImpl<$Res>
-    extends _$CreateGameEventCopyWithImpl<$Res>
+    extends _$CreateGameEventCopyWithImpl<$Res, _$_chooseSongEvent>
     implements _$$_chooseSongEventCopyWith<$Res> {
   __$$_chooseSongEventCopyWithImpl(
       _$_chooseSongEvent _value, $Res Function(_$_chooseSongEvent) _then)
-      : super(_value, (v) => _then(v as _$_chooseSongEvent));
+      : super(_value, _then);
 
-  @override
-  _$_chooseSongEvent get _value => super._value as _$_chooseSongEvent;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? song = freezed,
+    Object? song = null,
   }) {
     return _then(_$_chooseSongEvent(
-      song: song == freezed
+      song: null == song
           ? _value.song
           : song // ignore: cast_nullable_to_non_nullable
               as String,
@@ -706,15 +722,15 @@ class _$_chooseSongEvent implements _chooseSongEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_chooseSongEvent &&
-            const DeepCollectionEquality().equals(other.song, song));
+            (identical(other.song, song) || other.song == song));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(song));
+  int get hashCode => Object.hash(runtimeType, song);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_chooseSongEventCopyWith<_$_chooseSongEvent> get copyWith =>
       __$$_chooseSongEventCopyWithImpl<_$_chooseSongEvent>(this, _$identity);
 
@@ -730,8 +746,8 @@ class _$_chooseSongEvent implements _chooseSongEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? name, String? song)? createGameName,
-    TResult Function(String song)? chooseSong,
+    TResult? Function(String? name, String? song)? createGameName,
+    TResult? Function(String song)? chooseSong,
   }) {
     return chooseSong?.call(song);
   }
@@ -761,8 +777,8 @@ class _$_chooseSongEvent implements _chooseSongEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_createGameEvent value)? createGameName,
-    TResult Function(_chooseSongEvent value)? chooseSong,
+    TResult? Function(_createGameEvent value)? createGameName,
+    TResult? Function(_chooseSongEvent value)? chooseSong,
   }) {
     return chooseSong?.call(this);
   }
@@ -785,7 +801,9 @@ abstract class _chooseSongEvent implements CreateGameEvent {
   const factory _chooseSongEvent({required final String song}) =
       _$_chooseSongEvent;
 
-  String get song => throw _privateConstructorUsedError;
+  @override
+  String get song;
+  @override
   @JsonKey(ignore: true)
   _$$_chooseSongEventCopyWith<_$_chooseSongEvent> get copyWith =>
       throw _privateConstructorUsedError;
