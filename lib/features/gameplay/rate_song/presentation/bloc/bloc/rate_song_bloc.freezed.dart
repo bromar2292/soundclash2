@@ -569,18 +569,21 @@ mixin _$RateSongBlocState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(Game? game, String? song) playersLoaded,
+    required TResult Function(Game? game, String? song) songRated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(Game? game, String? song)? playersLoaded,
+    TResult? Function(Game? game, String? song)? songRated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Game? game, String? song)? playersLoaded,
+    TResult Function(Game? game, String? song)? songRated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -588,18 +591,21 @@ mixin _$RateSongBlocState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_playersLoaded value) playersLoaded,
+    required TResult Function(_songRated value) songRated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_playersLoaded value)? playersLoaded,
+    TResult? Function(_songRated value)? songRated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_playersLoaded value)? playersLoaded,
+    TResult Function(_songRated value)? songRated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -662,6 +668,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(Game? game, String? song) playersLoaded,
+    required TResult Function(Game? game, String? song) songRated,
   }) {
     return initial();
   }
@@ -671,6 +678,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(Game? game, String? song)? playersLoaded,
+    TResult? Function(Game? game, String? song)? songRated,
   }) {
     return initial?.call();
   }
@@ -680,6 +688,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Game? game, String? song)? playersLoaded,
+    TResult Function(Game? game, String? song)? songRated,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -693,6 +702,7 @@ class _$_Initial implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_playersLoaded value) playersLoaded,
+    required TResult Function(_songRated value) songRated,
   }) {
     return initial(this);
   }
@@ -702,6 +712,7 @@ class _$_Initial implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_playersLoaded value)? playersLoaded,
+    TResult? Function(_songRated value)? songRated,
   }) {
     return initial?.call(this);
   }
@@ -711,6 +722,7 @@ class _$_Initial implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_playersLoaded value)? playersLoaded,
+    TResult Function(_songRated value)? songRated,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -798,6 +810,7 @@ class _$_playersLoaded implements _playersLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(Game? game, String? song) playersLoaded,
+    required TResult Function(Game? game, String? song) songRated,
   }) {
     return playersLoaded(game, song);
   }
@@ -807,6 +820,7 @@ class _$_playersLoaded implements _playersLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(Game? game, String? song)? playersLoaded,
+    TResult? Function(Game? game, String? song)? songRated,
   }) {
     return playersLoaded?.call(game, song);
   }
@@ -816,6 +830,7 @@ class _$_playersLoaded implements _playersLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Game? game, String? song)? playersLoaded,
+    TResult Function(Game? game, String? song)? songRated,
     required TResult orElse(),
   }) {
     if (playersLoaded != null) {
@@ -829,6 +844,7 @@ class _$_playersLoaded implements _playersLoaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_playersLoaded value) playersLoaded,
+    required TResult Function(_songRated value) songRated,
   }) {
     return playersLoaded(this);
   }
@@ -838,6 +854,7 @@ class _$_playersLoaded implements _playersLoaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_playersLoaded value)? playersLoaded,
+    TResult? Function(_songRated value)? songRated,
   }) {
     return playersLoaded?.call(this);
   }
@@ -847,6 +864,7 @@ class _$_playersLoaded implements _playersLoaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_playersLoaded value)? playersLoaded,
+    TResult Function(_songRated value)? songRated,
     required TResult orElse(),
   }) {
     if (playersLoaded != null) {
@@ -864,5 +882,154 @@ abstract class _playersLoaded implements RateSongBlocState {
   String? get song;
   @JsonKey(ignore: true)
   _$$_playersLoadedCopyWith<_$_playersLoaded> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_songRatedCopyWith<$Res> {
+  factory _$$_songRatedCopyWith(
+          _$_songRated value, $Res Function(_$_songRated) then) =
+      __$$_songRatedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Game? game, String? song});
+}
+
+/// @nodoc
+class __$$_songRatedCopyWithImpl<$Res>
+    extends _$RateSongBlocStateCopyWithImpl<$Res, _$_songRated>
+    implements _$$_songRatedCopyWith<$Res> {
+  __$$_songRatedCopyWithImpl(
+      _$_songRated _value, $Res Function(_$_songRated) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? game = freezed,
+    Object? song = freezed,
+  }) {
+    return _then(_$_songRated(
+      game: freezed == game
+          ? _value.game
+          : game // ignore: cast_nullable_to_non_nullable
+              as Game?,
+      song: freezed == song
+          ? _value.song
+          : song // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_songRated implements _songRated {
+  const _$_songRated({this.game, this.song});
+
+  @override
+  final Game? game;
+  @override
+  final String? song;
+
+  @override
+  String toString() {
+    return 'RateSongBlocState.songRated(game: $game, song: $song)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_songRated &&
+            (identical(other.game, game) || other.game == game) &&
+            (identical(other.song, song) || other.song == song));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, game, song);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_songRatedCopyWith<_$_songRated> get copyWith =>
+      __$$_songRatedCopyWithImpl<_$_songRated>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(Game? game, String? song) playersLoaded,
+    required TResult Function(Game? game, String? song) songRated,
+  }) {
+    return songRated(game, song);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(Game? game, String? song)? playersLoaded,
+    TResult? Function(Game? game, String? song)? songRated,
+  }) {
+    return songRated?.call(game, song);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(Game? game, String? song)? playersLoaded,
+    TResult Function(Game? game, String? song)? songRated,
+    required TResult orElse(),
+  }) {
+    if (songRated != null) {
+      return songRated(game, song);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_playersLoaded value) playersLoaded,
+    required TResult Function(_songRated value) songRated,
+  }) {
+    return songRated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_playersLoaded value)? playersLoaded,
+    TResult? Function(_songRated value)? songRated,
+  }) {
+    return songRated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_playersLoaded value)? playersLoaded,
+    TResult Function(_songRated value)? songRated,
+    required TResult orElse(),
+  }) {
+    if (songRated != null) {
+      return songRated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _songRated implements RateSongBlocState {
+  const factory _songRated({final Game? game, final String? song}) =
+      _$_songRated;
+
+  Game? get game;
+  String? get song;
+  @JsonKey(ignore: true)
+  _$$_songRatedCopyWith<_$_songRated> get copyWith =>
       throw _privateConstructorUsedError;
 }

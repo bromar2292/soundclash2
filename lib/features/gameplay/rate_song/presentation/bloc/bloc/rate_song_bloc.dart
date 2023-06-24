@@ -72,6 +72,6 @@ class RateSongBloc extends Bloc<RateSongBlocEvent, RateSongBlocState> {
     // update players
     //  push players back up
 
-    emit(RateSongBlocState.playersLoaded(game: game));
+    emit(RateSongBlocState.songRated(game: game));
   }
 }
