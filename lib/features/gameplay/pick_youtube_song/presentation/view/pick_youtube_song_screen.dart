@@ -42,7 +42,7 @@ class PickYoutubeSong extends StatelessWidget {
                   BoxShadow(
                       color: Colors.black.withOpacity(0.3),
                       blurRadius: 15,
-                      spreadRadius: 5,)
+                      spreadRadius: 5,),
                 ],
               ),
               child: Column(
@@ -73,7 +73,7 @@ class PickYoutubeSong extends StatelessWidget {
                             ? SoundButton(
                                 context: context,
                                 function: () {
-                                  String? newUrl =
+                                  final String? newUrl =
                                       YoutubePlayer.convertUrlToId(song);
                                   print(newUrl);
                                   joinGame(
@@ -88,13 +88,13 @@ class PickYoutubeSong extends StatelessWidget {
                             : SoundButton(
                                 context: context,
                                 function: () {
-                                  String? newUrl =
+                                  final String? newUrl =
                                       YoutubePlayer.convertUrlToId(song);
                                   print(newUrl);
                                   joinGame(
                                       id: arguments.game.objectId,
                                       userName: arguments.userName,
-                                      song: newUrl as String,);
+                                      song: newUrl!,);
 
                                   print('step 4');
                                 },
@@ -116,7 +116,7 @@ class PickYoutubeSong extends StatelessWidget {
                 ),
               ),
             );
-          },)
+          },),
         ],
       ),
     );

@@ -1,7 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 import 'package:soundclash2/authentication/presentation/view/login_screen.dart';
 import 'package:soundclash2/authentication/presentation/view/register_screen.dart';
 import 'package:soundclash2/features/gameplay/pick_youtube_song/domain/models/pick_youtube_arguments.dart';
@@ -21,7 +21,7 @@ import 'package:soundclash2/profile/presentation/view/profile_screen.dart';
 class MyApp extends StatelessWidget {
   // put in cubit
   Future<bool> hasUserLogged() async {
-    ParseUser? currentUser = await ParseUser.currentUser() as ParseUser?;
+    final ParseUser? currentUser = await ParseUser.currentUser() as ParseUser?;
     if (currentUser == null) {
       return false;
     }

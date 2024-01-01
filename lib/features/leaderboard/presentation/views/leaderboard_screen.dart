@@ -11,13 +11,35 @@ class Leaderboard extends StatelessWidget {
 
   const Leaderboard({required this.arguments});
 
+  bool allPlayersVoted(List<Player> users) {
+    for (final Player user in users) {
+      // Expecting all other users (except the song owner) to have voted
+      if (user.score.length != users.length - 1) {
+        return false; // Not all players have voted for this user's song
+      }
+
+    }
+    return true; // All users have voted for every song
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<Player> users = arguments.game.players;
+
+    if (!allPlayersVoted(users)) {
+      return Scaffold(
+        appBar: AppBar(title: const Text('Leaderboard')),
+        body: const Center(child: Text("Please wait for other players to vote")),
+      );
+    }
+
+
+
+
     // Create a map to store the total score and number of scores for each user
     final Map<String, Map<String, dynamic>> userScores = {};
-    for (Player user in users) {
-      for (RateSong score in user.score) {
+    for (final Player user in users) {
+      for (final RateSong score in user.score) {
         if (!userScores.containsKey(score.userName)) {
           userScores[score.userName] = {'total': 0, 'count': 0};
         }
@@ -37,6 +59,8 @@ class Leaderboard extends StatelessWidget {
     final List<MapEntry<String, double>> sortedUsers =
         averages.entries.toList();
     sortedUsers.sort((a, b) => b.value.compareTo(a.value));
+
+
 
     // Build the leaderboard widget
     return Scaffold(

@@ -17,8 +17,8 @@ class JoinGameBloc extends Bloc<JoinGameEvent, JoinGameState> {
     _joinGameEvent event,
     Emitter<JoinGameState> emit,
   ) async {
-    List<Game> gameList = await getGameList();
-    List<Game> modifiedGame = [];
+    final List<Game> gameList = await getGameList();
+    final List<Game> modifiedGame = [];
 
     for (final game in gameList) {
       bool found = false;

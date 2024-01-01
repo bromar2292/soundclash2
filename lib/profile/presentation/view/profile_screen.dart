@@ -10,9 +10,9 @@ class ProfilePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Profile page'),
       ),
-      body: Center(
+      body: const Center(
         child: Column(
-          children: const [
+          children: [
             Text('user name'),
             Text('current level'),
             Text('favorite genres'),

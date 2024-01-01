@@ -31,7 +31,7 @@ class SubmitButton extends StatelessWidget {
                 50,
               ),
               spreadRadius: 5,
-            )
+            ),
           ],
         ),
         child: FloatingActionButton(

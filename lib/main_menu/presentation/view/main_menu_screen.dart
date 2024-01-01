@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 import 'package:soundclash2/authentication/presentation/view/login_screen.dart';
 import 'package:soundclash2/authentication/presentation/view/register_screen.dart';
 import 'package:soundclash2/features/manage_games/create_game/presentation/view/create_game_screen.dart';

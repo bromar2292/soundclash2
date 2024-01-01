@@ -17,3 +17,14 @@ samples, guidance on mobile development, and a full API reference.
 # soundclash2
 # soundclash2
 # soundclash2
+
+
+
+/// omar
+current issue
+when updating the game, seem to be updating the wrong songs?
+also seem to be able to join or add your self to a game twice, so need to fix that
+
+so make sure score goes to the right song
+make sure you cant vote for your own song,
+make sure you cant join the same game twice

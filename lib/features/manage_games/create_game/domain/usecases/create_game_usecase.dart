@@ -1,4 +1,5 @@
-import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
+
+import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 Future createGameUsecase(
     {required String gameName,
@@ -13,7 +14,7 @@ Future createGameUsecase(
         'song': song,
         'score': [
           {'userName': userName, 'score': 0, 'position': ''},
-        ]
+        ],
       },
     ])
     ..set('count', 4);

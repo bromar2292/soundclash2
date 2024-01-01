@@ -16,7 +16,7 @@ class CreateGameBloc extends Bloc<CreateGameEvent, CreateGameState> {
     _createGameEvent event,
     Emitter<CreateGameState> emit,
   ) {
-    String? newUrl = YoutubePlayer.convertUrlToId(event.song.toString());
+    final String? newUrl = YoutubePlayer.convertUrlToId(event.song.toString());
 
     emit(
       CreateGameState.nameSubmitted(name: event.name, song: newUrl ?? 'error'),

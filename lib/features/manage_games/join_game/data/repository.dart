@@ -8,7 +8,7 @@ class JoinGameRepository {
   static Future getGamesList() async {
     final Uri apiUrl = Uri.parse(_baseUrl);
 
-    Response response = await get(
+    final Response response = await get(
       apiUrl,
       headers: {
         'X-Parse-Application-Id': kParseApplicationId,

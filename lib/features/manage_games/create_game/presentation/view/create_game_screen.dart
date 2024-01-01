@@ -85,9 +85,9 @@ class CreateGameScreen extends StatelessWidget {
                             );
                           } else {
                             await createGameUsecase(
-                                gameName: name as String,
+                                gameName: name!,
                                 userName: userName,
-                                song: song as String,);
+                                song: song!,);
                           }
                           print(name);
                           print(song);

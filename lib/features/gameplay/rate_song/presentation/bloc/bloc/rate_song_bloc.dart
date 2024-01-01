@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
+
 import 'package:soundclash2/features/gameplay/models/game.dart';
 import 'package:soundclash2/features/gameplay/models/rate_song.dart';
 import 'package:soundclash2/features/manage_games/uscases/get_game_list_usecase.dart';
@@ -21,7 +22,7 @@ class RateSongBloc extends Bloc<RateSongBlocEvent, RateSongBlocState> {
     Emitter<RateSongBlocState> emit,
   ) async {
     Game? game;
-    List<Game> gameList = await getGameList();
+    final List<Game> gameList = await getGameList();
     for (final element in gameList) {
       if (element.objectId == event.objectId) {
         game = element;
@@ -42,7 +43,7 @@ class RateSongBloc extends Bloc<RateSongBlocEvent, RateSongBlocState> {
     Emitter<RateSongBlocState> emit,
   ) async {
     Game? game;
-    List<Game> gameList = await getGameList();
+    final List<Game> gameList = await getGameList();
 
     for (final element in gameList) {
       if (element.objectId == event.objectId) {

@@ -18,8 +18,8 @@ class CurrentGamesBloc extends Bloc<CurrentGamesEvent, CurrentGamesState> {
     _currentGamesEvent event,
     Emitter<CurrentGamesState> emit,
   ) async {
-    List<Game> filteredGameList = [];
-    List<Game> gameList = await getGameList();
+    final List<Game> filteredGameList = [];
+    final List<Game> gameList = await getGameList();
 
     for (final game in gameList) {
       bool found = false;
