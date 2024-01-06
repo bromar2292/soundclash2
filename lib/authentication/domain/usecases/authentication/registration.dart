@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
-import 'package:soundclash2/widgets/message.dart';
+import 'package:soundclash2/ui/widgets/message.dart';
 
 Future<void> doUserRegistration({
   required BuildContext context,
