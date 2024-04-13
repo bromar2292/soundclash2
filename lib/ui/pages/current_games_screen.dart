@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soundclash2/modals/pick_youtube_arguments.dart';
-import 'package:soundclash2/ui/pages/rate_song_screen.dart';
-import 'package:soundclash2/bloc/current_games/current_games_bloc.dart';
+import 'package:soundclash2/ui/pages/play_and_rate_song_screen.dart';
+
+import '../../bloc/current_games/current_games_cubit.dart';
+import '../../bloc/current_games/current_games_state.dart';
 
 class CurrentGamesScreen extends StatelessWidget {
   final String userName;
@@ -19,60 +21,48 @@ class CurrentGamesScreen extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-            child: BlocBuilder<CurrentGamesBloc, CurrentGamesState>(
+            child: BlocBuilder<CurrentGamesCubit, CurrentGamesState>(
               builder: (context, state) {
-                return state.when(
-                  initial: () {
-                    context
-                        .read<CurrentGamesBloc>()
-                        .add(CurrentGamesEvent.load(userName: userName));
-                    return const SizedBox(child: Text('hello'));
-                  },
-                  loaded: (gameList) {
-                    return ListView.builder(
-                      padding: const EdgeInsets.all(8),
-                      itemCount: gameList.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        final game = gameList[index];
-
-                        return Center(
-                          child: ElevatedButton(
-                            child: Text(game.gameName),
-                            onPressed: () {
-                              Navigator.pushNamed(
-                                context,
-                                RateSongScreen.id,
-                                arguments: PickYoutubeArguments(userName, game),
-                              );
-                            },
-                          ),
-                        );
-                      },
-                    );
-                  },
-                );
+                if (state is CurrentGamesInitial) {
+                  context.read<CurrentGamesCubit>().getGames(userName);
+                  return const Center(child: CircularProgressIndicator());
+                } else if (state is CurrentGamesLoaded) {
+                  return ListView.builder(
+                    padding: const EdgeInsets.all(8),
+                    itemCount: state.gameList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final game = state.gameList[index];
+                      return Center(
+                        child: ElevatedButton(
+                          child: Text(game.gameName),
+                          onPressed: () {
+                            Navigator.pushNamed(
+                              context,
+                              PlayAndRateSongScreen.id,
+                              arguments: PickYoutubeArguments(userName, game),
+                            );
+                          },
+                        ),
+                      );
+                    },
+                  );
+                } else if (state is CurrentGamesError) {
+                  // Handle error state
+                  return Center(child: Text(state.message));
+                } else {
+                  // Handle unknown state
+                  return const Center(child: Text('Unknown state'));
+                }
               },
             ),
           ),
           Center(
             child: ElevatedButton(
-              child: const Text('print names'),
-              onPressed: () {},
+              child: const Text('refresh list'),
+              onPressed: () {
+                context.read<CurrentGamesCubit>().getGames(userName);
+              },
             ),
-          ),
-          BlocBuilder<CurrentGamesBloc, CurrentGamesState>(
-            builder: (context, state) {
-              return Center(
-                child: ElevatedButton(
-                  child: const Text('refresh list'),
-                  onPressed: () async {
-                    context
-                        .read<CurrentGamesBloc>()
-                        .add(CurrentGamesEvent.load(userName: userName));
-                  },
-                ),
-              );
-            },
           ),
         ],
       ),

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-
-import 'package:soundclash2/modals/player.dart';
-
-import 'package:soundclash2/modals/rate_song.dart';
-
 import 'package:soundclash2/modals/pick_youtube_arguments.dart';
+import 'package:soundclash2/modals/player.dart';
+import 'package:soundclash2/modals/rate_song.dart';
 
 class Leaderboard extends StatelessWidget {
   final PickYoutubeArguments arguments;
@@ -14,10 +11,9 @@ class Leaderboard extends StatelessWidget {
   bool allPlayersVoted(List<Player> users) {
     for (final Player user in users) {
       // Expecting all other users (except the song owner) to have voted
-      if (user.score.length != users.length - 1) {
+      if (user.ratingsGiven.length != users.length - 1) {
         return false; // Not all players have voted for this user's song
       }
-
     }
     return true; // All users have voted for every song
   }
@@ -29,17 +25,15 @@ class Leaderboard extends StatelessWidget {
     if (!allPlayersVoted(users)) {
       return Scaffold(
         appBar: AppBar(title: const Text('Leaderboard')),
-        body: const Center(child: Text("Please wait for other players to vote")),
+        body:
+            const Center(child: Text("Please wait for other players to vote")),
       );
     }
-
-
-
 
     // Create a map to store the total score and number of scores for each user
     final Map<String, Map<String, dynamic>> userScores = {};
     for (final Player user in users) {
-      for (final RateSong score in user.score) {
+      for (final RateSong score in user.ratingsGiven) {
         if (!userScores.containsKey(score.userName)) {
           userScores[score.userName] = {'total': 0, 'count': 0};
         }
@@ -59,8 +53,6 @@ class Leaderboard extends StatelessWidget {
     final List<MapEntry<String, double>> sortedUsers =
         averages.entries.toList();
     sortedUsers.sort((a, b) => b.value.compareTo(a.value));
-
-
 
     // Build the leaderboard widget
     return Scaffold(

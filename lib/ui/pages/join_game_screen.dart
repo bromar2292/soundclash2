@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soundclash2/modals/pick_youtube_arguments.dart';
 import 'package:soundclash2/ui/pages/pick_youtube_song_screen.dart';
-import 'package:soundclash2/bloc/join_game_bloc/join_game_bloc.dart';
+
+import '../../bloc/join_game_bloc/join_game_cubit.dart';
+import '../../bloc/join_game_bloc/join_game_state.dart';
 
 class JoinGameScreen extends StatefulWidget {
   final String userName;
@@ -16,6 +18,12 @@ class JoinGameScreen extends StatefulWidget {
 
 class _JoinGameScreenState extends State<JoinGameScreen> {
   @override
+  void initState() {
+    super.initState();
+    context.read<JoinGameCubit>().loadGames(widget.userName);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -24,41 +32,37 @@ class _JoinGameScreenState extends State<JoinGameScreen> {
       body: Column(
         children: [
           Expanded(
-            child: BlocBuilder<JoinGameBloc, JoinGameState>(
-              builder: (context, state) {
-                return state.when(
-                  initial: () {
-                    context
-                        .read<JoinGameBloc>()
-                        .add(JoinGameEvent.load(userName: widget.userName));
-                    return const SizedBox(child: Text('hello'));
-                  },
-                  loaded: (gameList) {
-                    return ListView.builder(
-                      padding: const EdgeInsets.all(8),
-                      itemCount: gameList.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        final game = gameList[index];
-
-                        return Center(
-                          child: ElevatedButton(
-                            child: Text(game.gameName),
-                            onPressed: () {
-                              Navigator.pushNamed(
-                                context,
-                                PickYoutubeSong.id,
-                                arguments:
-                                    PickYoutubeArguments(widget.userName, game),
-                              );
-                            },
-                          ),
+            child: BlocConsumer<JoinGameCubit, JoinGameState>(
+                listener: (context, state) {
+              if (state is JoinGameError) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(state.errorMessage)),
+                );
+              }
+            }, builder: (context, state) {
+              if (state is JoinGameLoading) {
+                return const CircularProgressIndicator();
+              } else if (state is JoinGameLoaded) {
+                return ListView.builder(
+                  itemCount: state.gameList.length,
+                  itemBuilder: (context, index) {
+                    final game = state.gameList[index];
+                    return ListTile(
+                      title: Text(game.gameName),
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          PickYoutubeSong.id,
+                          arguments:
+                              PickYoutubeArguments(widget.userName, game),
                         );
                       },
                     );
                   },
                 );
-              },
-            ),
+              }
+              return const SizedBox.shrink();
+            }),
           ),
           Center(
             child: ElevatedButton(
@@ -66,24 +70,19 @@ class _JoinGameScreenState extends State<JoinGameScreen> {
               onPressed: () {},
             ),
           ),
-          BlocBuilder<JoinGameBloc, JoinGameState>(
-            builder: (context, state) {
-              return Center(
-                child: ElevatedButton(
-                  child: const Text('refresh list'),
-                  onPressed: () async {
-                    try {
-                      context
-                          .read<JoinGameBloc>()
-                          .add(JoinGameEvent.load(userName: widget.userName));
-                      setState(() {});
-                    } catch (error) {
-                      print(error);
-                    }
-                  },
-                ),
-              );
-            },
+          Center(
+            child: ElevatedButton(
+              child: const Text('refresh list'),
+              onPressed: () async {
+                try {
+                  context.read<JoinGameCubit>().loadGames(widget.userName);
+
+                  setState(() {});
+                } catch (error) {
+                  print(error);
+                }
+              },
+            ),
           ),
         ],
       ),

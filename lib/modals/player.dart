@@ -3,21 +3,19 @@ import 'package:soundclash2/modals/rate_song.dart';
 class Player {
   final String user;
   final String song;
-  final int? position;
-  final List<RateSong> score;
+  final List<RateSong> ratingsGiven;
   Player({
     required this.user,
     required this.song,
-    required this.score,
-    this.position,
+    required this.ratingsGiven,
   });
 
   factory Player.fromJson(Map<String, dynamic> json) => Player(
         user: json["userName"] as String,
         song: json["song"] as String,
-        position: json["position"] != null ? json["position"] as int : 0,
-        score: List<RateSong>.from(
-          json["score"].map((x) => RateSong.FromJSON(x as Map<String, dynamic>))
+        ratingsGiven: List<RateSong>.from(
+          json["ratingsGiven"]
+                  .map((x) => RateSong.FromJSON(x as Map<String, dynamic>))
               as Iterable<dynamic>,
         ),
       );
@@ -25,7 +23,6 @@ class Player {
   Map<String, dynamic> toJson() => {
         "userName": user,
         "song": song,
-        "position": position,
-        "score": List<dynamic>.from(score.map((x) => x)),
+        "ratingsGiven": List<dynamic>.from(ratingsGiven.map((x) => x)),
       };
 }

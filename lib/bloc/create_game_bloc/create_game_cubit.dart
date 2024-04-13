@@ -1,21 +1,24 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soundclash2/services/game_service.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import 'create_game_state.dart';
-
 
 class CreateGameCubit extends Cubit<CreateGameState> {
   final GameService gameService;
 
   CreateGameCubit(this.gameService) : super(CreateGameInitial());
 
-  Future<void> createGame(String gameName, String userName, String song) async {
+  Future<void> createGame(
+      String gameName, String userName, String songUrl) async {
+    final String? songId = YoutubePlayer.convertUrlToId(songUrl);
+
     try {
       emit(CreateGameLoading());
-      await gameService.createGameUsecase(
+      await gameService.createNewGame(
         gameName: gameName,
         userName: userName,
-        song: song,
+        song: songId!,
       );
       emit(CreateGameSuccess());
     } catch (e) {
@@ -23,4 +26,3 @@ class CreateGameCubit extends Cubit<CreateGameState> {
     }
   }
 }
-

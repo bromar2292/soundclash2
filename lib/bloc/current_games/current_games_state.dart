@@ -1,9 +1,22 @@
-part of '../../../../bloc/current_games/current_games_bloc.dart';
 
-@freezed
-class CurrentGamesState with _$CurrentGamesState {
-  const factory CurrentGamesState.initial() = _Initial;
+import '../../modals/game_modal.dart';
 
-  const factory CurrentGamesState.loaded({required List<Game> gameList}) =
-      _loaded;
+abstract class CurrentGamesState {
+  const CurrentGamesState();
+}
+
+class CurrentGamesInitial extends CurrentGamesState {
+  const CurrentGamesInitial();
+}
+
+class CurrentGamesLoaded extends CurrentGamesState {
+  final List<Game> gameList;
+
+  const CurrentGamesLoaded({required this.gameList});
+}
+
+class CurrentGamesError extends CurrentGamesState {
+  final String message;
+
+  const CurrentGamesError(this.message);
 }

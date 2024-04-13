@@ -1,8 +1,21 @@
-part of 'join_game_bloc.dart';
+import '../../modals/game_modal.dart';
 
-@freezed
-class JoinGameState with _$JoinGameState {
-  const factory JoinGameState.initial() = _Initial;
+abstract class JoinGameState {}
 
-  const factory JoinGameState.loaded({required List<Game> gameList}) = _loaded;
+class JoinGameInitial extends JoinGameState {}
+
+class JoinGameLoading extends JoinGameState {}
+class JoinGameLoaded extends JoinGameState {
+  final List<Game> gameList; // Add a field to hold the list of games
+
+  JoinGameLoaded({required this.gameList});
+}
+class JoinGameSuccess extends JoinGameState {
+  // You can add additional data here if needed, for example, a message or the created game's details
+}
+
+class JoinGameError extends JoinGameState {
+  final String errorMessage;
+
+  JoinGameError({required this.errorMessage});
 }

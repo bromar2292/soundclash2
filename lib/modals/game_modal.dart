@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:soundclash2/modals/player.dart';
 
+import 'leaderboard_entry.dart';
+
 //List<Game> welcome9FromJson(String str) =>
 //   List<Game>.from(json.decode(str).map((x) => Game.FromJSON(x)));
 
@@ -17,6 +19,7 @@ class Game {
   int? count;
   DateTime createdAt;
   DateTime updatedAt;
+  List<LeaderboardEntry> leaderboard;
 
   Game({
     required this.objectId,
@@ -26,6 +29,7 @@ class Game {
     required this.count,
     required this.createdAt,
     required this.updatedAt,
+    required this.leaderboard,
   });
 
   factory Game.FromJSON(Map<String, dynamic> json) => Game(
@@ -37,8 +41,12 @@ class Game {
               as Iterable<dynamic>,
         ),
         count: json["count"] as int,
+
         createdAt: DateTime.parse(json["createdAt"] as String),
         updatedAt: DateTime.parse(json["updatedAt"] as String),
+        leaderboard: List<LeaderboardEntry>.from(json["leaderboard"].map((x) =>
+            LeaderboardEntry.fromJson(
+                x as Map<String, dynamic>))), // Add this line
       );
 
   Map<String, dynamic> toJson() => {
@@ -49,5 +57,7 @@ class Game {
         "count": count,
         "createdAt": createdAt.toIso8601String(),
         "updatedAt": updatedAt.toIso8601String(),
+        "leaderboard":
+            leaderboard.map((x) => x.toJson()).toList(), // Add this line
       };
 }

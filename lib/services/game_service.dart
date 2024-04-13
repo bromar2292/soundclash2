@@ -7,7 +7,7 @@ import 'package:soundclash2/constants.dart';
 class GameService {
   static const String _baseUrl = "https://parseapi.back4app.com/classes/Game";
 
-   Future fetchAllGames() async {
+  Future fetchAllGames() async {
     final Uri apiUrl = Uri.parse(_baseUrl);
 
     final Response response = await get(
@@ -31,32 +31,30 @@ class GameService {
       ..setAdd('players', {
         'userName': userName,
         'song': song,
-        'score': [
-          {'userName': userName, 'score': 0, 'position': ''},
-        ],
+        'ratingsGiven': [],
       });
     await todo.save();
   }
-  Future<void> createGameUsecase(
-      {required String gameName,
-        required String userName,
-        required String song,}) async {
+
+  Future<void> createNewGame({
+    required String gameName,
+    required String userName,
+    required String song,
+  }) async {
     final firstObject = ParseObject('Game')
       ..set('gameName', gameName.isNotEmpty ? gameName : 'nameless')
       ..set('password', 'peace')
+      ..set('leaderboard', [])
       ..setAddAll('players', [
         {
           'userName': userName,
           'song': song,
-          'score': [
-            {'userName': userName, 'score': 0, 'position': ''},
-          ],
+          'ratingsGiven': [],
         },
       ])
       ..set('count', 4);
     await firstObject.save();
   }
-
 }
 
 // make this testable and make it pretty.
