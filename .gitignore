@@ -30,7 +30,7 @@
 .pub-cache/
 .pub/
 /build/
-/lib/constants.dart
+#/lib/constants.dart
 /Users/omarsultani/soundclash2/lib/constants.dart
 
 # Web related
