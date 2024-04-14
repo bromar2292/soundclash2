@@ -28,7 +28,7 @@ class RateSongCubit extends Cubit<RateSongState> {
   void initializeGame(String objectId) async {
     try {
       emit(SongsLoadingState());
-      final game = await gameRepository.fetchGameById(objectId: objectId);
+      final game = await gameRepository.fetchGameByObjectId(objectId: objectId);
       if (game != null && game.players.isNotEmpty) {
         // Initialize the YouTube player with the first song
         initializeYoutubePlayer(game.players.first.song);
@@ -49,7 +49,7 @@ class RateSongCubit extends Cubit<RateSongState> {
   Future<void> loadGame(String objectId) async {
     try {
       emit(SongsLoadingState());
-      Game? game = await gameRepository.fetchGameById(objectId);
+      Game? game = await gameRepository.fetchGameByObjectId(objectId);
       if (game != null && game.players.isNotEmpty) {
         // Immediately play the first song
         emit(SongPlayingState(

@@ -33,7 +33,7 @@ class GameRepository {
     // Any additional logic after joining a game
   }
 
-  Future<Game> fetchGameById({required String objectId}) async {
+  Future<Game> fetchGameByObjectId({required String objectId}) async {
     final Response response = await gameService.fetchAllGames() as Response;
 
     if (response.statusCode == 200) {
