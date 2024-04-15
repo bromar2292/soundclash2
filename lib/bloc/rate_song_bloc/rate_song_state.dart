@@ -7,6 +7,20 @@ class RateSongInitialState extends RateSongState {}
 
 class SongsLoadingState extends RateSongState {}
 
+class RateSongLoadedState extends RateSongState {
+  final List<String> songIds;
+  final int currentSongIndex;
+  final String currentVideoId;
+  final int? selectedRating;
+
+  RateSongLoadedState({
+    required this.songIds,
+    required this.currentSongIndex,
+    required this.currentVideoId,
+    this.selectedRating,
+  });
+}
+
 class SongPlayingState extends RateSongState {
   final Game game;
   final Player currentPlayer;
@@ -17,7 +31,7 @@ class SongPlayingState extends RateSongState {
     required this.game,
     required this.currentPlayer,
     required this.currentSongId,
-    this.selectedRating,
+    this.selectedRating, required int currentSongIndex,
   });
 }
 

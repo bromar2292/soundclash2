@@ -14,8 +14,25 @@ class RateSongCubit extends Cubit<RateSongState> {
 
   RateSongCubit(this.gameRepository) : super(RateSongInitialState());
 
+
+  void initialize(List<String> songIds) {
+    // Initially load the first song
+    emit(RateSongLoadedState(
+      songIds: songIds,
+      currentSongIndex: 0,
+      currentVideoId: songIds[0],
+    ));
+  }
+  void rateSong(int rating) {
+    final currentState = state;
+    if (currentState is RateSongLoadedState) {
+      // Update the rating without changing the song
+    //  emit(currentState.copyWith(selectedRating: rating));
+    }
+  }
+
   void initializeYoutubePlayer(String initialVideoId) {
-    youtubePlayerController = YoutubePlayerController(
+    _youtubePlayerController = YoutubePlayerController(
       initialVideoId: initialVideoId,
       flags: YoutubePlayerFlags(
         autoPlay: true,
@@ -49,13 +66,13 @@ class RateSongCubit extends Cubit<RateSongState> {
   Future<void> loadGame(String objectId) async {
     try {
       emit(SongsLoadingState());
-      Game? game = await gameRepository.fetchGameByObjectId(objectId);
+      Game? game = await gameRepository.fetchGameByObjectId( objectId: objectId);
       if (game != null && game.players.isNotEmpty) {
         // Immediately play the first song
         emit(SongPlayingState(
           game: game,
           currentPlayer: game.players.first,
-          currentSongId: game.players.first.song,
+          currentSongId: game.players.first.song, currentSongIndex: null,
         ));
       } else {
         emit(RateSongErrorState(message: "Game not found or has no players."));
