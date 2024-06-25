@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
-import 'package:soundclash2/ui/pages/login_screen.dart';
-import 'package:soundclash2/ui/pages/register_screen.dart';
 import 'package:soundclash2/ui/pages/create_game_screen.dart';
 import 'package:soundclash2/ui/pages/current_games_screen.dart';
 import 'package:soundclash2/ui/pages/join_game_screen.dart';
-import 'package:soundclash2/ui/widgets/menu_button.dart';
+import 'package:soundclash2/ui/pages/login_screen.dart';
 import 'package:soundclash2/ui/pages/profile_screen.dart';
+import 'package:soundclash2/ui/pages/register_screen.dart';
+import 'package:soundclash2/ui/widgets/menu_button.dart';
 import 'package:soundclash2/ui/widgets/message.dart';
+import 'package:soundclash2/user_session.dart';
 
 class MainMenu extends StatelessWidget {
   ParseUser? currentUser;
@@ -16,6 +17,8 @@ class MainMenu extends StatelessWidget {
 
   Future<ParseUser?> getUser() async {
     currentUser = await ParseUser.currentUser() as ParseUser?;
+    UserSession.instance.setUser(currentUser!);
+
     return currentUser;
   }
 

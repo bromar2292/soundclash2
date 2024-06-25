@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
-
-import 'package:soundclash2/ui/pages/register_screen.dart';
 import 'package:soundclash2/ui/pages/main_menu_screen.dart';
+import 'package:soundclash2/ui/pages/register_screen.dart';
 import 'package:soundclash2/ui/widgets/input_info.dart';
-
 import 'package:soundclash2/ui/widgets/message.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -115,22 +113,50 @@ class _LoginScreenState extends State<LoginScreen> {
     final username = controllerUsername.text.trim();
     final password = controllerPassword.text.trim();
 
-    final user = ParseUser(username, password, null);
+    if (username.isEmpty || password.isEmpty) {
+      Message.showError(
+          context: context,
+          message: "Please enter both username and password.",);
+      return;
+    }
 
-    final response = await user.login();
-    print(response);
-    if (response.success) {
-      navigateToMainMenu(context);
-      Message.showSuccess(
-        context: context,
-        message: "User was successfully login!",
-      );
+    try {
+      final user = ParseUser(username, password, null);
+      final response = await user.login();
 
-      setState(() {
-        isLoggedIn = true;
-      });
+      if (response.success) {
+        //   UserSession.instance.setUser(user);
+        navigateToMainMenu(context);
+        Message.showSuccess(
+            context: context, message: "User was successfully logged in!",);
+        setState(() {
+          isLoggedIn = true;
+        });
+      } else {
+        handleError(response.error!);
+      }
+    } catch (e) {
+      handleError(e);
+    }
+  }
+
+  void handleError(Object error) {
+    if (error is ParseError) {
+      // Check for specific error messages instead of codes
+      if (error.message.contains("Invalid username/password")) {
+        Message.showError(
+            context: context, message: "Invalid username or password.",);
+      } else if (error.message.contains("i/o timeout")) {
+        Message.showError(context: context, message: "No internet connection.");
+      } else {
+        Message.showError(
+            context: context,
+            message: "An error occurred during login: ${error.message}",);
+      }
     } else {
-      Message.showError(message: response.error!.message, context: context);
+      // Handle other types of errors (e.g., exceptions)
+      Message.showError(
+          context: context, message: "Unexpected error: $error",);
     }
   }
 

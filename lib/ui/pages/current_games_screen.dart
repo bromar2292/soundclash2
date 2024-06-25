@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soundclash2/modals/pick_youtube_arguments.dart';
+import 'package:soundclash2/bloc/current_games/current_games_cubit.dart';
+import 'package:soundclash2/bloc/current_games/current_games_state.dart';
+import 'package:soundclash2/models/pick_youtube_arguments.dart';
 import 'package:soundclash2/ui/pages/play_and_rate_song_screen.dart';
-
-import '../../bloc/current_games/current_games_cubit.dart';
-import '../../bloc/current_games/current_games_state.dart';
 
 class CurrentGamesScreen extends StatelessWidget {
   final String userName;

@@ -1,4 +1,4 @@
-import 'package:soundclash2/modals/game_modal.dart';
+import 'package:soundclash2/models/game_modal.dart';
 
 class PickYoutubeArguments {
   final String userName;

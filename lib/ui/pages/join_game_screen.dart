@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:soundclash2/modals/pick_youtube_arguments.dart';
+import 'package:soundclash2/bloc/join_game_bloc/join_game_cubit.dart';
+import 'package:soundclash2/bloc/join_game_bloc/join_game_state.dart';
+import 'package:soundclash2/models/pick_youtube_arguments.dart';
 import 'package:soundclash2/ui/pages/pick_youtube_song_screen.dart';
-
-import '../../bloc/join_game_bloc/join_game_cubit.dart';
-import '../../bloc/join_game_bloc/join_game_state.dart';
 
 class JoinGameScreen extends StatefulWidget {
   final String userName;
@@ -62,7 +61,7 @@ class _JoinGameScreenState extends State<JoinGameScreen> {
                 );
               }
               return const SizedBox.shrink();
-            }),
+            },),
           ),
           Center(
             child: ElevatedButton(

@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-
-import 'package:soundclash2/modals/pick_youtube_arguments.dart';
-
+import 'package:soundclash2/models/pick_youtube_arguments.dart';
+import 'package:soundclash2/repositorys/game_repository.dart';
 import 'package:soundclash2/ui/pages/play_and_rate_song_screen.dart';
-
 import 'package:soundclash2/ui/widgets/input_info.dart';
 import 'package:soundclash2/ui/widgets/sound_button.dart';
-
-
-import '../../repositorys/game_repository.dart';
 
 class PickYoutubeSong extends StatelessWidget {
   static const String id = 'pick_song_screen';
@@ -60,23 +55,20 @@ class PickYoutubeSong extends StatelessWidget {
                   ),
                   SoundButton(
                     context: context,
-                    function: ()async {
-
-                    await  gameService.joinGame(
+                    function: () async {
+                      await gameService.joinGame(
                         id: arguments.game.objectId,
                         userName: arguments.userName,
                         songUrl: _controllerUrl.text,
                       );
-                    // Add this check
+                      // Add this check
 
-
-
-                    /// omar figure this out
-                    Navigator.pushNamed(
-                      context,
-                      PlayAndRateSongScreen.id,
-                      arguments: arguments,
-                    );
+                      /// omar figure this out
+                      Navigator.pushNamed(
+                        context,
+                        PlayAndRateSongScreen.id,
+                        arguments: arguments,
+                      );
                       print('step 3');
                     },
                     text: 'Begin Game ',
@@ -85,7 +77,6 @@ class PickYoutubeSong extends StatelessWidget {
               ),
             ),
           ),
-
         ],
       ),
     );

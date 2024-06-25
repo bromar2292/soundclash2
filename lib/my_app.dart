@@ -2,9 +2,12 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
+import 'package:soundclash2/bloc/create_game_bloc/create_game_cubit.dart';
+import 'package:soundclash2/bloc/current_games/current_games_cubit.dart';
 import 'package:soundclash2/bloc/join_game_bloc/join_game_cubit.dart';
 import 'package:soundclash2/bloc/pick_youtube_song_bloc/pick_youtube_cubit.dart';
-import 'package:soundclash2/modals/pick_youtube_arguments.dart';
+import 'package:soundclash2/bloc/rate_song_bloc/rate_song_cubit.dart';
+import 'package:soundclash2/models/pick_youtube_arguments.dart';
 import 'package:soundclash2/repositorys/game_repository.dart';
 import 'package:soundclash2/services/game_service.dart';
 import 'package:soundclash2/ui/pages/create_game_screen.dart';
@@ -16,10 +19,6 @@ import 'package:soundclash2/ui/pages/pick_youtube_song_screen.dart';
 import 'package:soundclash2/ui/pages/play_and_rate_song_screen.dart';
 import 'package:soundclash2/ui/pages/profile_screen.dart';
 import 'package:soundclash2/ui/pages/register_screen.dart';
-
-import 'bloc/create_game_bloc/create_game_cubit.dart';
-import 'bloc/current_games/current_games_cubit.dart';
-import 'bloc/rate_song_bloc/rate_song_cubit.dart';
 
 class MyApp extends StatelessWidget {
   // put in cubit

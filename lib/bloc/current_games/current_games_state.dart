@@ -1,5 +1,4 @@
-
-import '../../modals/game_modal.dart';
+import 'package:soundclash2/models/game_modal.dart';
 
 abstract class CurrentGamesState {
   const CurrentGamesState();

@@ -34,3 +34,38 @@ void main() async {
     ),
   );
 }
+
+/// omar notes for myself
+/// goal is to promote music shareing as much as possible
+/// build with points system first then maybe intergrade crypto
+/// could just have points for everytime you share doensnt have to be a meme coin
+///
+///
+/// blockchain intergration ideas ?
+/// meme coin token can basicly be worthless in terms of rewards but its a nice way to see points
+/// pros of blockchain.... can get investment more easy
+/// more likely to get users as they are money incentivised early
+/// will be great eperience for me and i can get a job in crypto
+/// tokens when you win
+/// tokens when someone rates your song a 5,
+/// tokens when someone adds your playlist song to there playlist
+///
+
+/// what if you pay fixed amount every month like 1 pound and that goes into treasurey / buy tokens
+///
+///  can you spend tokens ? this needs to be thought about maybe when you favourite somones tunes?
+///  yes you can withdraw tokens and trade on the market
+/// do you pay tokens to play ?
+/// do you pay to keep tokens in circulation ?
+/// tokens in circulation are a problem for speculation
+///
+///
+/// cons what if tokens get so high you cant play
+///
+///
+/// figure out how to stop gamificatoin ie somone just making multiple accounts and playing with them selves
+///
+///
+///
+///
+///

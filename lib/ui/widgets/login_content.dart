@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
-
-import 'package:soundclash2/ui/pages/register_screen.dart';
 import 'package:soundclash2/ui/pages/main_menu_screen.dart';
+import 'package:soundclash2/ui/pages/register_screen.dart';
 import 'package:soundclash2/ui/widgets/input_info.dart';
 import 'package:soundclash2/ui/widgets/message.dart';
 

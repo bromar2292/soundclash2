@@ -1,5 +1,7 @@
-import '../../modals/game_modal.dart';
-import '../../modals/player.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
+import '../../models/game_modal.dart';
+import '../../models/player.dart';
 
 abstract class RateSongState {}
 
@@ -9,12 +11,16 @@ class SongsLoadingState extends RateSongState {}
 
 class RateSongLoadedState extends RateSongState {
   final List<String> songIds;
+  final List<Player> currentPlayers;
   final int currentSongIndex;
+  final YoutubePlayerController youtubePlayerController;
   final String currentVideoId;
   final int? selectedRating;
 
   RateSongLoadedState({
     required this.songIds,
+    required this.youtubePlayerController,
+    required this.currentPlayers,
     required this.currentSongIndex,
     required this.currentVideoId,
     this.selectedRating,
@@ -31,7 +37,7 @@ class SongPlayingState extends RateSongState {
     required this.game,
     required this.currentPlayer,
     required this.currentSongId,
-    this.selectedRating, required int currentSongIndex,
+    this.selectedRating,
   });
 }
 

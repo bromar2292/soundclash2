@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soundclash2/bloc/create_game_bloc/create_game_cubit.dart';
-
-
+import 'package:soundclash2/bloc/create_game_bloc/create_game_state.dart';
 import 'package:soundclash2/ui/widgets/input_info.dart';
-
-
-import '../../bloc/create_game_bloc/create_game_state.dart';
-import '../../services/game_service.dart';
 
 class CreateGameScreen extends StatelessWidget {
   static const String id = 'Create Game Screen';
@@ -51,7 +46,7 @@ class CreateGameScreen extends StatelessWidget {
             },
           ),
           Center(
-            child:  BlocConsumer<CreateGameCubit, CreateGameState>(
+            child: BlocConsumer<CreateGameCubit, CreateGameState>(
               listener: (context, state) {
                 if (state is CreateGameError) {
                   // Show error message
@@ -64,7 +59,8 @@ class CreateGameScreen extends StatelessWidget {
                     builder: (ctx) => AlertDialog(
                       title: const Text("you created a game !"),
                       content: const Text(
-                        "return to main menu",),
+                        "return to main menu",
+                      ),
                       actions: <Widget>[
                         TextButton(
                           onPressed: () {
@@ -83,7 +79,7 @@ class CreateGameScreen extends StatelessWidget {
               },
               builder: (context, state) {
                 if (state is CreateGameLoading) {
-                  return CircularProgressIndicator();
+                  return const CircularProgressIndicator();
                 }
                 return ElevatedButton(
                   onPressed: () {
@@ -91,15 +87,17 @@ class CreateGameScreen extends StatelessWidget {
                     final songUrl = controllerSongText.text;
 
                     if (gameName.isNotEmpty && songUrl.isNotEmpty) {
-                      context.read<CreateGameCubit>().createGame(gameName, userName, songUrl);
+                      context
+                          .read<CreateGameCubit>()
+                          .createGame(gameName, userName, songUrl);
                     } else {
                       // Show error or prompt for input
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Please enter both details')),
+                        const SnackBar(content: Text('Please enter both details')),
                       );
                     }
                   },
-                  child: Text('Create Game'),
+                  child: const Text('Create Game'),
                 );
               },
             ),
