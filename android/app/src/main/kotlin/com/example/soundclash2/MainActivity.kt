@@ -1,4 +1,4 @@
-package com.example.soundclash2
+package com.soundclash.soundclash2
 
 import io.flutter.embedding.android.FlutterActivity
 

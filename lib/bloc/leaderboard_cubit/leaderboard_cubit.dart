@@ -55,16 +55,18 @@ class LeaderboardCubit extends Cubit<LeaderboardState> {
       // Create leaderboard entries
       final List<LeaderboardEntry> leaderboardEntries = [];
       for (final String userName in userScores.keys) {
-        final int total = userScores[userName]!['total'];
-        final int count = userScores[userName]!['count'];
+        final int total = userScores[userName]!['total'] as int;
+        final int count = userScores[userName]!['count'] as int;
         final double average = count > 0 ? total / count : 0;
-        leaderboardEntries.add(LeaderboardEntry(
+        leaderboardEntries.add(
+          LeaderboardEntry(
             playerId: users.indexWhere((u) => u.userName == userName),
-            averageRating: average,),);
+            averageRating: average,
+          ),
+        );
       }
 
-      leaderboardEntries
-          .sort((a, b) => b.averageRating.compareTo(a.averageRating));
+      leaderboardEntries.sort((a, b) => b.averageRating.compareTo(a.averageRating));
 
       emit(LeaderboardLoaded(leaderboardEntries));
     } catch (e) {

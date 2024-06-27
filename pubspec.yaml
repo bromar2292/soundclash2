@@ -43,7 +43,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   bloc_test: ^9.0.2
-  mocktail: ^0.2.0
+  mocktail: ^1.0.4
 
   equatable: ^2.0.3
   freezed: ^2.0.3
@@ -57,7 +57,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
 
-  lint: ^1.10.0
+  lint: ^2.3.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

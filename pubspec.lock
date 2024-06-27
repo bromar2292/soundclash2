@@ -513,10 +513,10 @@ packages:
     dependency: "direct dev"
     description:
       name: lint
-      sha256: "4a539aa34ec5721a2c7574ae2ca0336738ea4adc2a34887d54b7596310b33c85"
+      sha256: d758a5211fce7fd3f5e316f804daefecdc34c7e53559716125e6da7388ae8565
       url: "https://pub.dev"
     source: hosted
-    version: "1.10.0"
+    version: "2.3.0"
   logging:
     dependency: transitive
     description:
@@ -569,10 +569,10 @@ packages:
     dependency: "direct dev"
     description:
       name: mocktail
-      sha256: dd85ca5229cf677079fd9ac740aebfc34d9287cdf294e6b2ba9fae25c39e4dc2
+      sha256: "890df3f9688106f25755f26b1c60589a92b3ab91a22b8b224947ad041bf172d8"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.0"
+    version: "1.0.4"
   nested:
     dependency: transitive
     description:
@@ -657,10 +657,10 @@ packages:
     dependency: transitive
     description:
       name: path_provider_android
-      sha256: "9c96da072b421e98183f9ea7464898428e764bc0ce5567f27ec8693442e72514"
+      sha256: bca87b0165ffd7cdb9cad8edd22d18d2201e886d9a9f19b4fb3452ea7df3a72a
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.5"
+    version: "2.2.6"
   path_provider_foundation:
     dependency: transitive
     description:
